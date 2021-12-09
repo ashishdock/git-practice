@@ -1,0 +1,1 @@
+gcc arraydemo.c -o arraydemo
