@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finding an element</title>
+    <script>
+        function changeit(){
+            var answer = prompt("Enter some new text:");
+            var spot = document.getElementById("here");
+            spot.innerHTML = answer;
+        }
+    </script>
+</head>
+<body>
+    <h1>Trying to find an element</h1>
+    <button type="button" onclick="changeit()">Click to change</button>
+    <p id="here">This is the original text</p>
+</body>
+</html>

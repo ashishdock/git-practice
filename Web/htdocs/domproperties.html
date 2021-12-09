@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing DOM properties</title>
+</head>
+<body>
+    <h1>This is the heading of the web page.</h1>
+    <p>This is sample text.</p><br>
+    <button type="button" onclick="changeme('red')">Change background to red</button>
+    <button type="button" onclick="changeme('white')">Change background to white</button>
+    <script>
+        function changeme(color){
+            document.body.style.backgroundColor = color;
+        }
+    </script>
+</body>
+</html>

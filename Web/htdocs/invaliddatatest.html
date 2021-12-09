@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing for invalid data</title>
+</head>
+<style>
+    input:invalid{
+        background-color: red;
+    }
+    input:valid{
+        background-color: lightgreen;
+    }
+</style>
+<body>
+    <h1>Testing for invalid data</h1>
+    <fieldset>
+        <legend>You must be over 18 to participate.</legend>
+        <label>Age:
+            <input type="number" name="age" min="18">
+        </label>
+    </fieldset>
+</body>
+</html>

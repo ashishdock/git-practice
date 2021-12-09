@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walking Test</title>
+    <script>
+        function changeit(){
+            var spot = document.getElementById("mylist");
+            var item1 = spot.firstChild;
+            var item2 = item1.nextSibling;
+            var item3 = item2.nextSibling;
+            var item4 = item3.nextSibling;
+            item1.innerHTML = "Cake";
+            item2.innerHTML = "Ice Cream";
+            item3.innerHTML = "Cookies";
+            item4.innerHTML = "Fudge";
+        }
+    </script>
+</head>
+<body>
+    <h1>Changing elements by walking</h1>
+    <h2>Here's a list of food to buy</h2>
+    <ul id="mylist">
+        <li>Carrots</li>
+        <li>Brussel Sprouts</li>
+        <li>Eggplant</li>
+        <li>Tofu</li>
+    </ul>
+    <button type="button" onclick="changeit()">Change the list</button>
+</body>
+</html>
