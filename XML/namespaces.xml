@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<c:camera>
+	<c:model>Canon Sureshot</c:model>
+	<c:item-code>WP-1</c:item-code>
+</c:camera>
+<n:camera>
+	<n:version>Nikon-Coolpix</n:version>
+	<n:model>L1</n:model>
+</n:camera>

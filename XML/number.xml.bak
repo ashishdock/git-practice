@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="number.xsd" >
+	<int>123</int> <int>0</int> <int>-123</int>
+	<pos>123</pos><neg>-123</neg><neg>0</neg>
+	<dec>12345.67890</dec><dec>-12345.67890</dec>
+	<flt>0.123456789012345678901234567894444444444444444444444444444444444444444444444444444444444444444444444444444</flt>
+	<flt>-0.12345678901234567890123456789</flt>
+</doc>	

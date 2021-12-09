@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cactus.xsd" > 
+	<cactus id = "AZ1" ><name>Arizona Barrel</name></cactus>
+	<cactus id = "AZ2" ><name>Arizona Beehive</name></cactus>
+	<cactus id = "AZ3" ><name>Arizona Fishhook</name></cactus>
+	<cactus id = "AZ4" ><name>Arizona Hedgehog</name></cactus>
+	<cactus id = "AZ5" ><name>Arizona Pincushion</name></cactus>
+</doc>

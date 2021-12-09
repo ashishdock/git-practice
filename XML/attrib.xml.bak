@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doc>
+	<memo id = "7" title = "Reminder" from = "Mike" msg = "Never use attributes for content data!"> </memo>
+</doc>

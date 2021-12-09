@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- <!DOCTYPE discography SYSTEM "album.dtd">  -->
+<!DOCTYPE discography [
+<!ELEMENT discography (artist,album+)>
+<!ELEMENT artist (#PCDATA)>
+<!ELEMENT album (#PCDATA)>
+<!ATTLIST album id CDATA #IMPLIED>
+]>
+
+<discography>
+	<artist>Pink</artist>
+	<album id = "2000" >Can't Take Me Home</album>
+	<album id = "2001" >Misundaztood</album>
+	<album id = "2003" >Try this</album>
+	<album id = "2006" >I'm not dead</album>
+	<album>(...in production)</album>
+
+</discography>

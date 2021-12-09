@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="doc" type="docType"/>
+	<xsd:element name="para" type="xsd:string"/>
+	<xsd:complexType name="docType">
+		<xsd:sequence>
+			<xsd:element ref="para"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	
+	
+	
+</xsd:schema>
+
+
+
+

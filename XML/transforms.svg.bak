@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" width="500px" height="500px">
+	<g font-size="16pt" font-family="Arial">
+		<rect x="10" y="10" width="55px" height="25px" fill="red"/>
+		<rect x="65" y="10" width="120px" height="25px" fill="yellow"/>
+		<text x="15" y="30" fill="white">SVG</text>
+		<text x="70" y="30" fill="black">Logo</text>
+	</g>
+	<g font-size="16pt" font-family="Arial" transform="translate(0,30),skewY(20)">
+		<rect x="10" y="10" width="55px" height="25px" fill="red"/>
+		<rect x="65" y="10" width="120px" height="25px" fill="yellow"/>
+		<text x="15" y="30" fill="white">SVG</text>
+		<text x="70" y="30" fill="black">Translated</text>
+	</g>
+	<g font-size="16pt" font-family="Arial" transform="translate(0,30),skewY(20)">
+		<rect x="10" y="10" width="55px" height="25px" fill="red"/>
+		<rect x="65" y="10" width="120px" height="25px" fill="yellow"/>
+		<text x="15" y="30" fill="white">SVG</text>
+		<text x="70" y="30" fill="black">Y Skewed</text>
+	</g>
+	<g font-size="16pt" font-family="Arial" transform="translate(200,50),rotate(20)">
+		<rect x="10" y="10" width="55px" height="25px" fill="red"/>
+		<rect x="65" y="10" width="120px" height="25px" fill="yellow"/>
+		<text x="15" y="30" fill="white">SVG</text>
+		<text x="70" y="30" fill="black">Rotated</text>
+	</g>
+	<g font-size="16pt" font-family="Arial" transform="translate(0,130),scale(2)">
+		<rect x="10" y="10" width="55px" height="25px" fill="red"/>
+		<rect x="65" y="10" width="120px" height="25px" fill="yellow"/>
+		<text x="15" y="30" fill="white">SVG</text>
+		<text x="70" y="30" fill="black">Scaled</text>
+	</g>
+</svg>

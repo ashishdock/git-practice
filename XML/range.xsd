@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:simpleType name="pmType">
+		<xsd:restriction base="xsd:time">
+			<xsd:minInclusive value="12:00:00"/>
+			<xsd:maxInclusive value="23:59:59"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="doc" type="docType"/>
+	<xsd:element name="afternoon" type="pmType"/>
+	<xsd:element name="evening" type="pmType"/>
+	<xsd:complexType name="docType">
+		<xsd:sequence>
+			<xsd:element ref="afternoon" maxOccurs="3"/>
+			<xsd:element ref="evening" maxOccurs="3"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,4 @@
+<!ELEMENT contacts (title*,forename,surname)+>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT forename (#PCDATA)>
+<!ELEMENTS surname (#PCDATA)>

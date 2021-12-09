@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+		<script type="text/javascript">
+			var xmlDoc;
+			function loadXmlDoc(){
+				if(window.ActiveXObject){
+					xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+					xmlDoc.async=false;
+					xmlDoc.load("tree.xml");
+					getXmlData();
+				}
+			}
+			function getXmlData(){
+				var node = xmlDoc.documentElement.nodeName;
+				var data = "Root Element Name is:" + node;
+				document.getElementById("box").innerHTML = data;
+			}
+			window.onload=loadXmlDoc;
+			
+		</script>
+       
+        <title>Loading XML data using XML DOM</title>
+    </head>
+    <body>
+
+       
+
+        <div id="box" style="background:yellow">
+			
+		</div>
+    </body>
+</html>

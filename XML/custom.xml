@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="custome.xsd">
+	<knife>10</knife>
+	<knife>0</knife>
+	<knife>-10</knife>
+	<spoon>10</spoon>
+	<spoon>0</spoon>
+	<spoon>-10</spoon>
+</doc>

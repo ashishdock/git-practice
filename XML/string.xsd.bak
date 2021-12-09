@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:simpleType name="zipType">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="5"/>
+			<xsd:maxLength value="5"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="store" type="xsd:string"/>
+	<xsd:element name="address" type="xsd:string"/>
+	<xsd:element name="doc" type="docType"/>
+	<xsd:complexType name="docType">
+		<xsd:sequence maxOccurs="unbounded">
+			<xsd:element ref="store"/>
+			<xsd:element ref="address"/>
+			<xsd:element ref="zip"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<contacts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="contacts.xsd">
+	<title>Mr</title>
+	<forename>John</forename>
+	<surname>Smith</surname>
+	
+	<forename>Sally</forename>
+	<surname>James</surname>
+</contacts>

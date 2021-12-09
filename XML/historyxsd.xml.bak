@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/css" href="history.css" ?>
+<!DOCTYPE doc [
+<!ELEMENT doc (para)>
+<!ENTITY html "HyperText Markup Language(HTML)">
+<!ENTITY xml "eXtensible Markup Language(XML)">
+<!ENTITY sgml "Standard Generalized Markup Language(SGML)">
+<!ENTITY gml "Generalized Markup Language(GML)">
+]>
+<doc xmlns:xsi="http://www.w3.ord/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="history.xsd">
+	<para>Both &html; and &xml; are derived from &sgml; which is, in turn, a descendant of the &gml; that was developed in the 1960s by IBM.
+	</para>
+</doc>

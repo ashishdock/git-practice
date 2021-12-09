@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="desc" type="xsd:string"/>
+	<xsd:element name="src" type="xsd:string"/>
+	<xsd:element name="alt" type="xsd:string"/>
+	<xsd:element name="doc" type="docType"/>
+	<xsd:element name="image" type="imageType"/>
+	
+	<xsd:complexType name="docType">
+		<xsd:sequence>
+			<xsd:element ref="desc"/>
+			<xsd:element ref="image" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="imageType">
+		<xsd:choice>
+			<xsd:element ref="src"/>
+			<xsd:element ref="alt"/>
+		</xsd:choice>
+	</xsd:complexType>
+	
+	
+</xsd:schema>

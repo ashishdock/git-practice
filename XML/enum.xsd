@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:simpleType name="newEnglandType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Connecticut"/>
+			<xsd:enumeration value="Maine"/>
+			<xsd:enumeration value="Massachusetts"/>
+			<xsd:enumeration value="New Hampshire"/>
+			<xsd:enumeration value="Rhode Island"/>
+			<xsd:enumeration value="Vermont"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="doc" type="docType"/>
+	<xsd:element name="state" type="newEnglandType"/>
+	<xsd:complexType name="docType">
+		<xsd:sequence>
+			<xsd:element ref="state" maxOccurs="6"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

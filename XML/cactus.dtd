@@ -1,0 +1,4 @@
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT doc (cactus+)>
+<!ELEMENT cactus (name)>
+<!ATTLIST cactus id ID #REQUIRED>

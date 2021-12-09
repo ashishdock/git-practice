@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500px" height="500px">
+	<a xlink:href="http://www.ineasysteps.com"><text x="10" y="150">Follow this hyperlink to discover more "in easy steps" books</text></a>
+	<script type="text/javascript" xlink:href="script.js"/>
+	<path id="fun-path" fill="none" stroke="none" d="M40,120 Q50,-20 390,80"/>
+	<text fill="red" font-size="30pt"><textPath xlink:href="#fun-path">Having Fun with SVG</textPath></text>
+	<defs>
+		<g id="exclaim" font-size="48pt">
+			<circle r="30px" fill="red"/>
+			<text x="-10" y="20" fill="white">!</text>
+		</g>
+	</defs>
+	<use x="100" y="100" xlink:href="#exclaim"/>
+	<use x="200" y="100" xlink:href="#exclaim"/>
+	<use x="300" y="100" xlink:href="#exclaim"/>
+</svg>

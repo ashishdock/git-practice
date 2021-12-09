@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="doc" type="docType"/>
+	<xsd:element name="nytime" type="xsd:time"/>
+	<xsd:element name="lilboy" type="xsd:dateTime"/>
+	<xsd:element name="xmasday" type="xsd:gMonthDay"/>
+	<xsd:element name="iditarod" type="xsd:duration"/>
+	<xsd:complexType name="docType">
+		<xsd:sequence>
+			<xsd:element ref="nytime"/>
+			<xsd:element ref="lilboy"/>
+			<xsd:element ref="xmasday"/>
+			<xsd:element ref="iditarod"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

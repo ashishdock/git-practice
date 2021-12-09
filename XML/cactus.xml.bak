@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- <!DOCTYPE doc SYSTEM "cactus.dtd"> -->
+<!DOCTYPE doc [
+	<!ELEMENT name (#PCDATA)>
+	<!ELEMENT doc (cactus+)>
+	<!ELEMENT cactus (name)>
+	<!ATTLIST cactus id ID #REQUIRED>
+]>
+
+<doc>
+	<cactus id = "_1" >
+		<name>Arizona Barrel</name>
+	</cactus>
+	
+	<cactus id = "AZ2" >
+		<name>Arizona Beehive</name>
+	</cactus>
+	
+	<cactus id = "AZ3" >
+		<name>Arizona Fishhook</name>
+	</cactus>
+	
+	<cactus id = "AZ4" >
+		<name>Arizona Hedgehog</name>
+	</cactus>
+	
+	<cactus id = "AZ5" >
+		<name>Arizona Pincushion</name>
+	</cactus>
+	
+</doc>

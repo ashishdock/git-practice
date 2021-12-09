@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- <!DOCTYPE doc SYSTEM "image.dtd"> -->
+<!DOCTYPE doc [
+	<!ELEMENT doc (desc,image+)>
+	<!ELEMENT image (src | alt)>
+	<!ELEMENT desc (#PCDATA)>
+	<!ELEMENT src (#PCDATA)>
+	<!ELEMENT alt (#PCDATA)>
+]>
+
+<doc>
+	<desc>The new Dodge Challenger was designed around its muscle car ancestor, but with a twist of modern technology.</desc>
+	<image>
+		
+	</image>
+	<image>
+		<alt>Inside the leather high-back seats have a sunken ribbed look, just like the seats which came in the 1970 Challenger.</alt>
+	</image>
+	
+</doc>

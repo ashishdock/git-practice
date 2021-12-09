@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/css" href="history.css" ?>
+<!-- <!DOCTYPE doc SYSTEM "history.dtd" >-->
+<!DOCTYPE doc [
+<!ELEMENT para (#PCDATA)>
+<!ELEMENT doc (para)>
+<!--Common markup language acronyms. -->
+<!ENTITY html "HyperText Markup Language (HTML)" >
+<!ENTITY xml "eXtensible Markup Language (XML)" >
+<!ENTITY sgml "Standard Generalized Markup Language (SGML)" >
+<!ENTITY gml "Generalized Markup Language (GML)" >
+]>
+
+
+<doc>
+	<para>
+		Both &html; and &xml; are derived from &sgml; which is, in turn, descendant of the &gml; that was developed in the 1960s by IBM.
+	</para>
+</doc>

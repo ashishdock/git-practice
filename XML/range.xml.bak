@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding=UTF-8 ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="range.xsd" >
+	<afternoon>12:00:00</afternoon>
+	<afternoon>15:30:00</afternoon>
+	<afternoon>18:00:00</afternoon>
+	<evening>18:00:01</evening>
+	<evening>21:30:00</evening>
+	<evening>23:59:59</evening>
+</doc>

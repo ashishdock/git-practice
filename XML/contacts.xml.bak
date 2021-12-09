@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- <!DOCTYPE contacts SYSTEM "contacts.dtd" > -->
+<!DOCTYPE contacts [
+<!ELEMENT contacts (title?,forename,surname)+ >
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT forename (#PCDATA)>
+<!ELEMENT surname (#PCDATA)>
+]>
+
+<contacts>
+	<title>Mr</title>
+	<title>no</title>
+	<title>yes</title>
+	<forename>John</forename>
+	<surname>Smith</surname>
+	
+	<forename>Sally</forename>
+	<surname>James</surname>
+</contacts>

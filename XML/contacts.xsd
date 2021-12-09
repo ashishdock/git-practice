@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="title" type="xsd:string"/>
+	<xsd:element name="forename" type="xsd:string"/>
+	<xsd:element name="surname" type="xsd:string"/>
+	<xsd:element name="contacts" type="contactsType"/>
+	<xsd:complexType name="contactsType">
+		<xsd:sequence minOccurs="1" maxOccurs="unbounded">
+			<xsd:element ref="title" minOccurs="0" maxOccurs="1" />
+			<xsd:element ref="forename"/>
+			<xsd:element ref="surname"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

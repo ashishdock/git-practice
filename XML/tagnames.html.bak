@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+		<script type="text/javascript">
+			var xmlDoc;
+			function loadXmlDoc(){
+				try {
+				
+					if(window.ActiveXObject){
+						xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+						xmlDoc.async=false;
+						xmlDoc.load("books.xml");
+						getXmlData();
+					}
+					else if (document.implementation && document.implementation.createDocument) {
+						xmlDoc = document.implementation.createDocument("","",null);
+						xmlDoc.load("books.xml");
+						xmlDoc.onload = getXmlData;
+					}
+				}
+				catch (error) {
+					document.getElementById("box").innerHTML = "XML data is unavailable";
+				}
+			}
+			function getXmlData(){
+				var nodeList = xmlDoc.getElementByTagName("title");
+				var data = "No. of Titles:" + nodeList.length;
+				for(i=0;i<nodeList.length;i++){
+					data+="<br>"+nodeList[i].firstChild.nodeValue;
+				}
+			}
+			onload=loadXmlDoc;
+			
+		</script>
+       
+        <title>Loading XML data using XML DOM</title>
+    </head>
+    <body>
+
+       
+
+        <div id="box" style="background:yellow">
+			
+		</div>
+    </body>
+</html>

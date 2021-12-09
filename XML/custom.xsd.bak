@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:simpleType name="maxTenType">
+		<xsd:restriction base="xsd:integer">
+			<xsd:maxInclusive value="10"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="docType">
+		<xsd:sequence>
+			<xsd:element ref="knife"/ maxOccurs="3">
+			<xsd:element ref="spoon"/ maxOccurs="3">
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="doc" type="docType"/>
+	<xsd:element name="knife" type="maxTenType"/>
+	<xsd:element name="spoon" type="maxTenType"/>
+</xsd:schema>

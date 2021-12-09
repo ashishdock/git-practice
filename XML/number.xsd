@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+	
+	<xsd:element name="int" type="xsd:integer"/>
+	<xsd:element name="pos" type="xsd:positiveInteger"/>
+	<xsd:element name="neg" type="xsd:nonPositiveInteger"/>
+	<xsd:element name="dec" type="xsd:decimal"/>
+	<xsd:element name="flt" type="xsd:float"/>
+	
+	<xsd:complexType name="docType">
+		<xsd:sequence>
+			<xsd:element ref="int" maxOccurs="unbounded"/>
+			<xsd:element ref="pos" maxOccurs="unbounded"/>
+			<xsd:element ref="neg" maxOccurs="unbounded"/>
+			<xsd:element ref="dec" maxOccurs="unbounded"/>
+			<xsd:element ref="flt" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="doc" type="docType"/>
+</xsd:schema>

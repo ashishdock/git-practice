@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="103px" height="93px">
+	<script type="text/javascript" xlink:href="event.js"/>
+	<polygon fill="yellow" stroke="none" points="2,30 50,30 50,2 101,45 50,91 50,60 2,60"/>
+	<g font-size="13pt" font-weight="bold">
+		<text x="11" y="51" fill="black">Button</text>
+		<text x="10" y="50" fill="white">Button</text>
+	</g>
+	<polygon fill-opacity="0.0" stroke="none" stroke-width="4px" points="2,30 50,30 50,2 101,45 50,91 50,60 2,60" onmouseover="setBtn(this,1)" onmousedown="setBtn(this,2)" onmouseup="setBtn(this,3)" onmouseout="setBtn(this,4)" onclick="alert('Button Clicked')"/>
+	
+</svg>

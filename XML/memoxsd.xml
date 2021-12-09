@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation = "memo.xsd">
+
+	<memo>
+		<title> End of Month</title>
+		<from>Admin</from>
+		<to>All Users</to>
+		<msg>Passwords will be reset tomorrow.</msg>
+	</memo>
+</doc>

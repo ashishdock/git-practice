@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<discography xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="album.xsd">
+	<artist>Pink</artist>
+	<album id="2000">Can't Take Me Home</album>
+	<album id="2001">Misundaztood</album>
+	<album id="2003">Try this</album>
+	<album id="2006">I'm Not Dead</album>
+	<album>(...in production)</album>
+</discography>

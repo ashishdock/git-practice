@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE doc[
+<!ELEMENT doc (memo)>
+<!ELEMENT memo (title,from,to,msg)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT from (#PCDATA)>
+<!ELEMENT to (#PCDATA)>
+<!ELEMENT msg (#PCDATA)>
+]>
+
+<doc>
+	<memo>
+		<title>End of Month</title>
+		<from>Admin</from>
+		<to>All Users</to>
+		<msg>Passwords will be reset towmorrow.</msg>
+		
+	</memo>
+</doc>

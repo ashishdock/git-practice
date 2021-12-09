@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<catalog>
+	<book id="978-1-84078-315-5">
+		<!-- Script interactive actions. -->
+		<title>Javascript in easy steps</title>
+		<author>Mike McGrath</author>
+	</book>
+	
+	<book id="978-1-84078-314-8">
+		<!-- Create fascinating websites. -->
+		<title>Web Design in easy steps. </title>
+		<author>Richard Quick</author>
+	</book>
+	
+	<book id="978-1-84078-296-X">
+		<!-- Query database tables. -->
+		<title>SQL in easy steps. </title>
+		<author>Mike McGrath</author>
+	</book>
+</catalog>

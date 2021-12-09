@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="string.xsd">
+	<store>Macy's</store>
+	<address>151 West 34th Street, New York</address>
+	<zip>10001</zip>
+	
+	<store>Saks Fifth Avenue</store>
+	<address>611 5th Avenue, New York</address>
+	<zip>10022<zip>
+	
+	<store>Bloomingdales</store>
+	<address>1000 3rd Avenue, New York</address>
+	<zip>10022</zip>
+</doc>

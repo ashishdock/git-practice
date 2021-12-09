@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="digit.xsd">
+	<num>0.75</num>
+	<num>123.45</num>
+	<num>9876.5</num>
+	<num>120345</num>
+</doc>

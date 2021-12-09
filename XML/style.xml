@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/css" href="style.css" ?>
+<subs>
+	<title>Hot Subs </title>
+	<desc>Piled high with flavor!</desc>
+	<sub>#1 Hot Pastrami $7.25</sub>
+	<sub>#2 Roast Turkey $6.50</sub>
+	<sub>#3 Cheese Steak $7.00</sub>
+	<plus>Add fries for just $1.25</plus>
+</subs> 

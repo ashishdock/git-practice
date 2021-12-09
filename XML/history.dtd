@@ -1,0 +1,7 @@
+<!ELEMENT para (#PCDATA)>
+<!ELEMENT doc (para)>
+<!--Common markup language acronyms. -->
+<!ENTITY html "HyperText Markup Language (HTML)" >
+<!ENTITY xml "eXtensible Markup Language (XML)" >
+<!ENTITY sgml "Standard Generalized Markup Language (SGML)" >
+<!ENTITY gml "Generalized Markup Language (GML)" >
