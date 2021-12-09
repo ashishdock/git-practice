@@ -1,0 +1,11 @@
+Running C programs in command line
+
+ensure that you are in the proper folder
+
+gcc goodbye.c -o goodbye
+
+gcc is the command to compile and link the source code
+-o is the output switch 
+last goodbye is the name of the final program
+
+If you leave the -o switch GCC makes the final output as A.EXE in windows
