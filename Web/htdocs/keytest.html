@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing keystroke events</title>
+    <script>
+        function gotkey(){
+            var count = document.getElementById('text').value.length;
+            if (count > 50){
+                var output = "Sorry, that's too many characters."
+                document.getElementById('status').innerHTML = output;
+            } else {
+            var output = "Character count: " + count;
+            document.getElementById('status').innerHTML = output;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Testing for keystrokes</h1>
+    <p>Please enter some text into the text area</p>
+    <textarea name="" id="text" cols="50" rows="20" onkeyup="gotkey()"></textarea>
+    <p id = "status"></p>
+</body>
+</html>

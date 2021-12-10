@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catching Errors Test</title>
+    <style>
+        fieldset{
+            width: 450px;
+        }
+        label, input {
+            margin: 10px;
+        }
+    </style>
+    <script>
+        function calculate(){
+            var games, scores, array, total, average, output;
+            games = document.getElementById("games").value;
+            scores = document.getElementById("scores").value;
+            array = scores.split(',');
+            total = 0;
+            for(i=0; i<array.length;i++){
+                total = total + parseInt(array[i]);
+            }
+            try {
+                if (games <= 0 || games == "" || isNaN(games)){
+                    throw "Please enter a valid number of games";
+                }
+                average = total / games;
+                output = "The average is " + average;
+                document.getElementById("result").innerHTML = output;
+            } catch(err) {
+                document.getElementById('result').innerHTML = err;
+            }
+        }
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>Bowling Calculator</legend>
+        <label>Enter number of games bowled</label>
+        <input type="text" id="games" size="3"><br>
+        <label>Enter scores, separated by commas</label>
+        <input type="text" id="scores" size="20"><br>
+        <button onclick="calculate()">Calculate Average</button>
+        <p id="result"></p>
+    </fieldset>
+</body>
+</html>

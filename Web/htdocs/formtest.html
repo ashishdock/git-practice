@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP form test</title>
+    <style>
+        input, textarea{
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Please fill in the form</h1>
+    <form action="formtest.php" method="post">
+        <fieldset>
+            <legend>My test form</legend>
+            <label>First name</label>
+            <input type="text" name="fname" size="40"><br>
+            <label>Last name</label>
+            <input type="text" name="lname" size="40"><br>
+        <fieldset>
+        <legend>Select your favorite sport</legend>
+        <input type="radio" name="sport" value="baseball">Baseball <br>
+        <input type="radio" name="sport" value="basketball">Basketball <br>
+        <input type="radio" name="sport" value="football"> Football <br>
+        <input type="radio" name="sport" value="hockey">Hockey <br>
+        </fieldset>
+        <label>Please type your essay</label>
+        <textarea name="essay" cols="50" rows="10"></textarea><br>
+        <input type="submit" value="Submit your form">
+        </fieldset>
+    </form>
+</body>
+</html>

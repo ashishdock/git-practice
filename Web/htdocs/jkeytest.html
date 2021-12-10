@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing jQuery Keystroke Events</title>
+    <script src="jquery-3.6.0.min.js"></script>
+    <script>
+        jQuery(document).ready(function(){
+            $("textarea").on("keyup", function(){
+                var count = $(this).val().length;
+                var output = "Character count: " + count;
+                $("#status").text(output);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Testing for keystrokes</h1>
+    <p>Please enter some text into the text area</p>
+    <textarea name="" id="" cols="50" rows="20"></textarea><br>
+    <p id = 'status'></p>
+</body>
+</html>

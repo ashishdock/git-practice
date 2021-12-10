@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing Button Events</title>
+    <script>
+        function clickme(name){
+            if (name == "help") {
+                alert("Do you need some help?");
+            } else if (name == "buy"){
+                alert ("What would you like to buy?");
+            } else if (name == "browse"){
+                alert ("You can browse our catalog!");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Store Menu</h1>
+    <p>Here are the current options:</p>
+    <button onclick="clickme('buy')">Buy a product</button>
+    <button onclick="clickme('browse')">Browse our catalog</button>
+    <button onclick="clickme('help')">Get Help</button>
+</body>
+</html>
