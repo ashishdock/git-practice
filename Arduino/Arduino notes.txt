@@ -1,0 +1,5 @@
+Red wire: positive/power/anode
+black wire: negative/ ground cathode
+
+LED: long leg positive power/anode
+short leg negative ground/nd/cathode
