@@ -1,0 +1,9 @@
+import java.lang.System;
+import java.lang.String;
+
+class First {
+		public staric void main(String args[]){
+			System.out.println("Hello World");
+		}
+	
+}
