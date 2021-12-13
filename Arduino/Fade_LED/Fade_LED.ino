@@ -3,7 +3,7 @@ int brightness= 0;
 int fadeAmount = 2;
 
 void setup() {
-  pinMode(13, OUTPUT);
+  pinMode(9, OUTPUT);
 }
 
 void loop() {
