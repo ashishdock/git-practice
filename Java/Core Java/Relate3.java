@@ -59,6 +59,9 @@ class Relate3
 		Two obj2 = new Two(obj3);
 		//create class One's obj1 and pass obj2 
 		One obj1 = new One(obj2);
+		
+		//the above statements can be written as One obj1 = new One(new Two(new Three()));
+		
 		//call cube method of class One
 		double result1 = obj1.cube(5);
 		System.out.println("Cube of 5 = " + result1);

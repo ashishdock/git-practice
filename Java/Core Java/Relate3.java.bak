@@ -44,7 +44,7 @@ class Three
 	double get(double x) 
 	{
 		//just return x value to class Two
-		System.out.println("The value of x in class THREE is and retrieving it now " + x);
+		System.out.println("The value of x in class THREE is and retrieving it now: " + x);
 		return x;
 	}
 }
