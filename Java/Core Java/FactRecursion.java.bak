@@ -1,0 +1,13 @@
+//Factorial without recursion
+class FactRecursion {
+	static long factorial (int num) {
+		long fact;
+		factorial(1) = 1;
+		fact = num * factorial(num-1);
+		return fact;
+	}
+	
+	public static void main(String args[]){
+		System.out.println("Factorial of 5 is " + factorial(5));
+	}
+}
