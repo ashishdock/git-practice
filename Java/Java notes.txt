@@ -1,0 +1,9 @@
+- Any class extending Abstract class should override all abstract methods of the abstract class it inherits. or it shold itself be an abstract class.
+
+
+
+
+
+
+
+
