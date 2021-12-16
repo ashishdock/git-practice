@@ -1,11 +1,46 @@
+-Factory Methods - A method belonging to an interface or abstract class that can directly make an object without calling the class first
+-Private inner classes - they use contact method() to interact with them. They are protected from JVM and everything.
+
 - Any class extending Abstract class should override all abstract methods of the abstract class it inherits. or it shold itself be an abstract class.
 - Abstract class ia class that has some abstract methods not all
 -Interface is a class that has all it's methods abstract. An Inbterface is a class that only contains method prototypes.
+-Interface keyword is 'interface' Abstract classes keyword is 'abstract'
+-Implentation class of an Interface or Abstract Class must implement all methods of the Interface/Abstract class
 
 
+CREATE PACKAGE
+javac -d . <filname.java>
+
+-d means in a separate subdirectory
+. means in the current directory
+
+so the subdirectory is made in the current directory
+
+create JAR file
+jar cf <jarfilename> <inputfiles>
+
+eg. jar cf tespack.jar testpack   //cf means create file
+
+VIEW JAR FILE CONTENTS
+jar tf <jarfilename>           //tf means table view of files
 
 
+    -c creates new archive file
+    -v generates verbose output. It displays the included or extracted resource on the standard output.
+    -m includes manifest information from the given mf file.
+    -f specifies the archive file name
+    -x extracts files from the archive file
+eg.     jar -cvmf myfile.mf myjar.jar First.class  
 
+TRY CATCH FINALLY
+-Even if there is scope for multiple exceptions, only one exception at a time will occur. In the next program we will merge these two catch blocks
+- as soon as the first exception is raised anything after that is not encountered hence only one exception is raised at a time
 
+-throws clause is used when programmer does not want to handle the exception and throw it out at the time of execution
+however, throw clause is used when programmer wants to throw an exception explicitly and wants to handle it using ctch block.
 
+-Wrapper classes: they convert primitive data types into objects for use, especially to be used by collections as they only operate on objects
 
+-Number class converts the objects to number types(int, long, etc.)
+
+-Container = Collection (As per Java Data Structures book)

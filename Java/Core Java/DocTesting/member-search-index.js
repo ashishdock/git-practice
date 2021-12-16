@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"testpack","c":"Addition","l":"Addition(double, double)","u":"%3Cinit%3E(double,double)"},{"p":"testpack","c":"Subtraction","l":"sub(double, double)","u":"sub(double,double)"},{"p":"testpack","c":"Subtraction","l":"Subtraction()","u":"%3Cinit%3E()"},{"p":"testpack","c":"Addition","l":"sum()"}];updateSearchResults();

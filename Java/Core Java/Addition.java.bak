@@ -1,0 +1,21 @@
+//STEP 1: creating a package pack with Addition class
+
+package testpack; //testpack is the packagename
+
+public class Addition
+{
+	//instance vars
+	private double d1, d2;
+	
+	public Addition(double a, double b)
+	{
+		d1 = a;
+		d2 = b;
+	}
+	
+	//method to find sum of two numbers
+	public void sum()
+	{
+		System.out.println("Sum = " +(d1+d2));
+	}
+}
