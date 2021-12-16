@@ -1,4 +1,6 @@
 - Any class extending Abstract class should override all abstract methods of the abstract class it inherits. or it shold itself be an abstract class.
+- Abstract class ia class that has some abstract methods not all
+-Interface is a class that has all it's methods abstract. An Inbterface is a class that only contains method prototypes.
 
 
 
