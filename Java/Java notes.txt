@@ -44,3 +44,42 @@ however, throw clause is used when programmer wants to throw an exception explic
 -Number class converts the objects to number types(int, long, etc.)
 
 -Container = Collection (As per Java Data Structures book)
+-We can use class object as an array. Such an object is called 'Collection object' or 'Container object'.
+-A collection object has a class known as 'collection class' or 'container class'. All the collection classes are available in java.util package.
+
+Retrieving elements from objects:
+1. Using for-each loop
+2. Using ITERATOR interface
+3. Using ListIterator interface: retrieves both in forward and reverse directions
+4. Using Enumeration interface
+
+- Sets do not allow duplicates
+-Lists allow duplicates
+-Queues FIFO
+-Maps: key value pairs
+
+-A stack strictly follows LIFO order, while a LINKED LIST does not follow any order. It can store and retrieve data randomly
+-A stack is generally used for the purpose of evaluation of expressions.
+-A linked list is used to store and retrieve data
+-ArrayList is not synchronized that means that is case of multi threading the results are not reliable
+-Vector is similar to ArrayList and is a better option compared to ArrayList as they are synchronized, and give reliable results in case multiple threads act on the vector object
+-Hashmaps are not synchronized and hence can give unreliable results. It's load factor is 0.75. After reaching 75%, it doubles.
+-Hashtable class is synchronized.
+-Arrays class provides methods to perform on any one-D array
+-Comparator interface to sort an array ascending or descending
+-Cannot add elements to arrayList like an array using array index, must use methods to add to arrayList and other Collection classes
+-IF a classname ends with 'Stream' it is a BYTESTREAM and if it ends with 'Reader' it is a textstream.
+-Zip files = While zipping file content, a zipping algorithm(logic) is used in such a way that the algorithm first finds out which bit pattern is most often repeated in the original file and replaces that bit pattern with a 0. Then the algorithm searches for the next bit pattern which is most often repeated and places 1 in it's place. Then the third will be replaced by 01 and then forth by 10 and then fifth by 001 and sixth by 100 and so on.
+-To unzip a reverse algorithm is used to inflate.
+
+What if we want to store/write some structured data in the files?
+Then, we use serializable interface. Serializable interface should be implemented by the class whose objects are to be stored into the file. Steps how to do that:
+1. attach objfile to FileOutputStream
+2. attach FileOutputStream to ObjectOutputStream
+3. Now, ObjectOutputStream can write objects using writeObject() method to FileOutputStream.
+Storing ojects into a file this way is called Serialization. The reverse process where objects can be retrieved from a file is call de-serialization.
+***transient variables cannot be serialized
+static int x = 15; //will be serialized
+transient String str = "mypassword"; //will not be serialized
+
+
