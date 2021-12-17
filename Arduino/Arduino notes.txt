@@ -3,3 +3,5 @@ black wire: negative/ ground cathode
 
 LED: long leg positive power/anode
 short leg negative ground/nd/cathode
+
+Digital pull up resistor: DigitalInputPullup sketch
