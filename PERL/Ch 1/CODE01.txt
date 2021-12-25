@@ -1,0 +1,129 @@
+print "Hello!\n";
+============================================================
+for ($loop_index = 1; $loop_index <=5; $loop_index++) {
+    print "Hello";
+    print "there!\n";
+}
+============================================================
+#!/usr/bin/sh
+eval '/usr/local/bin/users/standard/build36/perl5 
+-wS $0 ${1+"$@"}' if 0;
+============================================================
+print "Hello!\n";
+
+print "Press <Enter> to continue...";
+============================================================
+@rem = '--*-Perl-*--
+@echo off
+if "%OS%" == "Windows_NT" goto WinNT
+perl -x -S "%0" %1 %2 %3 %4 %5 %6 %7 %8 %9
+goto endofperl
+:WinNT
+perl -x -S "%0" %*
+if NOT "%COMSPEC%" == "%SystemRoot%\system32\cmd.exe" 
+goto endofperl
+if %errorlevel%==9009 echo You do not have Perl in your PATH.
+goto endofperl
+@rem ';
+#!perl
+#line 14
+print "Hello!\n";
+
+print "Press <Enter> to continue...";
+<STDIN>;
+
+__END__
+:endofperl
+============================================================
+perl [ -sTuU ] [ -hv ] [ -V[:configvar] ] [ -cw ] 
+[ -d[:debugger] ] [ -D[number/list] ] [ -pna ] 
+[ -Fpattern ] [ -l[octal] ] [ -0[octal] ] [ -Idir ] 
+[ -m[-]module ] [ -M[-]'module...' ] [ -P ] [ -S ] 
+[ -x[dir] ] [ -i[extension] ] [ -e 'command' ] 
+[ -- ] [ programfile ] [ argument ]... 
+============================================================
+$text = "hello";
+$text += 1;
+print $text;
+============================================================
+%perl -e 'print "@INC";'
+============================================================
+%perl -e 'print "Hello ";' -e 'print "there";'
+============================================================
+%perl -e '$text = "Hello there";' -e 'print $text;'
+============================================================
+%perl -e 'print "Hello "; print "there";'
+============================================================
+#!/usr/bin/perl -w   # Use Perl with warnings
+my $count = 0;       # $count used to match {}, (), etc.
+my $statement = "";  # $statement holds multi-line statements
+local $SIG{__WARN__} = sub {}; # Supress error reporting
+
+while (<>) {         # Accept input from the keyboard
+
+    chomp;           # Clean up input
+    while (/{|\(|\[/g) {$count++};    # Watch for {, (, etc.
+    while (/}|\)|\]/g) {$count--};    # Pair with }, ), etc.
+
+    $statement .= $_ . " ";    # Append input to current statement
+
+    if (!$count) {       # Only evaluate if {, ( matches }, ) etc.
+
+        eval $statement; # Evaluate the Perl statement
+        if($@) {print "Syntax error.\n"};  # Notify of error
+        $statement = ""; # Clear the current statement
+        $count = 0       # Clear the multi-line {, ( etc. count
+
+    }
+}
+============================================================
+print "Hello!\n";
+============================================================
+print "Hello ", "there!\n";
+============================================================
+print "Hello!\n" x 10;
+============================================================
+print "-" x 30
+============================================================
+%perl -e "print __LINE__;"
+============================================================
+print "\"Hello!\"\n";
+============================================================
+print "Hello\tfrom\tPerl.\n";
+============================================================
+print "Hello\nfrom\nPerl.\n";
+============================================================
+while ($temp = <STDIN>) {
+    print $temp;
+}
+============================================================
+while(<>) {
+    print;
+}
+============================================================
+while($_ = <STDIN>) {
+   print $_;
+}
+============================================================
+while (<>) {
+   for (split) {
+       s/m/y/g;
+       print;
+   }
+}
+============================================================
+while ($_ = <>) {
+   for $_ (split / /, $_) {
+       $_ =~ s/m/y/g;
+       print $_;
+   }
+}
+============================================================
+while (<>) {eval if !/^#/}
+============================================================
+while (<>) {
+    chop;
+    print;
+}
+============================================================
+
