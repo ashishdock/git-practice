@@ -1,6 +1,6 @@
 //Thread Synchronization - Two threads acting on same object
 
-class Reserve implements Runnable
+class ReserveSafe implements Runnable
 {
 	//available berths are 1
 	int available = 1;

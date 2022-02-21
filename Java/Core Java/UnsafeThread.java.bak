@@ -23,8 +23,8 @@ class Reserve implements Runnable
 			String name = Thread.currentThread().getName();
 			//allot the berth to him
 			System.out.println(wanted + " Berths reserved for " + name);
-			available = available - wanted;
-			/*try
+			
+			try
 			{
 				Thread.sleep(1500); //wait for printing the ticket
 				available = available - wanted;
@@ -32,7 +32,7 @@ class Reserve implements Runnable
 			}
 			catch(InterruptedException ie)
 			{
-			} */ 
+			}
 		}
 		
 		//if available berths are less, display sorry

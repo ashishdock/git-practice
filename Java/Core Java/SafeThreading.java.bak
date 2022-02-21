@@ -37,7 +37,7 @@ class Reserve implements Runnable
 			}
 			
 			//if available berths are less than wanted, display sorry
-			else System.out.println("Sorry, no berths available!");
+			else System.out.println("Sorry, no more berths available!");
 		} //end of synchronization block
 	}
 }

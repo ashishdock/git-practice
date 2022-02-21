@@ -1,6 +1,6 @@
 //Thread unsafe - Two threads acting on same object
 
-class Reserve implements Runnable
+class ReserveUnsafe implements Runnable
 {
 	//available berths are 1
 	int available = 1;
