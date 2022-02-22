@@ -1,0 +1,561 @@
+==========================================================
+$hash{'fruit'} = 'apple';
+print "$hash{'fruit'}\n";
+==========================================================
+%hash = (
+    'fruit'    ,  'apple',
+    'sandwich' ,  'hamburger',
+    'drink'    ,  'bubbly',
+);
+
+print "$hash{'fruit'}\n";
+==========================================================
+$data = "Here's the data.";
+@data = (1, 2, 3);
+==========================================================
+*alsodata = *data;
+==========================================================
+print "$alsodata\n";
+==========================================================
+@array = (1, 2, 3);
+print @array;
+==========================================================
+@array = (1, 2, 3);
+print $array[0];
+==========================================================
+@array = ("one", "two", "three");
+print @array;
+==========================================================
+@array = (
+    "one",  "two",  "three",
+    "four", "five", "six",
+);
+
+print @array;
+==========================================================
+@array = (0) x 100;
+==========================================================
+@array = (1 .. 10);
+==========================================================
+@array = qw(one two three);
+==========================================================
+@array = (1, 2, 3);
+$array[5] = "Here is a new element!";
+print "$array[5]\n";
+==========================================================
+@array = ("one", "two", "three");
+print $array[1];
+==========================================================
+@a1 = ("one", "two", "three");
+@a2 = @a1;
+
+print $a2[1];
+==========================================================
+while(<>) {
+   @array = ('0' .. '9', 'a' .. 'f');
+   $hex = $array[$_];
+   print "$hex\n";
+}
+==========================================================
+@array = ("one", "two", "three");
+for ($loop_index = 0; $loop_index <= $#array; $loop_index++) {
+    print $array[$loop_index] . " ";
+}
+==========================================================
+@a1 = (1, 2, 3);
+
+print @a1[-2];
+==========================================================
+push(@array, "one");
+push(@array, "two");
+push(@array, "three");
+print $array[0];
+==========================================================
+@array = ("one", "two", "three");
+$variable1 = pop(@array);
+print $variable1;
+==========================================================
+use integer;
+
+$value = 257;
+
+while($value) {
+   push @digits, (0 .. 9, a .. f)[$value & 15];
+   $value /= 16;
+}
+
+while(@digits) {
+   print pop @digits;
+}
+==========================================================
+@array = ("one", "two", "three");
+$variable1 = shift(@array);
+print $variable1;
+==========================================================
+use integer;
+
+$value = 257;
+
+while($value) {
+   unshift @digits, (0 .. 9, a .. f)[$value & 15];
+   $value /= 16;
+}
+
+print @digits;
+==========================================================
+@array = (1, 2, 3);
+print "\@array has " . ($#array + 1) . " elements.";
+==========================================================
+$value = pop(@array);
+$value = $array[$#array--];
+==========================================================
+@array = (1, 2, 3);
+print "\@array has " . scalar(@array) . " elements.";
+==========================================================
+@array = (1, 2, 3);
+$variable = @array;
+print "\@array has $variable elements.";
+==========================================================
+use integer;
+
+$value = 257;
+
+while($value) {
+   push @digits, (0 .. 9, a .. f)[$value & 15];
+   $value /= 16;
+}
+
+while(@digits) {
+   print pop @digits;
+}
+==========================================================
+@a1 = ("one", "two", "three");
+@a2 = @a1;
+@a3 = @a1 + @a2;
+print "@a3";
+==========================================================
+@array = (1, 2, 3);
+$#array = 10;
+$array[5] = "Here is a new element!";
+print "$array[5]\n";
+==========================================================
+@array = (1, 2, 3);
+$array[5] = "Here is a new element!";
+print "$array[5]\n";
+==========================================================
+@a1 = (1, 2, 3);
+@a2 = (4, 5, 6);
+@a3 = (@a1, @a2);
+==========================================================
+@a1 = (1, 2, 3);
+@a2 = (4, 5, 6);
+
+push (@a1, @a2);
+
+print join (", ", @a1);
+==========================================================
+@a1 = (1, 2, 3, 4, 5, 6);
+@a2 = @a1[0, 1, 2, 3];
+print join (", ", @a2);
+==========================================================
+@a1 = (1, 2, 3, 4, 5, 6);
+@a2 = @a1[0 .. 3];
+print join (", ", @a2);
+==========================================================
+@a1 = (1, 2, 3, 4, 5, 6);
+@a2 = @a1[1, 3];
+print join (", ", @a2);
+==========================================================
+($atime, $mtime) = (stat 'timer.pl')[8, 9];
+==========================================================
+@array = (1, 2, 3, 4, 5, 6);
+@array[2 .. 4] = reverse @array[2 .. 4];
+
+print join (", ", @array);
+==========================================================
+@array = ("one", "two", "three");
+for($loop_index = 0; $loop_index <= $#array; $loop_index++) {
+    print $array[$loop_index];
+}
+==========================================================
+@array = (1, 2, 3, 4, 5);
+foreach $element (@array) {
+    print "$element\n";
+}
+==========================================================
+@array = (1, 2, 3);
+@array2 = (4, 5, 6);
+foreach $element (@array, @array2) {
+    print "$element\n";
+}
+==========================================================
+@array = (1, 2, 3, 4, 5);
+for (@array) { 
+    print; 
+}
+==========================================================
+use integer;
+
+$value = 257;
+
+while($value) {
+   push @digits, (0 .. 9, a .. f)[$value & 15];
+   $value /= 16;
+}
+
+while(@digits) {
+   print pop @digits;
+==========================================================
+@array = ("one", "two", "three");
+print "Here is the array: ", @array, ".\n";
+==========================================================
+@array = ("one", "two", "three");
+print "Here is the array: @array.\n";
+==========================================================
+@array = ("one", "two", "three");
+$, = ",";
+print "Here is the array: ", @array, ".\n";
+==========================================================
+@array = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+print join(", ", @array);
+==========================================================
+@array = ("one", "two", "three");
+foreach $element (@array) {
+    print "Current element = $element\n";
+}
+==========================================================
+@array = ("one", "two");
+splice(@array, 2, 0, "three");
+print join(", ", @array);
+==========================================================
+@array = ("one", "two");
+@array2 = ("three", "four");
+splice(@array, 2, 0, @array2);
+
+print join(", ", @array);
+==========================================================
+@array = ("one", "two");
+@array2 = ("two", "three", "four");
+splice(@array, 2, 1, @array2);
+print join(", ", @array);
+==========================================================
+@a1 = (1, 2, 3, 4, 5, 6);
+@a2 = reverse @a1;
+==========================================================
+use integer;
+
+$value = 258;
+
+while($value) {
+   push @digits, (0 .. 9, a .. f)[$value & 15];
+   $value /= 16;
+}
+
+print reverse @digits;
+==========================================================
+@array = (1, 2, 3, 4, 5, 6);
+@array[2 .. 4] = reverse @array[2 .. 4];
+
+print join (", ", @array);
+==========================================================
+@sorted = sort @array;
+==========================================================
+@sorted = sort {$a <=> $b} @array;
+==========================================================
+@sorted = sort {$b <=> $a} @array;
+==========================================================
+@array = (6, 5, 4, 3, 2, 1);
+
+sub myfunction
+{
+   return (shift(@_) <=> shift(@_));
+}
+
+print join(", ", sort {myfunction($a, $b)} @array);
+==========================================================
+use Getopt::Std;
+
+getopt('pMN');
+
+print "-p switch: $opt_p, -M switch: $opt_M, -N switch: $opt_N";
+==========================================================
+%hash = ();
+
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+==========================================================
+%hash = ();
+
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+print $hash{sandwich};
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+print $hash{sandwich};
+==========================================================
+@array = (
+    "one",  "two",  "three",
+    "four", "five", "six",
+);
+==========================================================
+%hash = (
+    'fruit'    ,  'apple',
+    'sandwich' ,  'hamburger',
+    'drink'    ,  'bubbly',
+);
+
+print "$hash{'fruit'}\n";
+==========================================================
+%hash = qw(
+    fruit      apple
+    sandwich   hamburger
+    drink      bubbly
+);
+
+print "$hash{'fruit'}\n";
+==========================================================
+%hash = (
+    fruit    ,  apple,
+    sandwich ,  hamburger,
+    drink    ,  bubbly,
+);
+
+print "$hash{fruit}\n";
+==========================================================
+%hash = (
+    fruit    =>  apple,
+    sandwich =>  hamburger,
+    drink    =>  bubbly,
+);
+print "$hash{fruit}\n";
+==========================================================
+print "x"=>"y"=>"z";
+==========================================================
+$hash2{cake} = chocolate;
+$hash2{pie} = blueberry;
+$hash2{'ice cream'} = pecan;
+==========================================================
+$hash2{cake} = chocolate;
+$hash2{pie} = blueberry;
+$hash2{'ice cream'} = pecan;
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+print $hash{sandwich};
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+print join(" ", %hash);
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+while(($key, $value) = each(%hash)) {
+    print "$key => $value\n";
+}
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+foreach $key (keys %hash) {
+    print $hash{$key} . "\n";
+}
+==========================================================
+%hash = ();
+
+$hash{$key} = $value;
+$hash{$key2} = $value2;
+==========================================================
+%hash = (
+    fruit    =>  apple,
+    sandwich =>  hamburger,
+    drink    =>  bubbly,
+);
+
+%hash = (%hash, dressing, 'blue cheese');
+
+print "$hash{dressing}\n";
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+if (exists($hash{'vegetable'})) {
+    print "Key is in the hash.";
+} else {
+    print "Key is not in the hash.";
+}
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+if (defined($hash{'vegetable'})) {
+    print "Element is defined.";
+} else {
+    print "Element is not defined.";
+}
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+delete($hash{'fruit'});
+
+if (exists($hash{"fruit"})) {
+    print "Key exists.";
+} else {
+    print "Key does not exist.";
+}
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+while(($key, $value) = each(%hash)) {
+    print "$key => $value\n";
+}
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+foreach $key (keys %hash) {
+    print $hash{$key} . "\n";
+}
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+foreach $value (values %hash) {
+    print "$value\n";
+}
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+print map "$_ => $hash{$_}\n", keys %hash;
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+print "@{[%hash]}\n";
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+while (($key, $value) = each %hash ) {
+    print "$key: $value\n";
+}
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+foreach $key (sort keys %hash) {
+    print "$key => $hash{$key}\n";
+}
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+%reversed = reverse %hash;
+
+foreach $key (sort keys %reversed) {
+    print "$key => $reversed{$key}\n";
+}
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+foreach $key (sort keys %hash) {
+    print "$key => $hash{$key}\n";
+}
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+foreach $key (sort {myfunction($a, $b)} keys %hash) {
+    print "$key => $hash{$key}\n";
+}
+
+sub myfunction
+{
+   return (shift(@_) cmp shift(@_));
+}
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+foreach $value (sort values %hash) {
+    print "$value\n";
+}
+==========================================================
+$h1{fruit} = apple;
+$h1{sandwich} = hamburger;
+$h1{drink} = bubbly;
+
+$h2{cake} = chocolate;
+$h2{pie} = blueberry;
+$h2{'ice cream'} = pecan;
+
+%h3 = (%h1, %h2);
+print $h3{'ice cream'}; 
+==========================================================
+$h1{fruit} = apple;
+$h1{sandwich} = hamburger;
+$h1{drink} = bubbly;
+
+$h2{cake} = chocolate;
+$h2{pie} = blueberry;
+$h2{'ice cream'} = pecan;
+
+%h3 = (%h1, %h2);
+print $h3{'ice cream'}; 
+==========================================================
+($variable1, $variable2, @array) = (1, 2, 3, 4, 5, 6, 7, 8);
+print "$variable1\n";
+print "$variable2\n";
+print "@array\n";
+==========================================================
+keys(%employees) = 40_000;
+
+$employees{'Fred'} = 'fired';
+$employees{'Tom'} = 'promoted';
+
+while (($name, $action) = each %employees) {
+    print "Dear $name, you have been $action!\n"
+==========================================================
+$data = "Here's the data.";
+@data = (1, 2, 3);
+
+*alsodata = *data;
+
+print "$alsodata\n";
+print @alsodata;
+==========================================================
+
