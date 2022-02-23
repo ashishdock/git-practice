@@ -1,0 +1,533 @@
+=============================================================
+$variable = 5; 
+
+if ($variable == 5) {
+    print "Yes, it's five.\n";
+} else {
+    print "No, it's not five.\n";
+}
+=============================================================
+$variable = 5;
+
+if ($variable == 5) 
+{
+    print "Yes, it's five.\n";
+} 
+else 
+{
+    print "No, it's not five.\n";
+}
+=============================================================
+$variable = 5;
+
+if ($variable == 5) 			#wrong!
+    print "Yes, it's five.\n";
+else 
+    print "No, it's not five.\n";
+=============================================================
+$factorial = 1;
+
+for ($loop_index = 1; $loop_index <= 6; $loop_index++) {
+    $factorial *= $loop_index;
+}
+print "6! = $factorial\n";
+=============================================================
+@array = ("one", "two", "three");
+for ($loop_index = 0; $loop_index <= $#array; $loop_index++) 
+{
+    print $array[$loop_index] . " ";
+}
+=============================================================
+$factorial = 1;
+
+for (1 .. 6) {
+    $factorial *= $_;
+}
+print "6! = $factorial\n";
+=============================================================
+$variable = 1;
+$variable = $temperature;
+print $z;
+@array = ('0' .. '9', 'a' .. 'f');
+=============================================================
+while(<>) {
+   @array = ('0' .. '9', 'a' .. 'f');
+   $hex = $array[$_];
+   print "$hex\n";
+}
+
+if (open(CHILDHANDLE, "|-")) {
+    print CHILDHANDLE "Here is the text.";
+    close(CHILDHANDLE);
+}
+
+if ($head != $tail) {   
+    $data = $buffer[$head]{data};
+    $head = $buffer[$head]{next};
+    return $data;
+} else {
+    return undef;
+}
+=============================================================
+$variable = 5;
+
+if ($variable == 5) {
+    print "Yes, it's five.\n";
+}
+=============================================================
+use integer;
+
+$variable = 5;
+
+if ($variable < 6 && $variable > 4) {
+    print "Yes, it's five.\n";
+}
+=============================================================
+$variable = 6;
+
+if ($variable == 5) {
+    print "Yes, it's five.\n";
+} else {
+    print "No, it's not five.\n";
+}
+=============================================================
+$variable = 2;
+
+if ($variable == 1) { 
+    print "Yes, it's one.\n";
+} elsif ($variable == 2) {
+    print "Yes, it's two.\n";
+} elsif ($variable == 3) {
+    print "Yes, it's three.\n";
+} elsif ($variable == 4) {
+    print "Yes, it's four.\n";
+} elsif ($variable == 5) {
+    print "Yes, it's five.\n";
+} else {
+    print "Sorry, can't match it!\n";
+}
+=============================================================
+while (<>) {
+    print "Too big!\n" if $_ > 100;
+}
+=============================================================
+$variable = 6;
+
+unless ($variable == 5) {
+    print "No, it's not five.\n";
+}
+=============================================================
+$variable = 6;
+
+unless ($variable == 5) {
+    print "No, it's not five.\n";
+} else {
+    print "Yes, it's five.\n";
+}
+=============================================================
+$variable = 2;
+
+unless ($variable != 1) { 
+    print "Yes, it's one.\n";
+} elsif ($variable == 2) {
+    print "Yes, it's two.\n";
+} elsif ($variable == 3) {
+    print "Yes, it's three.\n";
+} elsif ($variable == 4) {
+    print "Yes, it's four.\n";
+} elsif ($variable == 5) {
+    print "Yes, it's five.\n";
+} else {
+    print "Sorry, can't match it!\n";
+}
+=============================================================
+while (<>) {
+    chomp;
+    unless (/^q/i) {
+        print;
+    } else {
+        exit;
+    }
+}
+=============================================================
+while (<>) {
+    print "Too small!\n" unless $_ > 100;
+}
+=============================================================
+for ($loop_index = 1; $loop_index <= 10; $loop_index++) {
+    print "Hello!\n";
+}
+=============================================================
+for ($loop_index = 1; $loop_index <= 10; $loop_index++) {
+    print "This is iteration number $loop_index\n";
+}
+=============================================================
+@a = (1, 2, 3, 4, 5, 6, 7, 8, 9);
+$running_sum = 0;
+
+for ($loop_index = 0; $loop_index <= $#a + 1; $loop_index++) {
+    $running_sum += $a[$loop_index];
+}
+
+print "Average value = " . $running_sum / ($#a + 1);
+=============================================================
+for ($loop_index = 0, $double = 0; $loop_index <= 10 
+    ; $loop_index++, $double = 2 * $loop_index) {
+    print "Loop index " . $loop_index . " doubled equals " .
+        $double . "\n";
+}
+=============================================================
+$factorial = 1;
+for ($loop_index = 1; $loop_index <= 6; $loop_index++) {
+    $factorial *= $loop_index;
+}
+
+print $loop_index - 1 . "! = $factorial\n";
+=============================================================
+$factorial = 1;
+for (my $loop_index = 1; $loop_index <= 6; $loop_index++) {
+    $factorial *= $loop_index;
+}
+=============================================================
+for (print "Type q to quit.\n"; <> ne "q\n"; print 
+    "Don't you want to quit?\n") {}
+=============================================================
+for (;<>;) {
+    print;
+}
+=============================================================
+while (<>) {
+    print;
+}
+=============================================================
+for (print "%"; <>; print "%") {
+    print;
+} 
+=============================================================
+foreach ($loop_index = 1; $loop_index <= 10; $loop_index++) {
+    print "Hello!\n";
+}
+=============================================================
+@array = ("Hello ", "there.\n");
+for (@array) {print;}
+=============================================================
+@array = (1, 2, 3);
+$running_sum = 0;
+
+foreach $element (@array) {
+    $running_sum += $element;
+}
+
+print "Total = $running_sum";
+=============================================================
+@name = qw(soap blanket shirt pants plow);
+@category = qw(home home apparel apparel farm);
+@subcategory = qw(bath bedroom top bottom field);
+
+@indices = sort {$category[$a] cmp $subcategory[$b]
+    or $category[$a] cmp $subcategory[$b]} (0 .. 4);
+
+foreach $index (@indices) {
+    print "$category[$index]/$subcategory[$index]: $name[$index]\n";
+}
+=============================================================
+@array = ("Hello ", "there.\n");
+
+foreach (@array) {print;}
+=============================================================
+@array = ("Hello ", "there.\n");
+
+foreach $_ (@array) {print $_;}
+=============================================================
+foreach (1 .. 10) {print;}
+=============================================================
+foreach (glob '*') {print;}
+=============================================================
+$hash{fruit} = orange;
+$hash{sandwich} = club;
+$hash{drink} = lemonade;
+
+foreach $key (keys %hash) {
+    print $hash{$key} . "\n";
+}
+=============================================================
+$hash{fruit} = orange;
+$hash{sandwich} = club;
+$hash{drink} = lemonade;
+while(($key, $value) = each(%hash)) {
+    print "$key => $value\n";
+}
+=============================================================
+@array = (1, 2, 3);
+foreach $element (@array) {
+    $element++;
+}
+
+print join(", ", @array);
+=============================================================
+$savings = 0; 
+while ($savings < 1_000_000) {
+    print "Enter the amount you earned today: ";
+    $savings += <>;
+}
+
+print "Congratulations, millionaire!\n";
+=============================================================
+use integer;
+
+$value = 257;
+
+while($value) {
+   push @digits, (0 .. 9, a .. f)[$value & 15];
+   $value /= 16;
+}
+
+while(@digits) {
+   print pop @digits;
+}
+=============================================================
+$hash{fruit} = orange;
+$hash{sandwich} = club;
+$hash{drink} = lemonade;
+while (($key, $value) = each %hash ) {
+    print "$key: $value\n";
+}
+=============================================================
+while (defined($_ = <FILEHANDLE>)) 
+while ($_ = <FILEHANDLE>) 
+while (<FILEHANDLE>) 
+for (;<FILEHANDLE>;) 
+=============================================================
+open FILEHANDLE, "<show.pl";
+
+while(<FILEHANDLE>) {
+    print;
+}
+=============================================================
+$loop_index = 1;
+
+while ($loop_index <= 10) {
+    print "Hello!\n";
+} continue {
+    $loop_index++;
+}
+=============================================================
+while ($loop_index <= 10) {
+    print "Hello\n";
+    next if $loop_index > 5;
+    print "there\n";
+} continue {
+    $loop_index++;
+}
+=============================================================
+while (<FILEHANDLE>) {
+    print;
+}
+=============================================================
+until (($line = <>) eq 'q\n') {
+    print $line;
+}
+=============================================================
+$loop_index = 1;
+until ($loop_index > 10) {
+    print "Hello!\n";
+    $loop_index++;
+}
+=============================================================
+$loop_index = 1;
+until ($loop_index > 10) {
+    print "Hello!\n";
+} continue {
+    $loop_index++;
+}
+=============================================================
+@a = (1 .. 10);
+
+foreach (@a) {$_ *= 2;}
+
+print join(", ", @a);
+=============================================================
+@a = (1 .. 10);
+
+map {$_ *= 2} (@a);
+
+print join(", ", @a);
+
+2, 4, 6, 8, 10, 12, 14, 16, 18, 20
+=============================================================
+print join(", ", (map {my $value = $_; $value *= 2} (1 .. 10)));
+=============================================================
+@a = (1 .. 10);
+
+foreach (@a) {if ($_ > 5) {push @b, $_}};
+
+print join(", ", @b);
+=============================================================
+@a = (1 .. 10);
+
+@b = grep {$_ > 5} @a;
+
+print join(", ", @b);
+=============================================================
+print join(" ",(grep {!/^\w{4}$/} (qw(Here are some four letter words.))));
+=============================================================
+while (chomp($input = <>)) {
+
+    print "You typed: $input\n" unless $input eq 'L';
+
+}
+=============================================================
+while (<>) {
+    print "Too big!\n" if $_ > 100;
+}
+=============================================================
+print "Please enter more text (q to quit).\n"  until (<> eq "q\n");
+=============================================================
+print "Current number: $_.\n" foreach (1 .. 10);
+=============================================================
+do {
+    print;
+} while (<>);
+=============================================================
+@a = (1 .. 10);
+
+do {
+
+    $v = shift @a;
+    print "Current number: $v\n";
+
+} while ($v < 5);
+=============================================================
+NUMBER: while (<>) {
+    next NUMBER if /^-/;      
+    print; 
+}
+=============================================================
+@a = (0 .. 20);
+@b = (-10 .. 10);
+
+DIVISION: while (@a) {
+    $a = pop @a;
+    $b = pop @b;
+
+    next DIVISION if ($b == 0);
+    print "$a / $b = " . $a / $b . "\n";
+}
+=============================================================
+while ($loop_index <= 10) {
+    print "Hello\n";
+    next if $loop_index > 5;
+    print "there\n";
+} continue {
+    $loop_index++;
+}
+=============================================================
+# Strip this line
+# Strip this line too
+COMMENTS: while (<>) {
+    last COMMENTS if !/^#/;
+}
+do {
+    print;
+=============================================================
+FOREVER: for (;;) {
+
+    chomp($line = <>);
+
+    if ($line eq 'q') {
+        last FOREVER;
+    } else {
+        print "You typed: $line\n";
+    }
+}
+=============================================================
+for ($loop_index = 0; _
+    $loop_index <= 10; _
+    $loop_index++) { _
+    print $loop_index; }
+=============================================================
+while (<>) {
+    if (s/_//g) {      # Match and remove underscores
+        $_ .= <>;
+        redo;
+    }
+    eval;
+}
+=============================================================
+print "Enter command: ";
+
+while(<>) {
+SWITCH: {
+        /run/ && do {
+                      $message = "Running\n"; 
+                      last SWITCH;
+                  };
+
+        /stop/ && do {
+                       $message = "Stopped\n"; 
+                       last SWITCH;
+                  };
+
+        /connect/ && do {
+                       $message = "Connected\n"; 
+                       last SWITCH;
+                  };
+
+        /find/ && do {
+                       $message = "Found\n"; 
+                       last SWITCH;
+
+                  };
+        /q/ && do {
+                       exit;
+                  };
+        DEFAULT:       $message = "No match.\n";
+    }
+
+    print $message;
+    print "Enter command: ";
+}
+=============================================================
+$hash{run}     = "Running\n";
+$hash{stop}    = "Stopped\n";
+$hash{connect} = "Connected\n";
+$hash{find}    = "Found\n";
+
+print "Enter command: ";
+
+while(<>) {
+
+    chomp;
+
+    if ($_ eq 'q') {
+        exit;
+    } elsif (exists($hash{$_})) {
+        print $hash{$_};
+    } else {
+        print "No match.\n";
+    }
+
+    print "Enter command: ";
+}
+=============================================================
+INPUT: $line = <>;
+if ($line !~ /exit/) {print "Try again\n"; goto INPUT}
+=============================================================
+$x = 1;
+$y = 0;
+eval {$result = $x / $y};
+print "eval says: $@" if $@;
+=============================================================
+print "Please type the letter y\n";
+while (<>) {
+    chop;
+    if ($_ ne 'y') {
+        print "Please type the letter y\n";
+    } else {
+        print "Do you always do what you're told?\n";
+        exit;
+    }
+}
+=============================================================
+
+

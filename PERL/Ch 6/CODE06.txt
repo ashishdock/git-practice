@@ -1,0 +1,552 @@
+=========================================================
+while(<>) { 
+    if(m/exit/i) {exit;}
+}
+=========================================================
+while($line = <>) {
+    if($line =~ m/exit/i) {exit;}
+}
+=========================================================
+while($line = <>) {
+    if($line =~ /exit/i) {exit;}
+}
+=========================================================
+while($line = <>) {
+    if($line =~ m{exit}i) {exit;}
+}
+=========================================================
+$_ = "Here is the text";
+@a = m/\b[^A-Z]+\b/g;
+print "@a";
+=========================================================
+$s = "Here is the text";
+$match = "text";
+if ($s =~ m/$match/) {
+    print "Found the text.";
+}
+=========================================================
+$text = "Pretty young.";
+$text =~ s/young/old/;
+print $text;
+=========================================================
+$text = "Pretty young.";
+$text =~ s|young|old|;
+print $text;
+=========================================================
+$text = "Pretty young.";
+$text =~ s(young)(old);
+print $text;
+=========================================================
+$text = "Pretty young, but not very young.";
+$text =~ s/young/old/;
+print $text;
+=========================================================
+$text = "Pretty young, but not very young.";
+$text =~ s/young/old/g;
+print $text;
+=========================================================
+while (<>) {
+    tr/o/i/;
+    print;
+}
+=========================================================
+$text = "His name is Tom.";
+$text =~ tr/o/i/;
+print $text;
+=========================================================
+$text =~ tr/\r//d;
+=========================================================
+$text = "Perl is the subject.";
+$text =~ /\b([A-Za-z]+)\b/;
+print $1;
+=========================================================
+while(<>) {
+    if(m/quit/) {exit;}
+}
+=========================================================
+while(<>) {
+    if(m/^quit$/i) {exit;}
+}
+=========================================================
+$text = "Here is some text.";
+$text =~ s/\w+/There/;
+print $text;
+=========================================================
+$text = "Now is the time.";
+$text =~ s/./*/g;
+print $text;
+=========================================================
+$line = ".Hello!";
+
+if ($line =~ m/^\./) {
+    print "Shouldn't start a sentence with a period!";
+}
+=========================================================
+$code = "count++; /* Increment count */";
+
+$code =~ s/\/\*.*\*\///g;
+
+print $code;
+=========================================================
+$code = "count++; /* Increment count */";
+
+$code =~ s|\/\*.*\*\/||g;
+
+print $code;
+=========================================================
+$text = "I\ said\ \"Hello\.\"";
+$text = quotemeta('I said "Hello."');
+=========================================================
+$text = "Here is the text.";
+if ($text =~ /[aeiou]/) {print "Yep, we got vowels.\n";}
+=========================================================
+$text = "What is the subject";
+$text =~ s/[A-Za-z]+/Perl/;
+print $text;
+=========================================================
+$text = "Perl is the subject on page 493 of the book.";
+$text =~ s/[^A-Za-z\s]+/500/;
+print $text;
+=========================================================
+$_ = "Here is the text";
+@a = m/\b[^A-Z]+\b/g;
+print "@a";
+=========================================================
+while(<>) {
+    if(m/exit|quit|stop/) {exit;}
+}
+=========================================================
+while(<>) {
+    if(m/^(exit|quit|stop)$/) {exit;}
+}
+=========================================================
+$text = "Hello from Peeeeeeeeeeeeeerl.";
+$text =~ s/e+/e/g;
+print $text;
+=========================================================
+$_ = "Here is the text";
+@a = m/\b[^A-Z]+\b/g;
+print "@a";
+=========================================================
+while (<>) {
+    if(!m/.{20,}/) {print "Please type longer lines!\n";}
+}
+=========================================================
+$code = "count++; /* Increment count */";
+
+$code =~ s/\/\*.*\*\///g;
+
+print $code;
+=========================================================
+$text = "That is some text, isn't it?";
+$text =~ s/.*is/That's/;
+print $text;
+=========================================================
+$text = "Here is some text.";
+$text =~ s/\b([A-Za-z]+)\b/There/;
+print $text;
+=========================================================
+while(<>) {
+    if(m/^(yes)$/) {print "Thank you for being agreeable.}
+}
+=========================================================
+$text = "<a>Here is an anchor.</a>";
+if ($text =~ /<([img|a])>[\w\s\.]+<\/\1>/i)
+    {print "Found an image or anchor tag.";}
+=========================================================
+$name = "Anonymous Perl Programmers";
+$name =~ s/(\w)\w*/$1\./g;
+print "The meeting of the $name foundation is now in session.";
+=========================================================
+$text = "I have 4 apples.";
+if ($text =~ /(\d+)/) {print "Here's the number of apples: $1.\n";}
+=========================================================
+$text = "I see you";
+$text =~ s/^(\w+) *(\w+) *(\w+)/$3 $2 $1/;
+print $text;
+=========================================================
+$text = 'ID: 1234 Moola: $5.99 Destination: Unknown';
+
+$text =~ /Cash: \$(.*) Destination|Moola: \$(.*) Destination/;
+
+print "Amount = \$$+";
+=========================================================
+$_ = "This is a test";
+@a = m/(\w*)\W(\w*)\W(\w*)\W(\w*)/;
+print "@a";
+=========================================================
+@a = ("This is a test" =~ m/\w{4}\b/g);
+print "@a";
+=========================================================
+$text = "I see you";
+$text =~ s/^(?# 1st)(\w+) *(?# 2nd)(\w+) *(?# 3rd)(\w+)/$3 $2 $1/;
+print $text;
+=========================================================
+$_ = "I'm going to Paris, London, and Vienna.";
+print "Found all three." if /.*Vienna.*Paris.*London/;
+=========================================================
+$_ = "I'm going to Paris, London, and Vienna.";
+print "Found all three." if /(?=.*Vienna)(?=.*Paris)(?=.*London)/;
+=========================================================
+while(<>) {
+    if(m/^(exit|quit|stop)$/) {
+        if($1) {
+            print "You typed: $1\n";
+        } else {
+            print "Nothing stored.\n";
+        }
+    }
+}
+=========================================================
+while(<>) {
+    if(m/^(?:exit|quit|stop)$/) {
+        if($1) {
+            print "You typed: $1\n";
+        } else {
+            print "Nothing stored.\n";
+        }
+    }
+}
+=========================================================
+$text = "Here is the texxxxxt.";
+while ($text =~ m/x/g) {print "Found another x.\n";}
+=========================================================
+@a = ("This is a test" =~ m/\w{4}\b/g);
+print "@a";
+=========================================================
+$text = "Now is the time.";
+$text =~ s/./*/g;
+print $text;
+=========================================================
+$text = "My name's Tim.";
+$text =~ tr/i/o/;
+print $text;
+=========================================================
+while (<>) {
+    tr/i/o/;
+    print;
+}
+=========================================================
+$text = "Here is the text.";
+$text =~ tr/a-z/A-Z/;
+print $text;
+=========================================================
+$text = "Here is the text.";
+$xcount = ($text =~ tr/x/x/);
+print $xcount;
+=========================================================
+$text = "Now is the time.";
+$text =~ /(\S+)/;
+print $1;
+=========================================================
+$text = "Now is the time.";
+$text =~ /(\w+)/;
+print $1;
+=========================================================
+$text = "Now is the time.";
+$text =~ /([A-Za-z]+)/;
+print $1;
+=========================================================
+$text = "Now is the time.";
+$text =~ /(\b[A-Za-z]+\b)/;
+print $1;
+=========================================================
+$_ = "This isn't right.";
+@a = m/(\w+)[\W|.]/g;
+print "@a";
+=========================================================
+$_ = "This isn't right.";
+@a = m/(\S+)[\s|.]/g;
+print "@a";
+=========================================================
+$line = ".Hello!";
+
+if ($line =~ m/^\./) {
+    print "Shouldn't start a sentence with a period!";
+}
+=========================================================
+$line = ".Hello!";
+
+if ($line =~ m/\A\./) {
+    print "Shouldn't start a sentence with a period!";
+}
+=========================================================
+while(<>) {
+    if(m/^exit$/) {exit;}
+}
+=========================================================
+$text = "Here is some text\n";
+$text =~ m/(.*$)/;
+print "${1}.";
+=========================================================
+$text = "Here is some text\n";
+$text =~ m/(.*)/s;
+print "${1}.";
+=========================================================
+$text = "Here is some text\n";
+$text =~ s/\n//;
+print "${text}.";
+=========================================================
+$text = "Here is some text\n";
+$text =~ m/(.*\Z)/;
+print "${1}.";
+=========================================================
+$text = "Hello!";
+if ($text =~ /\D/) {print "It's not a number.";}
+=========================================================
+$text = "345";
+if ($text =~ /^\d+$/) {print "It's a number.";}
+=========================================================
+$text = "3.1415";
+if ($text =~ /^\d+\.\d*$/) {print "It's a number.";}
+=========================================================
+$text = "-3.1415";
+if ($text =~ /^[+-]\d+\.\d*$/) {print "It's a number.";}
+=========================================================
+$text = "1A0";
+unless ($text =~ /^[+-]*[\da-f]+$/i) {print "It's not a hex number.";}
+=========================================================
+$_ = "1.0 and 2.4 and 310 and 4.7 and so on.";
+@a = m/([\d|\.]+)\D+/g;
+print "@a";
+=========================================================
+$text = "aBc";
+if ($text =~ /^\w+$/) {print "Only word characters found.";}
+=========================================================
+$text = "aBc";
+if ($text =~ /^[A-Za-z]+$/) {print "Only letters found.";}
+=========================================================
+$_ = "1.0 and 2.4 and retval-5";
+@a = m/(\S+)/g;
+print join(", ", @a);
+=========================================================
+$text = "Here is the texxxxxt.";
+while ($text =~ m/x/g) {print "Found another x.\n";}
+=========================================================
+$_ = "This is a test";
+@a = m/\w{4}/g;
+print "@a";
+=========================================================
+$_ = "Here is the text";
+@a = m/\b[^A-Z]+\b/g;
+print "@a";
+=========================================================
+$_ = "This is a test";
+@a = m/(\w*)\W(\w*)\W(\w*)\W(\w*)/;
+print "@a";
+=========================================================
+$text = "Here is the texxxxxt.";
+$text =~ s/x/z/g;
+print $text;
+=========================================================
+$text = "Here is the texxxxxt.";
+print ($text =~ s/x/z/g);
+=========================================================
+@a = qw(This is a test);
+@b = map/^(\w{4})/, @a;
+print "@b";
+=========================================================
+@a = qw(This is a test);
+@b = grep/^\w{4}/, @a;
+print "@b";
+=========================================================
+$text = "Name: Anne Name: Burkart Name: Claire Name: Dan";
+$match = 0;
+
+while ($text =~ /Name: *(\w+)/g) {
+    ++$match;
+    print "Match number $match is $1.\n";
+}
+=========================================================
+$text = "Name: Anne Name: Burkart Name: Claire Name: Dan";
+
+for ($match = 0; $text =~ /Name: *(\w+)/g; print
+    "Match number ${\++$match} is $1.\n") {}
+=========================================================
+$_ = "There's Thomas on the bus!";
+while(/o/g) {
+    print "There's an \"o\" at position ". pos() . "\n";
+}
+=========================================================
+$_ = "There's Thomas on the bus!";
+m/o/g;
+m/\G(.*)/g;
+print $1;
+=========================================================
+$text = "Here is some text\n";
+$text =~ m/(.*)/s;
+print "${1}.";
+=========================================================
+$_ = "This text\nhas multiple lines.";
+s/^/BOL/g;
+s/$/EOL/g;
+print;
+=========================================================
+$_ = "This text\nhas multiple lines.";
+s/^/BOL/mg;
+s/$/EOL/mg;
+print;
+=========================================================
+$_ = "This text\nhas multiple lines.";
+s/\A/BOS/mg;
+s/\Z/EOS/mg;
+=========================================================
+while (<>) {
+    chomp;
+    unless (/^q/i) {
+        print;
+    } else {
+        exit;
+    }
+}
+=========================================================
+while (<>) {
+    chomp;
+    unless (/^(q|Q)/i) {
+        print;
+    } else {
+        exit;
+    }
+}
+=========================================================
+while(<>) {
+    if(m/^stop$/i) {exit;}
+}
+=========================================================
+$record = "Product number: 12345 Product type: printer 
+    Product price: $325";
+if ($record =~ /Product type: *([a-z]+)/i) {print 
+    "The product's type is $1\n";}
+=========================================================
+$text = "Now is the time.";
+$text =~ s/(\w+)/uc($1)/ge;
+print $text;
+=========================================================
+sub negatory
+{
+   $hash{is} = 'is not';
+   $hash{may} = 'may not';
+   $hash{can} = 'can not';
+   $hash{was} = 'was not';
+   $hash{will} = 'will not';
+
+   $value = shift;
+
+   if (exists $hash{$value}) {
+       return $hash{$value};
+   } else {
+       return $value;
+   }
+}
+
+$text = "Now is the time.";
+$text =~ s/(\w+)/negatory($1)/ge;
+
+print $text;
+=========================================================
+$_ = "Now is the the time time.";
+
+@duplicates = m/(\S+)\s\1/g;
+
+print "Duplicated words: @duplicates";
+=========================================================
+$text = "That is some text, isn't it?";
+$text =~ s/.*is/That's/;
+print $text;
+=========================================================
+$text = "That is some text, isn't it?";
+$text =~ s/.*?is/That's/;
+print $text;
+=========================================================
+$_ = "No, these are the documents, over there.";
+s/the(.*)e/those/;
+print;
+=========================================================
+$_ = "No, these are the documents, over there.";
+s/the(.*?)e/those/;
+print;
+=========================================================
+$text = "     Now is the time.";
+$text =~ s/^\s+//;
+print $text;
+=========================================================
+$text = "Now is the time.     ";
+$text =~ s/\s+$//;
+print $text;
+=========================================================
+$text = "Mary Tom Frank ";
+while ($text =~ /\w+(?=\s)/g) {
+    print "$&\n";
+}
+=========================================================
+$text = "Mary Tom Frank ";
+while ($text =~ /(\w+)\s/g) {
+    print "$1\n";
+}
+=========================================================
+$_ = "Not just any Tom, Dick, or Harry.";
+print "Found Dick, Tom, and Harry." if /.*Dick.*Tom.*Harry/;
+=========================================================
+$_ = "Not just any Tom, Dick, or Harry.";
+print "Found Dick, Tom, and Harry." if /(?=.*Dick)(?=.*Tom)(?=.*Harry)/;
+=========================================================
+while (<>) {
+    if (!m/.{20,}) {
+        print "Please type longer lines!\n";
+    } else {
+        print "Let's have another!\n";
+    }
+}
+=========================================================
+$match = "Perl";
+
+while (<>) {
+    if (/$match/) {
+        print "You typed Perl.\n";
+    } else {
+        print "You didn't type Perl.\n";
+    }
+}
+=========================================================
+$match = "Perl";
+
+while (<>) {
+    if (/$match/o) {
+        print "You typed Perl.\n";
+    } else {
+        print "You didn't type Perl.\n";
+    }
+}
+=========================================================
+@patterns =
+(
+    qr/\bis\b/,
+    qr/\bthe\b/,
+    qr/\bbut\b/,
+    qr/\ba\b/,
+    qr/\bnone\b/,
+);
+=========================================================
+@patterns =
+(
+    qr/\bis\b/,
+    qr/\bthe\b/,
+    qr/\bbut\b/,
+    qr/\ba\b/,
+    qr/\bnone\b/,
+);
+
+while (<>) {
+
+    for ($loop_index = 0; $loop_index < $#patterns; $loop_index++) {
+
+        if(/$patterns[$loop_index]/) {
+           print "Matched pattern $loop_index!\n";
+        }
+        else {
+           print "Didn't match pattern $loop_index.\n";
+        }
+
+    }
+}
+=========================================================
