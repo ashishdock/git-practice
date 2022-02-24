@@ -1,0 +1,625 @@
+==========================================================
+format STDOUT = 
+@<<<<<<<<<<<@>>>>>>>>>>>>>>>  
+$text1      $text2
+.
+==========================================================
+$text1 = "Hello";
+$text2 = "there!";
+==========================================================
+write;                        #Uses STDOUT by default.
+==========================================================
+@<<<<<<<<<<<@>>>>>>>>>>>>>>>  
+Hello                 there!
+==========================================================
+format STDOUT =
+@<<<<<<<<<<<@<<<<<<<<<<<<<<<<<<<<
+$text1      $text2
+.
+$text1 = "Hello";
+$text2 = "there!";
+==========================================================
+write;                        #Uses STDOUT by default.
+==========================================================
+format STDOUT =
+@||||||||||||||||||||||||||
+sprintf "%.4f", 3.1415
+.
+
+write;
+==========================================================
+print <<EOD;
+==========================================================
+print <<EOD;
+
+This 
+is 
+a 
+"here" 
+document.
+EOD
+==========================================================
+print <<EOD;
+
+This
+ is
+  a
+   "here"
+    document.
+EOD
+==========================================================
+$display = 1;
+
+if ($display) {
+    print <<EOD;
+This 
+is 
+a 
+"here" 
+document.
+EOD
+}
+==========================================================
+$display = 1;
+
+if ($display) {
+    $here = <<EOD;
+    This
+    is
+    a
+    "here"
+    document.
+EOD
+
+    $here =~ s/^\s+//mg;
+
+    print $here;
+}
+==========================================================
+format STDOUT =
+@<<<<<<<<<<<@>>>>>>>>>>>>>>>  
+$text1      $text2
+.
+
+$text1 = "Hello";
+$text2 = "there!";
+
+write;                        
+==========================================================
+format STDOUT =
+@<<<<<<<<<<<<@<<<<<<<<<<<<@<<<<<<<<@<<<<
+$firstname   $lastname    $ID      $extension
+.
+
+$firstname = "Cary"; 
+$lastname = "Grant";
+$ID = 1234; 
+$extension = x456;
+
+==========================================================
+==========================================================
+format STDOUT =
+@>>>>>>>>>>>>>>>>
+$text
+.
+
+$text = "Hello!";
+
+write;
+==========================================================
+format STDOUT =
+@||||||||||||||||||||||||||
+$text
+.
+
+$text = "Hello!";
+
+write;
+==========================================================
+$pi = 3.1415926;
+
+format STDOUT =
+@.## @.#######
+$pi   $pi
+.
+
+write;
+==========================================================
+format STDOUT =
+@||||||||||||||||||||||||||
+sprintf "%.4f", 3.1415
+.
+
+write;
+==========================================================
+format STDOUT =
+@<<<<<<<<<<<@<<<<<<<<<<<<<<<
+$text1      $text2
+@<<<<<<<<<<<@<<<<<<<<<<<<<<<
+$text3      $text4
+.
+
+$text1 = "Hello";
+$text2 = "there!";
+$text3 = "How're";
+$text4 = "things?";
+
+write;
+==========================================================
+format STDOUT =
+English: ^<<<<<
+       $text
+German: ^<<<<<<<<<
+       $text
+French: ^<<<<<<<<
+       $text
+.
+
+$text = "Hello!Guten Tag!Bonjour!";
+==========================================================
+$: = "";
+format STDOUT =
+English: ^<<<<<
+       $text
+German: ^<<<<<<<<<
+       $text
+French: ^<<<<<<<<
+       $text
+.
+
+$text = "Hello!Guten Tag!Bonjour!";
+
+write;
+==========================================================
+format STDOUT =
+@*
+$text
+.
+$text = "Here\nis\nthe\ntext.";
+write;
+==========================================================
+print <<EOD
+Here\nis\nthe\ntext.
+EOD
+==========================================================
+format STDOUT =
+@*
+$text
+@<<<<<<<<<<<<@<<<<<<<<<<<<@<<<<<<<<@<<<<
+$firstname   $lastname    $ID      $extension
+.
+
+$text = "Here is the data you asked for...";
+$firstname = "Cary";
+$lastname = "Grant";
+$ID = 1234;
+$extension = x456;
+
+write;
+==========================================================
+format STDOUT_TOP =
+                  Employees
+First Name   Last Name    ID       Extension
+--------------------------------------------
+.
+
+format STDOUT =
+@<<<<<<<<<<<<@<<<<<<<<<<<<@<<<<<<<<@<<<<
+$firstname   $lastname    $ID      $extension
+.
+
+$firstname = "Cary"; $lastname = "Grant";
+$ID = 1234; $extension = x456;
+
+write;
+==========================================================
+format standardformat =
+@||||||||||||||||||||||||||
+$text
+.
+$text = "Hello!";
+$~ = standardformat;
+write;
+==========================================================
+format standardformat_top =
+                  Employees
+First Name   Last Name    ID       Extension
+--------------------------------------------
+.
+
+format standardformat =
+@<<<<<<<<<<<<@<<<<<<<<<<<<@<<<<<<<<@<<<<
+$firstname   $lastname    $ID      $extension
+.
+
+$firstname = "Cary"; $lastname = "Grant";
+$ID = 1234; $extension = x456;
+==========================================================
+open FILEHANDLE, ">report.frm" or die "Can't open file";
+
+select FILEHANDLE;
+==========================================================
+open FILEHANDLE, ">report.frm" or die "Can't open file";
+
+select FILEHANDLE;
+
+$~ = standardformat;
+$^ = standardformat_top;
+
+write;
+close;
+==========================================================
+format standardformat_top =
+@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"Page $%"
+                  Employees          
+First Name   Last Name    ID       Extension
+--------------------------------------------
+.
+
+format standardformat =
+@<<<<<<<<<<<<@<<<<<<<<<<<<@<<<<<<<<@<<<<
+$firstname   $lastname    $ID      $extension
+.
+
+$text = "Here is the data you asked for...";
+$firstname = "Cary"; 
+$lastname = "Grant";
+$ID = 1234; 
+$extension = x456;
+==========================================================
+open FILEHANDLE, ">report.frm" or die "Can't open file";
+
+select FILEHANDLE;
+==========================================================
+$~ = standardformat;
+$^= standardformat_top;
+$= = 1;
+
+write;
+write;
+==========================================================
+$str = formline <<'EOD', right, center, left;
+Here's some text justification...
+----------------------------
+@<<<<<<<<@|||||||@>>>>>>>>>>
+EOD
+
+print "$^A\n";
+==========================================================
+while (<>) {
+    print "Here's what you typed lowercased: " . lc . "\n";
+    print "Here's what you typed uppercased: " . uc . "\n";
+}
+==========================================================
+while (<>) {
+    print "Initial lowercase: " . lcfirst;
+    print "Initial uppercase: " . ucfirst;
+}
+==========================================================
+$text = "This is the promise.";
+
+print "First occurance of \"is\" is at position: " .
+    index($text, "is") . "\n";
+print "Last occurance of \"is\" is at position: " .
+    rindex($text, "is") . "\n";
+==========================================================
+$text = "Here is the text.";
+
+print substr ($text, 12) . "\n";
+==========================================================
+print substr ($text, 12, 4) . "\n";
+==========================================================
+substr ($text, 12, 4, "word");
+print "$text\n";
+==========================================================
+substr ($text, 12, 4) = "word";
+
+print $text;
+==========================================================
+sub replace
+{
+    ($text, $to_replace, $replace_with) = @_;
+
+    substr ($text, index($text, $to_replace),
+        length($to_replace), $replace_with);
+
+    return $text;
+}
+
+print replace("Here is the text.", "text", "word");
+==========================================================
+$text = "Hello there!";
+
+print "The string \"$text\" is " . length ($text) . " characters long.";
+==========================================================
+sub replace
+{
+    ($text, $to_replace, $replace_with) = @_;
+
+    substr ($text, index($text, $to_replace),
+        length($to_replace), $replace_with);
+
+    return $text;
+}
+
+print replace("Here is the text.", "text", "word");
+==========================================================
+print pack("ccc", 88, 89, 90); 
+==========================================================
+print pack("c3", 65, 66, 67);
+==========================================================
+print pack("c*", 68, 69, 70, 71);
+==========================================================
+$string = pack("ccc", 88, 89, 90);
+
+print join(", ", unpack "ccc", $string);
+==========================================================
+$decimal = 17;
+$binary = unpack("B32", pack("N", $decimal));
+print $binary;
+==========================================================
+$decimal = 17;
+$binary = unpack("B32", pack("N", $decimal));
+$newdecimal = unpack("N", pack("B32", $binary));
+print $newdecimal;
+==========================================================
+$string = "This is the text",
+$substring_start = 12;
+$substring_length = 4;
+
+print unpack("x$substring_start a$substring_length", $string);
+==========================================================
+$s = "Hello";
+@a = unpack("C*", $s);
+print join(", ", @a);
+==========================================================
+$value = 1234.56789;
+print sprintf "%.4f\n", $value;
+==========================================================
+print sprintf "%.5f\n", $value;
+==========================================================
+print sprintf "%6.6f\n", $value;
+==========================================================
+print sprintf "%+.4e\n", $value;
+==========================================================
+@a = ("%s%s%s%s", "P", "e", "r", "l");
+print sprintf(@a);
+==========================================================
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+foreach $key (sort {myfunction($a, $b)} keys %hash) {
+    print "$key => $hash{$key}\n";
+}
+
+sub myfunction
+{
+   return (shift(@_) cmp shift(@_));
+}
+==========================================================
+$s1 = 5;
+$s2 = 10;
+
+if ($s1 gt $s2) {     #wrong!
+    print "$s1 is greater than $s2";
+}
+==========================================================
+$s1 = "apples";
+$s2 = "oranges";
+
+if ($s1 == $s2) {
+    print "$s1 are the same as $s2";
+}
+==========================================================
+print ord 'A';
+==========================================================
+print ord 'ABC';
+==========================================================
+print chr 65;
+==========================================================
+print chr(ord "A");
+==========================================================
+$s = "Hello";
+@a = unpack("C*", $s);
+print join(", ", @a);
+==========================================================
+print pack("c3", 65, 66, 67);
+==========================================================
+$s = "Hello";
+==========================================================
+@a = split (//, $s);
+print "@a\n";
+==========================================================
+while ($s =~ /(.)/gs) {print "$1 "};
+print "\n";
+==========================================================
+foreach (unpack("C*", $s)) {print chr($_), " "};
+print "\n";
+==========================================================
+for ($loop_index = 0; $loop_index < length($s); $loop_index++) {
+    print substr($s, $loop_index, 1) , " ";
+}
+==========================================================
+$string = "Hello!";
+
+$reversed = reverse($string);
+print "$reversed\n";
+==========================================================
+foreach (split (//, $string)) {push @a, $_};
+while(@a) {print (pop (@a))};
+print "\n";
+==========================================================
+while ($string =~ /(.)/gs) {unshift @a, $1};
+print @a;
+==========================================================
+$text = "Hello";
+$encrypted = crypt $text, "AB";
+print $encrypted;
+==========================================================
+$encrypted = "AB/uOsC7P93EI";
+
+$salt = substr($encrypted, 0, 2);
+
+print "Guess the word: ";
+
+while(<>) {
+
+    chomp;
+    if ($encrypted eq (crypt $_, $salt)) {
+        print "You got it!";
+        exit;
+    } else {
+        print "Nope.\n";
+        print "Guess the word: ";
+    }
+}
+==========================================================
+$text = "hello there!";
+
+print "$text\n";
+
+$text =~ tr/a-z/d-za-c/;
+
+print "$text\n";
+
+$text =~ tr/d-za-c/a-z/;
+
+print "$text\n";
+==========================================================
+$text = q/"I said, 'no.'"/;
+print $text;
+
+"I said, 'no.'"
+==========================================================
+$string = "no.";
+$text = qq/"I said, '$string'"/;
+print $text;
+==========================================================
+@patterns =
+(
+    qr/\bis\b/,
+    qr/\bthe\b/,
+    qr/\bbut\b/,
+    qr/\ba\b/,
+    qr/\bnone\b/,
+);
+
+while (<>) {
+
+    for ($loop_index = 0; $loop_index < $#patterns; $loop_index++) {
+
+        if(/$patterns[$loop_index]/) {
+           print "Matched pattern $loop_index!\n";
+        }
+        else {
+           print "Didn't match pattern $loop_index.\n";
+        }
+
+    }
+}
+==========================================================
+$ls = 'ls';
+print qx/$ls/;
+==========================================================
+$ls = `ls`;
+print $ls;
+==========================================================
+$dir = dir;
+print qx/$dir/;
+==========================================================
+qw/Now is the time./;
+split(' ', q/Now is the time/);
+==========================================================
+@name = qw(soap blanket shirt pants plow);
+@category = qw(home home apparel apparel farm);
+@subcategory = qw(bath bedroom top bottom field);
+
+@indices = sort {$category[$a] cmp $subcategory[$b]
+    or $category[$a] cmp $subcategory[$b]} (0 .. 4);
+
+foreach $index (@indices) {
+    print "$category[$index]/$subcategory[$index]: $name[$index]\n";
+}
+==========================================================
+@a = qw/P, e, r, l/;
+print @a;
+==========================================================
+=head1 Simulation of Named Characters
+
+=head2 This example uses hashes.
+
+This example:
+
+=over 4
+
+=item 1
+
+Shows how to set up two named parameters
+
+=item 2
+
+Shows how to set up defaults for arguments
+
+=cut
+==========================================================
+=head1 Simulation of Named Characters
+
+=head2 This example uses hashes.
+
+This example:
+
+=over 4
+
+=item 1
+
+Shows how to set up two named parameters
+
+=item 2
+
+Shows how to set up defaults for arguments
+
+=cut
+
+sub addem 
+{
+    my %hash = 
+    (
+        OPERAND1 => 2,
+        OPERAND2 => 3,
+        @_,
+    );
+
+    return $hash{OPERAND1} + $hash{OPERAND2};
+}
+
+print "The result is: " . addem(OPERAND1 => 3);
+==========================================================
+<!-- $Id$ -->
+<HTML><HEAD>
+<CENTER><TITLE>a.pl</TITLE>
+</HEAD>
+<BODY></CENTER><p><hr>
+
+<H1> 
+<A NAME="a.pl_simulation_0">
+Simulation of Named Characters</A>
+</H1>
+<p>
+<H2> 
+<A NAME="a.pl_this_0">
+This example uses hashes.</A>
+</H2>
+This example:
+<p>
+<OL>
+<LI>Shows how to set up two named parameters
+<p>
+<LI>Shows how to set up defaults for arguments
+<p>
+</OL>
+
+</BODY>
+</HTML>
+==========================================================

@@ -1,0 +1,676 @@
+============================================================
+$value = 10; 
+if ($value > 10 ) {
+    print "Value is $value.\n";
+} else {
+    print "Value is too small.\n";
+}
+$value = 12;
+if ($value > 10 ) {
+    print "Value is $value.\n";
+} else {
+    print "Value is too small.\n";
+}
+============================================================
+sub printifOK
+{
+    if ($value > 10 ) {
+        print "Value is $value.\n";
+    } else {
+        print "Value is too small.\n";
+    }
+}
+
+$value = 10;
+printifOK;
+
+$value = 12;
+printifOK;
+============================================================
+sub printifOK
+{
+    my $localvalue = $value;
+
+    if ($localvalue > 10 ) {
+        print "Value is $value.\n";
+    } else {
+        print "Value is too small.\n";
+    }
+}
+
+$value = 10;
+printifOK;
+
+$value = 12;
+printifOK;
+============================================================
+$value = 10;
+printifOK ($value);
+============================================================
+sub printifOK
+{
+    my $internalvalue = shift(@_);
+
+    if ($internalvalue > 10 ) {
+        print "Value is $value.\n";
+    } else {
+        print "Value is too small.\n";
+    }
+}
+============================================================
+$value = 10;
+printifOK ($value);
+
+$value = 12;
+printifOK ($value);
+============================================================
+sub addem
+{
+    ($value1, $value2) = @_;
+    return $value1 + $value2;
+}
+
+print "2 + 2 = " . addem(2, 2) . "\n";
+============================================================
+sub addem
+{
+    ($value1, $value2) = @_;
+    $value1 + $value2;
+}
+
+print "2 + 2 = " . addem(2, 2) . "\n";
+============================================================
+$value = addem(2, 2);
+
+print "2 + 2 = $value\n";
+
+sub addem
+{
+    ($value1, $value2) = @_;
+    $value1 + $value2;
+}
+============================================================
+$value = addem 2, 2;
+
+print "2 + 2 = $value\n";
+
+sub addem
+{
+    ($value1, $value2) = @_;
+    $value1 + $value2;
+}
+============================================================
+sub addem;
+
+$value = addem 2, 2;
+
+print "2 + 2 = $value\n";
+
+sub addem
+{
+    ($value1, $value2) = @_;
+    $value1 + $value2;
+}
+============================================================
+sub addem
+{
+    ($value1, $value2) = @_;
+    $value1 + $value2;
+}
+
+$value = addem 2, 2;
+
+print "2 + 2 = $value\n";
+============================================================
+sub printhello
+{
+    print "Hello!";
+}
+============================================================
+sub printhello
+{
+    print "Hello!";
+}
+
+printhello;
+============================================================
+printhello;
+
+sub printhello
+{
+    print "Hello!";
+}
+============================================================
+printhello();
+
+sub printhello
+{
+    print "Hello!";
+}
+============================================================
+sub addem
+{
+    ($value1, $value2) = @_;
+    $value1 + $value2;
+}
+
+$value = &addem(2, 2);
+$value = addem(2, 2);
+$value = addem 2, 2;
+
+$name = "addem";
+$value = &$name(2, 2);
+
+print "2 + 2 = $value\n";
+============================================================
+sub addem
+{
+    ($value1, $value2) = @_;
+    $value1 + $value2;
+}
+
+@_ = (2, 2);
+$value = &addem;
+
+print "2 + 2 = $value\n";
+============================================================
+sub addem
+{
+    ($value1, $value2) = @_;
+    $value1 + $value2;
+}
+
+@_ = (2, 2);
+$value = &addem if defined addem;
+
+print "2 + 2 = $value\n";
+============================================================
+sub addem
+{
+    $value1 = shift;
+    $value2 = shift;
+    print "$value1 + $value2 = " . ($value1 + $value2) . "\n";
+}
+============================================================
+sub addem
+{
+    ($value1, $value2) = @_;
+    print "$value1 + $value2 = " . ($value1 + $value2) . "\n";
+}
+============================================================
+sub addone
+{
+    ++@_[0];
+}
+
+$value = 1;
+
+addone($value);
+
+print "The value of \$value = $value.\n";
+============================================================
+sub addone
+{
+    foreach (@_) {
+        $_++;
+    }
+    return @_;
+}
+
+@a = (1, 2, 3);
+
+@b = addone(@a);
+
+print "@b";
+============================================================
+$hash{fruit} = peach;
+$hash{vegetable} = broccoli;
+$hash{pie} = blueberry;
+
+sub printem
+{
+    %hash = @_;
+
+    foreach $key (keys %hash) {
+        print "$key => $hash{$key}\n";
+    }
+}
+
+printem(%hash);
+============================================================
+sub addem
+{
+    $sum = 0;
+
+    print "You passed " . ($#_ + 1) . " elements.\n";
+
+    foreach $element (@_) {
+        $sum += $element;
+    }
+    print join (" + ", @_) . " = $sum\n";
+}
+
+addem(2, 2, 2);
+============================================================
+sub addem
+{
+    ($value1, $value2) = @_;
+    $value2 ||= 1;
+    print "$value1 + $value2 = " . ($value1 + $value2);
+}
+
+addem(2);
+============================================================
+sub addem
+{
+    ($value1, $value2) = @_;
+    if (!defined($value2)) {
+        $value2 = 1
+    };
+    print "$value1 + $value2 = " . ($value1 + $value2);
+}
+
+addem(2);
+============================================================
+sub addem
+{
+    $value1 = shift @_;
+    if ($#_ > 0) {
+        $value2 = @_[1];
+    } else {
+        $value2 = 1;
+    }
+    print "$value1 + $value2 = " . ($value1 + $value2);
+}
+addem(2);
+============================================================
+sub addem
+{
+    ($value1, $value2) = @_;
+    return $value1 + $value2;
+}
+
+print "2 + 2 = " . addem(2, 2) . "\n";
+============================================================
+sub getvalues
+{
+    return 1, 2, 3, 4, 5, 6;
+}
+
+@array = getvalues;
+print join(", ", @array);
+============================================================
+sub addone
+{
+    foreach (@_) {
+        $_++;
+    }
+    return @_;
+}
+
+@a = (1, 2, 3);
+
+@b = addone(@a);
+
+print "@b";
+
+============================================================
+sub gethash ()
+{
+    $hash{fruit} = peach;
+    $hash{vegetable} = broccoli;
+    $hash{pie} = blueberry;
+
+    return %hash;
+}
+
+%myhash = gethash;
+
+foreach $key (keys %myhash) {
+    print "$key => $myhash{$key}\n";
+}
+============================================================
+sub getdata()
+{
+    eval {
+        open FILEHANDLE, "<nonexist.dat";
+        $line = <FILEHANDLE> if FILEHANDLE;
+    };
+
+    if ($@) {
+       return;
+    } else {
+       return $line;
+    }
+}
+============================================================
+$data = getdata();
+
+if (defined ($data)) {
+    print $data;
+} else {
+    print "Sorry, getdata failed!\n";
+}
+============================================================
+sub printem
+{
+    $inner = shift @_;
+    print $inner;
+}
+
+printem "Hello!\n";
+
+print $inner;
+============================================================
+sub printem
+{
+    my $inner = shift @_;
+    print $inner;
+}
+
+printem "Hello!\n";
+
+print $inner;
+============================================================
+my $variable;
+my ($variable1, $variable2);    
+my $variable = 5;  
+my @array = (1, 2, 3);
+my %hash;
+============================================================
+my $variable1, $variable2 = 5;                  
+============================================================
+$testvalue = 10;
+
+if ((my $variable1 = 10) > $testvalue ) {
+
+    print "Value, $variable1, is greater than the test value.\n";
+
+} elsif ($variable1 < $testvalue) {
+
+    print "Value, $variable1, is less than the test value.\n";
+
+} else {
+
+    print "Value, $variable1, is equal to the test value.\n";
+
+}
+============================================================
+sub printifOK
+{
+    local $localvalue = $value;
+
+    if ($localvalue > 10 ) {
+        print "Value is $value.\n";
+    } else {
+        print "Value is too small.\n";
+    }
+}
+
+$value = 10;
+printifOK;
+
+$value = 12;
+printifOK;
+============================================================
+$value = 1;
+
+sub printem() {print "\$value = $value\n"};
+
+sub makelocal()
+{
+    local $value = 2;
+    printem;
+}
+
+makelocal;
+printem;
+============================================================
+$value = 1;
+
+sub printem() {print "\$value = $value\n"};
+
+sub makelocal()
+{
+    my $value = 2;
+    printem;
+}
+
+makelocal;
+printem;
+============================================================
+$value1 = 1;
+
+my $value2 = 2;
+
+local $value3 = 3;
+
+print join(", ", keys %::);
+============================================================
+sub incrementcount {
+    my $count;
+    return ++$count;
+}
+
+print incrementcount . "\n";
+print incrementcount . "\n";
+print incrementcount . "\n";
+print incrementcount . "\n";
+============================================================
+sub BEGIN 
+{
+    my $count = 0;
+    sub incrementcount {
+        return ++$count;
+    }
+    print incrementcount . "\n";
+    print incrementcount . "\n";
+    print incrementcount . "\n";
+    print incrementcount . "\n";
+}
+============================================================
+sub addem
+{
+    ($value1, $value2) = @_;
+    $value1 + $value2;
+    print join(", ", caller);
+
+}
+
+$value = &addem(2, 2);
+============================================================
+sub addem
+{
+    ($value1, $value2) = @_;
+    $value1 + $value2;
+    print join(", ", caller 1);
+
+}
+
+sub callingfunction
+{
+    $value = addem(2, 2);
+}
+
+callingfunction;
+============================================================
+sub factorial
+{
+    my $value = shift (@_);
+
+    return $value == 1 ? $value : $value * factorial ($value - 1);
+
+}
+
+$result = factorial(6);
+
+print $result;
+============================================================
+============================================================
+sub outer
+{
+    my $s = "Inside the inner subroutine.\n";
+
+    sub inner
+    {
+        my $s2 = $s;
+        print $s2;
+    }
+
+    inner();
+}
+
+outer();
+============================================================
+@a = (1, 2, 3);
+@b = (4, 5, 6);
+============================================================
+@array = addem (\@a, \@b);
+============================================================
+sub addem
+{
+    my ($ref1, $ref2) = @_;
+
+    while (@{$ref1}) {
+
+        unshift @result, pop(@{$ref1}) + pop(@{$ref2});
+
+    }
+
+    return @result;
+}
+============================================================
+@array = addem (\@a, \@b);
+============================================================
+sub getarrays
+{
+    @a = (1, 2, 3);
+    @b = (4, 5, 6);
+
+    return \@a, \@b;
+}
+============================================================
+($aref, $bref) = getarrays;
+
+print "@$aref\n";
+print "@$bref\n";
+============================================================
+@a = (1, 2, 3);
+@b = (4, 5, 6);
+
+sub addem {
+    local(*array1, *array2) = @_;
+
+    while (@array1) {
+
+        unshift @result, pop(@array1) + pop(@array2);
+
+    }
+
+    return @result
+}
+
+@result = addem(*a, *b);
+print join(", ", @result);
+============================================================
+sub printhello {
+    my $handle = shift;
+    print $handle "Hello!\n";
+}
+printhello(\*STDOUT);
+============================================================
+sub swapxy 
+{
+    my @data = @_;
+    for (@data) {
+        s/x/y/g;
+    }
+    return wantarray ? @data : $data[0];
+}
+============================================================
+$a = "xyz";
+$b = "xxx";
+
+($a, $b) = swapxy($a, $b);
+
+print "$a\n";
+print "$b\n";
+============================================================
+sub e () {2.71828}             
+sub e () {exp 1}      
+============================================================
+sub addem
+{
+    my %hash = @_;
+
+    return $hash{OPERAND1} + $hash{OPERAND2};
+}
+============================================================
+print "The result is: " . addem(OPERAND1 => 2, OPERAND2 => 3);
+============================================================
+sub addem
+{
+    my %hash =
+    (
+        OPERAND1 => 2,
+        OPERAND2 => 3,
+        @_,
+    );
+
+    return $hash{OPERAND1} + $hash{OPERAND2};
+}
+
+print "The result is: " . addem(OPERAND1 => 3);
+============================================================
+use subs 'exit';
+sub exit
+{
+    print "Do you really want to exit?";
+    $answer = <>;
+    if ($answer =~ /^y/i) {CORE::exit;}
+}
+while (1) {
+    exit;
+}
+============================================================
+$coderef = sub {print "Hello!\n";};
+============================================================
+&{$coderef};
+============================================================
+local $SIG{__WARN__} = sub {}; 
+============================================================
+sub ctof          #Centigrade to farenheit
+{
+   $value = shift(@_);
+   return 9 * $value / 5 + 32;
+}
+
+sub ftoc          #Farenheit to centigrade
+{
+   $value = shift(@_);
+   return 5 * ($value - 32) / 9;
+}
+============================================================
+$tempconvert[0] = \&ftoc;
+$tempconvert[1] = \&ctof;
+============================================================
+print "Zero centigrade is " . &{$tempconvert[1]}(0) . " farenheit.\n";
+============================================================
+sub sub1
+{
+    $text = shift;
+    print "$text there!\n";
+}
+============================================================
+sub sub2
+{
+    $text = shift;
+    print "$text everyone!\n";
+}
+============================================================
+sub1("Hello");
+
+*sub1 = \&sub2;         #redefine sub1
+
+sub1("Hello");
+============================================================
