@@ -1,0 +1,17 @@
+// A lambda expression that returns square root value of a number
+
+class LamdaDemo3
+{
+	//create a functional interface with a single abstract method
+	
+	interface MyInter
+	{
+		double squareRoot(int a);
+	}
+	
+	public static void main(String args[])
+	{
+		MyInter mi = (int a) -> {return Math.sqrt(a);};
+		System.out.println("Square Root of 256 is " + mi.squareRoot(256));
+	}
+}
