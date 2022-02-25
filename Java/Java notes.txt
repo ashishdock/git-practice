@@ -82,4 +82,4 @@ Storing ojects into a file this way is called Serialization. The reverse process
 static int x = 15; //will be serialized
 transient String str = "mypassword"; //will not be serialized
 
-
+DAEMON Thread: Always executing processes in background that never stop. They provide services to other threads.
