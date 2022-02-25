@@ -1,0 +1,528 @@
+==============================================================
+sub replace 
+{
+    ($text, $to_replace, $replace_with) = @_;
+
+    substr ($text, index($text, $to_replace),
+        length($to_replace), $replace_with);
+
+    return $text;
+}
+
+print replace("Here is the text.", "text", "word");
+==============================================================
+use English;
+==============================================================
+$text = 'This is the time.';
+$text =~ /time/;
+print "Matched: \"$&\".\n";
+==============================================================
+use English;
+
+$text = 'This is the time.';
+$text =~ /time/;
+print "Matched: \"$MATCH\".\n";
+==============================================================
+use FileHandle;
+
+format standardformat_top =
+@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"Page $%"
+                  Employees          
+First Name   Last Name    ID       Extension
+--------------------------------------------
+.
+
+format standardformat =
+@<<<<<<<<<<<<@<<<<<<<<<<<<@<<<<<<<<@<<<<
+$firstname   $lastname    $ID      $extension
+.
+
+$firstname = "Cary"; 
+$lastname = "Grant";
+$ID = 1234; 
+$extension = x456;
+
+open FILEHANDLE, ">report.frm" or die "Can't open file";
+
+select FILEHANDLE;
+
+format_name FILEHANDLE standardformat;
+format_top_name FILEHANDLE standardformat_top;
+format_lines_per_page FILEHANDLE 1;
+
+write;
+write;
+==============================================================
+$text = 'earlynowlate';
+$text =~ /now/;
+
+print "Prematch: \"$`\" Match: \"$&\" Postmatch: \"$'\"\n";
+==============================================================
+use File::Copy;
+copy("nonexistant.pl","new.pl");   #Try to copy a non-existant file.
+print $!;
+==============================================================
+$! = 1;
+print "$!\n";
+print "Error number " , 0 + $! , " occurred.";
+==============================================================
+@array = (1, 2, 3);
+$" = ',';
+$text = "@array";
+print $text;
+==============================================================
+@array = (1, 2, 3);
+$" = ', ';
+$text = "@array";
+print $text;
+==============================================================
+$pi = 3.1415926;
+$# = '%.6g';
+print "$pi\n";
+==============================================================
+use FileHandle;
+
+format standardformat_top =
+@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"Page $%"
+                  Employees          
+First Name   Last Name    ID       Extension
+--------------------------------------------
+.
+==============================================================
+$text = 'earlynowlate';
+$text =~ /now/;
+print "Prematch: \"$`\" Match: \"$&\" Postmatch: \"$'\"\n";
+==============================================================
+$_ = "This text\nhas multiple lines.";
+s/^/BOL/g;
+s/$/EOL/g;
+print;
+==============================================================
+$_ = "This text\nhas multiple lines.";
+$* = 1;
+s/^/BOL/g;
+s/$/EOL/g;
+print;
+==============================================================
+$_ = "This text\nhas multiple lines.";
+s/^/BOL/mg;
+s/$/EOL/mg;
+print;
+==============================================================
+$, = ';';
+print 1, 2, 3;
+==============================================================
+open FILEHANDLE, "<reader.pl";
+
+while (defined ($line = <FILEHANDLE>)) {
+    print "Current line = $.\n";
+}
+
+close FILEHANDLE;
+==============================================================
+undef $/;
+open HANDLE, "file.txt";
+$text = <HANDLE>;
+print $text;
+==============================================================
+$hash{x,y,z}
+$hash{join($;, x, y, z)}
+==============================================================
+$hash{"1$;1$;1"} = "Hello!";
+
+print $hash{1,1,1};
+==============================================================
+@array = (
+    [1, 2],
+    [3, 4],
+);
+
+print $array[1][1];
+==============================================================
+print `uptime`;
+print $?;
+==============================================================
+print `dir`;
+print $?;
+==============================================================
+$x = 1;
+$y = 0;
+eval {$result = $x / $y};
+print "eval says: $@" if $@;
+==============================================================
+@a = (1, 2, 3);
+
+print "Array \@a = @a\n";
+
+print "Element \@a[0] = $a[0]\n";
+
+print "Resetting array base...\n";
+
+$[ = 1;
+
+print "Element \@a[1] = $a[1]\n";
+==============================================================
+$\ = "END_OF_OUTPUT";
+print "Hello!";
+==============================================================
+print $];
+==============================================================
+if ($] < 5.005) {
+
+    print "Isn't it time to upgrade?";
+
+} else {
+
+    #Use qr//, new in Perl 5.005
+
+    print "Creating compiled patterns...\n";
+
+    @patterns =
+    (
+        qr/\bis\b/,
+        qr/\bthe\b/,
+        qr/\bbut\b/,
+        qr/\ba\b/,
+        qr/\bnone\b/,
+    );
+}
+==============================================================
+format standardformat_top =
+                  Employees
+First Name   Last Name    ID       Extension
+--------------------------------------------
+.
+
+format standardformat =
+@<<<<<<<<<<<<@<<<<<<<<<<<<@<<<<<<<<@<<<<
+$firstname   $lastname    $ID      $extension
+.
+
+$firstname = "Cary"; $lastname = "Grant";
+$ID = 1234; $extension = x456;
+
+open FILEHANDLE, ">report.frm" or die "Can't open file";
+
+select FILEHANDLE;
+
+$~ = standardformat;
+$^ = standardformat_top;
+
+write;
+close;
+==============================================================
+$str = formline <<'EOD', right, center, left;
+Here's some text justification...
+----------------------------
+@<<<<<<<<@|||||||@>>>>>>>>>>
+EOD
+
+print "$^A\n";
+==============================================================
+use File::Copy;
+copy("nonexistant.pl","new.pl");   #Try to copy a non-existant file.
+print "$!\n";
+==============================================================
+use File::Copy;
+copy("nonexistant.pl","new.pl");   #Try to copy a non-existant file.
+print "$!\n";
+print "$^E\n";
+==============================================================
+use strict 'vars';
+use strict 'refs';
+use strict 'subs';
+
+if ($^H && 2 )    {print "You're using use strict 'refs'\n"};
+if ($^H && 512 )  {print "You're using use strict 'subs'\n"};
+if ($^H && 1024 ) {print "You're using use strict 'vars'\n"};
+==============================================================
+$^M = ' ' x (2 ** 20);
+==============================================================
+print $^O;
+==============================================================
+print $^O;
+==============================================================
+$text = "text";
+$text =~ /x(?{$variable1 = 5})/;
+print $^R;
+==============================================================
+if ($^S) {
+    print "Inside eval.\n";
+} else {
+    print "Outside eval.\n";
+}
+
+eval {
+    if ($^S) {
+        print "Inside eval.\n";
+    } else {
+        print "Outside eval.\n";
+    }
+}
+==============================================================
+print $^T;
+==============================================================
+$s = localtime($^T);
+print $s;
+==============================================================
+while (<>) {
+    $time = time - $^T;
+    print "You started this script $time seconds ago.\n";
+}
+==============================================================
+if (!$^W) {
+    print "You should use the -w switch.";
+}
+
+open FILEHANDLE, "<file.dat";
+
+print FILEHANDLE "Hello!";
+
+close FILEHANDLE;
+==============================================================
+#$^W = 1;
+
+open FILEHANDLE, "<file.dat";
+
+print FILEHANDLE "Hello!";
+
+close FILEHANDLE;
+==============================================================
+print $^X;
+==============================================================
+print $^X;
+==============================================================
+print $^X;
+==============================================================
+print $^X;
+==============================================================
+while ($_ = <>) {
+    print $_;
+}
+==============================================================
+while (<>) {
+    print;
+}
+==============================================================
+while (<>) {
+   for (split) {
+       s/m/y/g;
+       print;
+   }
+}
+==============================================================
+while ($_ = <>) {
+   for $_ (split / /, $_) {
+       $_ =~ s/m/y/g;
+       print $_;
+   }
+}
+==============================================================
+$text = 'earlynowlate';
+
+$text =~ /now/;
+
+print "Prematch: \"$`\" Match: \"$&\" Postmatch: \"$'\"\n";
+==============================================================
+pipe(READER, WRITER);
+
+autoflush WRITER 1;
+
+This does the same thing: 
+
+pipe(READER, WRITER);
+
+WRITER->autoflush(1);
+==============================================================
+format standardformat_top =
+                  Employees
+First Name   Last Name    ID       Extension
+--------------------------------------------
+.
+
+format standardformat =
+@<<<<<<<<<<<<@<<<<<<<<<<<<@<<<<<<<<@<<<<
+$firstname   $lastname    $ID      $extension
+.
+
+$firstname = "Cary"; $lastname = "Grant";
+$ID = 1234; $extension = x456;
+
+open FILEHANDLE, ">report.frm" or die "Can't open file";
+
+select FILEHANDLE;
+
+$~ = standardformat;
+$^ = standardformat_top;
+
+write;
+close;
+==============================================================
+$text = "Here is the text.";
+$text =~ /(\w+) is the (\w+)./;
+
+print $+;
+==============================================================
+$text = 'ID: 1234 Moola: $5.99 Destination: Unknown';
+
+$text =~ /Cash: \$(.*) Destination|Moola: \$(.*) Destination/;
+==============================================================
+$text = 'ID: 1234 Moola: $5.99 Destination: Unknown';
+
+$text =~ /Cash: \$(.*) Destination|Moola: \$(.*) Destination/;
+
+print "Amount = \$$+";
+==============================================================
+print $<;
+==============================================================
+print $=;
+==============================================================
+format standardformat_top =
+@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"Page $%"
+                  Employees
+First Name   Last Name    ID       Extension
+--------------------------------------------
+.
+
+format standardformat =
+@<<<<<<<<<<<<@<<<<<<<<<<<<@<<<<<<<<@<<<<
+$firstname   $lastname    $ID      $extension
+.
+
+$text = "Here is the data you asked for...";
+$firstname = "Bertie";
+$lastname = "Wooster";
+$ID = 1234;
+$extension = x456;
+
+open FILEHANDLE, ">report.frm" or die "Can't open file";
+
+select FILEHANDLE;
+
+$~ = standardformat;
+$^= standardformat_top;
+$= = 1;
+
+write;
+write;
+==============================================================
+print $>;
+==============================================================
+$error = 1;
+$errorline = 100;
+
+if ($error != 0) {
+    print "Error in $0 at line $errorline.";
+}
+==============================================================
+$text = <>;
+print $ARGV;
+==============================================================
+$text = "no and yes";
+
+$text =~ s/(\w+) (\w+) (\w+)/$3 $2 $1/;
+
+print $text;
+==============================================================
+$text = "Perl is the subject.";
+
+$text =~ /\b([A-Za-z]+)\b/;
+
+print $1;
+==============================================================
+$name = "United Perl Programmers";
+
+$name =~ s/(\w)\w*/$1\./g;
+
+print "The $name meeting will now come to order, maybe.";
+==============================================================
+$v = "Hello\n";
+
+print $v;
+print $main::v;
+==============================================================
+foreach $key (keys %::) {
+    print "$key => $::{$key}\n";
+}
+==============================================================
+$v = "Hello\n";
+
+print $v;
+print $main::v;
+print $main::main::v;
+==============================================================
+print "Hello, $ENV{USER}!\n";
+==============================================================
+while(($key, $value) = each(%ENV)) {
+    print "$key => $value\n";
+}
+==============================================================
+while(($key, $value) = each(%ENV)) {
+    print "$key => $value\n";
+}
+==============================================================
+require English;
+
+print $INC{'English.pm'};
+==============================================================
+$SIG{'QUIT'} = sub {print "Got a quit signal.\n"}; 
+==============================================================
+$SIG{__WARN__} = sub {}; 
+==============================================================
+$SIG{__WARN__} = 'IGNORE';    
+==============================================================
+$SIG{__WARN__} = 'DEFAULT';   
+==============================================================
+$SIG{__WARN__} = sub {die};
+==============================================================
+$SIG{__WARN__} = sub {die "Warning: $_[0]"};
+==============================================================
+$SIG{__DIE__} = sub {print "This script is about to die!\n"};
+
+die;
+==============================================================
+$SIG{INT} = sub {print "Hey!"};
+while(<>){}
+==============================================================
+sub addem
+{
+    $value1 = @_[0];
+    $value2 = @_[1];
+    print "$value1 + $value2 = " . ($value1 + $value2) . "\n";
+}
+
+addem(2, 2);
+==============================================================
+sub addem
+{
+    $value1 = shift @_;
+    $value2 = shift @_;
+    print "$value1 + $value2 = " . ($value1 + $value2) . "\n";
+}
+
+addem(2, 2);
+==============================================================
+sub addem
+{
+    $value1 = shift;
+    $value2 = shift;
+    print "$value1 + $value2 = " . ($value1 + $value2) . "\n";
+}
+
+addem(2, 2);
+==============================================================
+sub addem
+{
+    ($value1, $value2) = @_;
+    print "$value1 + $value2 = " . ($value1 + $value2) . "\n";
+}
+
+addem(2, 2);
+==============================================================
+print join (", ", @ARGV);
+==============================================================
+print join (', ', @INC);
+==============================================================
