@@ -1,0 +1,462 @@
+====================================================================
+@array = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+print join(", ", @array);
+====================================================================
+$hash{sandwich} = ham;
+$hash{drink} = 'strawberry juice';
+
+foreach $key (keys %hash) {
+    print $hash{$key} . "\n";
+}
+====================================================================
+$hexdigit = 0xA;
+
+vec ($data, 0, 8) = $hexdigit;
+print vec ($data, 3, 1);
+print vec ($data, 2, 1);
+print vec ($data, 1, 1);
+print vec ($data, 0, 1);
+====================================================================
+$s = -5;
+
+print "The absolute value of $s = ", abs $s;
+====================================================================
+$s = -4;
+
+print "The square root = ", sqrt(abs $s);
+====================================================================
+print (4 * atan2 1, 1);
+
+====================================================================
+$y = 1.15470053837925;
+$x = 2.0;
+
+$conversion = 180 / 3.14159265358979;
+
+print "The angle = ", $conversion * atan2($y, $x), " degrees.";
+====================================================================
+use Math::BigInt;
+
+$bi = Math::BigInt->new('111111111111111111');
+
+print $bi * $bi;
+====================================================================
+use Math::BigInt;
+
+$bi1 = Math::BigInt->new('111111111111111111');
+$bi2 = Math::BigInt->new('111111111111111112');
+
+print "\$bi2 > \$bi1" if $bi2 > $bi1;
+====================================================================
+$s = 65;
+print "The character " . chr($s) . " corresponds to ASCII code $s";
+====================================================================
+foreach (65 .. 67) {
+    print chr(), " ";
+}
+====================================================================
+print pack("c3", 65, 66, 67);
+====================================================================
+use Math::Complex;
+
+$c1 = Math::Complex->new(-2,3);
+
+$c2 = Math::Complex->new(4,5);
+====================================================================
+use Math::Complex;
+
+$c1 = Math::Complex->new(-2,3);
+
+$c2 = Math::Complex->new(4,5);
+
+$c3 = $c1 * $c2;
+
+print "$c1 x $c2 = $c3\n";
+====================================================================
+use Math::Complex;
+
+$c1 = Math::Complex->new(1,1);
+
+$c2 = Math::Complex->new(2,2);
+
+print "$c2 > $c1" if $c2 > $c1;
+====================================================================
+$angle = 45;
+
+$conversion = 3.14159265358979 / 180;
+
+$radians = $angle * $conversion;
+
+print "The cosine of $angle degrees = ", cos $radians;
+====================================================================
+$hash{sandwich} = grilled;
+$hash{drink} = 'root beer';
+while(($key, $value) = each(%hash)) {print "$key => $value\n";}
+====================================================================
+$hash{sandwich} = grilled;
+$hash{drink} = 'root beer';
+while($key = each(%hash)) {print "$key => $hash{$key}\n";}
+====================================================================
+sub try (&) {
+    my $code = shift;
+    eval {&$code};
+    if ($@) {print "eval says: $@";}
+};
+try {
+    $operand1 = 1;
+    $operand2 = 0;
+    $result = $operand1 / $operand2;
+};
+====================================================================
+$hash{ID} = 12334;
+$hash{Name} = Bertie;
+$hash{Division} = Sales;
+
+if (exists($hash{Phone})) {
+    print "Key is in the hash.";
+} else {
+    print "Key is not in the hash.";
+}
+====================================================================
+$hash{ID} = 12334;
+$hash{Name} = Bertie;
+$hash{Division} = Sales;
+
+if (defined($hash{Phone})) {
+    print "Element is defined.";
+} else {
+    print "Element is not defined.";
+}
+====================================================================
+print "Welcome to the Exponentiator!\n";
+print "Enter a number: ";
+
+while ($s = <>) {
+    print "\n";
+    print " $s";
+    print "e  = " . exp($s) . "\n";
+    print "Enter a number: ";
+}
+====================================================================
+print join(" ",(grep {!/^\w{4}$/} (qw(Here are some four letter words.))));
+====================================================================
+print hex("10") , "\n";
+====================================================================
+print hex("0x10") , "\n";
+====================================================================
+print hex("ab") , "\n";
+====================================================================
+print hex("Ab") , "\n";
+====================================================================
+print hex("aB") , "\n";
+====================================================================
+print hex("AB") , "\n";
+====================================================================
+$text = "Here's the text!";
+
+print index $text, 'text';
+====================================================================
+print int 1.999;
+====================================================================
+print int 2.001;
+====================================================================
+use integer;
+
+$s1 = 11;
+$s2 = 2;
+
+print "With integer math, $s1 / $s2 = " . ($s1 / $s2);
+====================================================================
+use integer;
+
+$s1 = 11;
+$s2 = 11.2;
+
+print "\$s1 = \$s2" if ($s1 == $s2);
+====================================================================
+use integer;
+
+$value = 258;
+
+print "$value in hex = ";
+
+while($value) {
+   push @digits, (0 .. 9, a .. f)[$value & 15];
+   $value /= 16;
+}
+
+while(@digits) {
+   print pop @digits;
+}
+====================================================================
+@array = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+print join(", ", @array);
+====================================================================
+print join ("", H, e, l, l, o);
+====================================================================
+$hash{sandwich} = salami;
+$hash{drink} = 'root beer';
+
+foreach $key (keys %hash) {print $hash{$key} . "\n";}
+====================================================================
+$hash{sandwich} = salami;
+$hash{drink} = 'root beer';
+
+print "\%hash has " . keys(%hash) . " keys\n";
+====================================================================
+print lc 'HELLO!';
+====================================================================
+while (<>) {
+    print "Here's what you typed lowercased: " . lc . "\n";
+    print "Here's what you typed uppercased: " . uc . "\n";
+}
+====================================================================
+print lc "I like poems by e. e. cummings.";
+====================================================================
+$text = "Here is the text.";
+print length $text;
+====================================================================
+$s = "Hello";
+@a = unpack("C*", $s);
+print join(", ", @a);
+====================================================================
+print pack("ccc", 88, 89, 90); 
+====================================================================
+print pack("c3", 65, 66, 67);
+====================================================================
+print pack("c*", 68, 69, 70, 71);
+====================================================================
+$decimal = 100;
+
+$binary = unpack("B32", pack("N", $decimal));
+
+print $binary;
+====================================================================
+$decimal = 100;
+
+$binary = unpack("B32", pack("N", $decimal));
+
+$newdecimal = unpack("N", pack("B32", $binary));
+
+print $newdecimal;
+====================================================================
+use POSIX;                  #Add the whole POSIX library
+use POSIX qw(FUNCTION);     #Use a selected function.
+====================================================================
+use POSIX;
+
+print POSIX::tan(atan2 (1, 1));
+====================================================================
+use POSIX;
+
+$text = "Here's the text!";
+
+print "The substring starts at position " . strstr $text, 'text';
+====================================================================
+$random = rand(100);
+print $random;
+====================================================================
+$letter = ('a' .. 'z')[26 * rand];
+print $letter;
+====================================================================
+print "Some lottery numbers to try:";
+foreach (1 .. 6) {
+    print " " . int rand (50) + 1;
+}
+====================================================================
+print join(" ", reverse (1 .. 20));
+====================================================================
+@array = (1, 2 ,3);
+
+print join(", ", reverse @array);
+====================================================================
+$hash{sandwich} = grilled;
+$hash{drink} = 'root beer';
+
+%reversed = reverse %hash;
+
+while($key = each(%reversed)) {print "$key => $reversed{$key}\n";}
+====================================================================
+$string = "Hello!";
+
+$reversed = reverse($string);
+print "$reversed\n";
+====================================================================
+$text = "I said, no, I just don't know.";
+
+print "First occurence of \"no\" is at position: " .
+    index($text, "no") . "\n";
+print "Last occurence of \"no\" is at position: " .
+    rindex($text, "no") . "\n";
+====================================================================
+use POSIX;
+
+$angle = 45;
+
+$conversion = 3.14159265358979 / 180;
+
+$radians = $angle * $conversion;
+
+print "The sine of $angle degrees = ", sin $radians;
+====================================================================
+use POSIX;
+
+$angle = 45;
+
+$conversion = 3.14159265358979 / 180;
+
+$radians = $angle * $conversion;
+
+$sine = sin $radians;
+
+print "The sine of $angle degrees = ", $sine, "\n";
+====================================================================
+$asine = POSIX::asin $sine;
+
+$reconversion = 180 / 3.14159265358979;
+
+$degrees = $asine * $reconversion;
+
+print "The arcsine of $sine = ", $degrees, " degrees.";
+====================================================================
+@array = ('z', 'b', 'a', 'x', 'y', 'c');
+print join (", ", @array) . "\n";
+====================================================================
+print join(", ", sort {$a cmp $b} @array) . "\n";
+====================================================================
+print join(", ", sort {$b cmp $a} @array) . "\n";
+====================================================================
+@array = (1, 5, 6, 7, 3, 2);
+print join(", ", sort {$a <=> $b} @array) . "\n";
+====================================================================
+print join(", ", sort {$b <=> $a} @array) . "\n";
+====================================================================
+print sort {$a cmp $b} ("c", "b", "a");
+====================================================================
+print sort {$b cmp $a} ("c", "b", "a");
+====================================================================
+@name = qw(curtains towels pants pants);
+@category = qw(home home clothing clothing);
+@subcategory = qw(bedroom bathroom indoor outdoor);
+
+@indices = sort {$category[$a] cmp $subcategory[$b]
+    or $category[$a] cmp $subcategory[$b]} (0 .. $#name);
+
+foreach $index (@indices) {
+    print "$category[$index] ($subcategory[$index]): $name[$index]\n";
+}
+====================================================================
+sub sort_function
+{
+   return (shift(@_) <=> shift(@_));
+}
+
+print join (", ", sort {sort_function($a, $b)} (6, 4, 5));
+====================================================================
+print join('-', split(//, 'Hello'));
+====================================================================
+print ((split " ", "Now is the time")[3]);
+====================================================================
+$value = 1234.56789;
+print sprintf "%.4f\n", $value;
+====================================================================
+print sprintf "%.5f\n", $value;
+====================================================================
+print sprintf "%6.6f\n", $value;
+====================================================================
+print sprintf "%+.4e\n", $value;
+====================================================================
+print "Welcome to the Hypotenusizer!\n";
+print "Enter two sides of a right triangle: ";
+while (<>) {
+    ($a, $b) = split;
+    $hypotenuse = sqrt($a * $a + $b * $b);
+    print "The hypotenuse is: ", $hypotenuse, "\n";
+    print "Enter two sides of a right triangle: ";
+}
+====================================================================
+srand;
+$random = rand(100);
+print $random;
+====================================================================
+$text = "Here is the text.";
+print substr ($text, 12) . "\n";
+====================================================================
+use Math::Trig;
+
+print "Pi = ", pi, "\n";
+====================================================================
+print "Pi in degrees = ", rad2deg pi, "\n";
+====================================================================
+print "The tangent of 0 = ", tan(0), "\n";
+====================================================================
+print "The arccosine of 1 = ", acos(1), "\n";
+====================================================================
+print "The arcsine of 1 / sqrt(2) = ", rad2deg(asin(1 / sqrt(2))),
+====================================================================
+print uc 'hello!';
+====================================================================
+while (<>) {
+    print "Here's what you typed lowercased: " . lc . "\n";
+    print "Here's what you typed uppercased: " . uc . "\n";
+}
+====================================================================
+print ucfirst "i said yes!";
+====================================================================
+$headline = "Government announces tax rebate for Perl programmers!";
+
+foreach (split " ", $headline) {
+    print ucfirst, " ";
+}
+====================================================================
+$string = pack("ccc", 88, 89, 90);
+
+print join(", ", unpack "ccc", $string);
+====================================================================
+vec ($data, 0, 32) = 0x11;
+
+$bitstring = unpack("B*", $data);
+
+print $bitstring;
+====================================================================
+$decimal = 17;
+
+$binary = unpack("B32", pack("N", $decimal));
+
+print $binary;
+====================================================================
+$decimal = 17;
+
+$binary = unpack("B32", pack("N", $decimal));
+
+$newdecimal = unpack("N", pack("B32", $binary));
+
+print $newdecimal;
+====================================================================
+open INFILEHANDLE, "<data.uue";
+open OUTFILEHANDLE, ">data.dat";
+
+binmode OUTFILEHANDLE;    #Necessary in MS DOS!
+
+while (defined($line = <INFILEHANDLE>)) {
+    print OUTFILEHANDLE unpack('u*', $line);
+}
+
+close INFILEHANDLE;
+close OUTFILEHANDLE;
+====================================================================
+$hash{sandwich} = 'ham and cheese';
+$hash{drink} = 'diet cola';
+
+foreach $value (values %hash) {
+    print "$value\n";
+}
+====================================================================
+$hexdigit = 0xA;
+
+vec ($data, 0, 8) = $hexdigit;
+print vec ($data, 3, 1);
+print vec ($data, 2, 1);
+print vec ($data, 1, 1);
+print vec ($data, 0, 1);
+====================================================================

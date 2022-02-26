@@ -1,0 +1,265 @@
+============================================================
+system "stty cbreak </dev/tty >&1"; 
+
+print ">";
+
+while (($char = getc) ne 'q') {
+    print "\n";
+    print "You typed $char\n>";
+}
+============================================================
+system "stty cbreak </dev/tty >&1";
+============================================================
+print "Type something...\n";
+
+local $SIG{ALRM} = sub { print "Sorry, timed out.\n"; exit; };
+============================================================
+print "Type something...\n";
+
+local $SIG{ALRM} = sub { print "Sorry, timed out.\n"; exit; };
+alarm(5);
+
+while(<>) {
+    print "Thanks, please type again...\n";
+    alarm(5);
+}
+============================================================
+use Carp;
+
+sub callme
+{
+    confess "There's a problem!";
+}
+
+callme;
+============================================================
+print "Please type four characters...\n";
+
+for (1 .. 4) {
+    $char = <>;
+    chomp $char;
+    $word .= $char;
+}
+
+print "You typed: " , $word;
+============================================================
+print "Please type four characters...\n";
+
+for (1 .. 4) {
+    $char = <>;
+    $word .= $char;
+}
+
+print "You typed: " , $word;
+============================================================
+Use Curses;
+
+$monitor = new Curses;
+
+$monitor->standout();
+
+$monitor->addstr(20, 20, 'Hello from Perl!');
+
+$monitor->standend();
+
+$monitor->refresh;
+============================================================
+$filename = "file.dat";
+
+open FILEHANDLE, ">$filename" or die "Cannot open $filename\n";
+============================================================
+$filename = "file.dat";
+
+open FILEHANDLE, ">$filename" or die $!;
+============================================================
+$filename = "file.dat";
+
+open FILEHANDLE, ">$filename" or die $^E;
+============================================================
+system "stty cbreak </dev/tty >&1";
+
+print ">";
+
+while (($char = getc) ne 'q') {
+    print "\n";
+    print "You typed $char\n>";
+}
+============================================================
+system "stty cbreak </dev/tty >&1";
+
+print "Type an up arrow:";
+$c1 = getc;       
+$c2 = getc;       
+$c3 = getc;       
+
+if ((ord($c1) == 27) && ($c2 eq '[') && ($c3 eq 'A')) {        
+    print "You typed an up arrow.";
+} else {
+    print "You did not type an up arrow.";
+}
+============================================================
+use HotKey;
+$char = readkey();
+print "You typed: $char\n";
+============================================================
+open(STDERR, ">error.log") || die "Can't redirect stderr to error log.";
+print STDERR "There's a problem!";
+============================================================
+use POSIX qw(:termios_h);
+
+$termios = POSIX::Termios->new;
+$termios->getattr();
+============================================================
+use POSIX qw(:termios_h);
+
+$termios = POSIX::Termios->new;
+$termios->getattr();
+
+$termios->setcc(VERASE, ord('<'));
+$termios->setcc(VKILL, ord('Q'));
+$termios->setattr(1, TCSANOW);
+============================================================
+use POSIX qw(:termios_h);
+
+$termios = POSIX::Termios->new;
+$termios->getattr();
+
+$termios->setcc(VERASE, ord('<'));
+$termios->setcc(VKILL, ord('Q'));
+$termios->setattr(1, TCSANOW);
+
+print("Use < to erase and Q to quit.\n");
+print ">";
+
+while (defined($input = <STDIN>)) {
+    print "Thank you for typing $input";
+    print ">";
+}
+============================================================
+$a = "Hello"; $b = " to"; $c = " you"; 
+$d = " from"; $e = " Perl!";
+
+print $a, $b, $c, $d, $e;
+============================================================
+$value = 1234.56789;
+printf "%.4f\n", $value;
+============================================================
+printf "%.5f\n", $value;
+============================================================
+printf "%6.6f\n", $value;
+============================================================
+printf "%+.4e\n", $value;
+============================================================
+use Term::ANSIColor;
+
+print color("red"), "That is an error!\n", color("reset");
+============================================================
+while(<>) {
+
+    print;
+
+}
+============================================================
+open(STDIN, "<redirect.pl") || die "Problem redirecting STDIN.";
+============================================================
+============================================================
+use POSIX;
+use Term::Cap;
+
+$termios = POSIX::Termios->new();
+
+$termios->getattr;
+$speed = $termios->getospeed;
+
+$termcap = Term::Cap->Tgetent({TERM => undef, OSPEED => $speed });
+
+$termcap->Tputs('cl', 1, STDOUT);
+============================================================
+use POSIX;
+use Term::Cap;
+
+$termios = POSIX::Termios->new;
+$termios->getattr;
+$speed = $termios->getospeed;
+
+$termcap = Term::Cap->Tgetent ({TERM => undef, OSPEED => $speed });
+$termcap->Tputs('cl', 1, *STDOUT);
+$termcap->Tgoto('cm', 40, 5, *STDOUT);
+
+print "Perl";
+============================================================
+use Term::ReadKey;
+
+ReadMode('cbreak');
+
+$char = ReadKey(0);
+
+ReadMode('normal');
+
+print "You typed: $char.\n";
+============================================================
+use Term::ReadKey;
+
+ReadMode('cbreak');
+
+if (defined ($char = ReadKey(-1)) ) {
+    print "This key was waiting: $char.";
+} else {
+    print "Sorry, no key was waiting.";
+}
+
+ReadMode('normal');        
+============================================================
+use Term::ReadKey;
+
+($widthchars, $heightchars, $widthpixels, $heightpixels) 
+= GetTerminalSize();
+
+print "Your screen is $heightpixels x $widthpixels pixels.";
+============================================================
+use Term::ReadKey;
+
+print "Type your password: ";
+
+ReadMode('noecho');
+
+$password = ReadLine(0);
+============================================================
+use Term::ReadLine;
+
+$term = Term::ReadLine->new("SuperDuperDataCrunch");
+
+$prompt = "%";
+
+while (($line = $term->readline($prompt)) ne 'q') {
+
+    $term->addhistory($line);
+
+    print "You typed: $line\n";
+
+}
+============================================================
+$@ = "Overflow error";
+warn;
+============================================================
+warn "Something's", " rotten", " in", " Denmark";
+============================================================
+local $SIG{__WARN__} = sub {}; 
+============================================================
+format STDOUT_TOP =
+                  Employees
+First Name   Last Name    ID       Extension
+--------------------------------------------
+.
+
+format STDOUT =
+@<<<<<<<<<<<<@<<<<<<<<<<<<@<<<<<<<<@<<<<
+$firstname   $lastname    $ID      $extension
+.
+
+$firstname = "Jimmy"; 
+$lastname = "Stewart";
+$ID = 1234; $extension = x456;
+
+write;
+============================================================
