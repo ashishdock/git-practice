@@ -1,0 +1,304 @@
+===============================================================
+use Safe; 
+
+$safecompartment = new Safe;
+$safecompartment->permit(qw(print));
+$result = $safecompartment->reval("print \"Hello!\";");
+===============================================================
+use POSIX 'strftime';
+print strftime "Here's the date: %m/%d/%Y\n", localtime;
+===============================================================
+use File::Copy;
+
+copy("file.txt","file2.txt");
+===============================================================
+use Benchmark;
+
+$timestamp1 = new Benchmark;
+
+for ($loop_index = 0; $loop_index < 1_000_000; $loop_index++) {
+    $variable1 = 1;
+}
+
+$timestamp2 = new Benchmark;
+$timedifference = timediff($timestamp2, $timestamp1);
+
+print "The loop took", timestr($timedifference);
+===============================================================
+use Class::Struct;
+
+struct( produce => {
+        vegetable => item,
+        fruit => item,
+});
+===============================================================
+struct( item => [
+        name  => '$',
+        number => '$',
+]);
+
+===============================================================
+my $grocery = new produce;
+===============================================================
+$grocery->fruit->name('bananas');
+$grocery->fruit->number(1000);
+===============================================================
+print "Yes, we have ", $grocery->fruit->number, " ",
+    $grocery->fruit->name, ".";
+===============================================================
+use constant FINAL_MEDIEVAL_YEAR => 1491;
+use constant MONTH_OF_SUNDAYS    => 30 * 7;
+use constant PI                  => 4 * atan2 1, 1;
+
+print "Pi = " PI;
+===============================================================
+use Cwd;
+
+$dir = cwd;
+print $dir;
+===============================================================
+use Data::Dumper;
+
+$arrayref1 = [1, 2, 3];
+$arrayref2 = [4, 5, 6];
+
+print Data::Dumper->Dump([$arrayref1, $arrayref2], [arrayref1, arrayref2]);
+===============================================================
+$array1 = [1, 2, 3];
+$array2 = [4, 5, 6];
+
+$Data::Dumper::Indent = 3;
+
+print Data::Dumper->Dump([$arrayref1, $arrayref2], [arrayref1, arrayref2]);
+===============================================================
+use Data::Dumper;
+
+$scalar = 0;
+$hashref = {};
+$arrayref = [$scalar, $hashref];
+$hashref->{arrayref} = $arrayref;
+
+print Data::Dumper->Dump([$arrayref, $hashref], [qw(arrayref hashref)]);
+===============================================================
+$Data::Dumper::Deepcopy = 1;
+
+print Data::Dumper->Dump([$arrayref, $hashref], [qw(arrayref hashref)]);
+===============================================================
+===============================================================
+use Date::DateCalc qw(Add_Delta_Days);
+($new_year, $new_month, $new_day) = Add_Delta_Days($year, $month, $day, 
+$delta_days);
+===============================================================
+use Date::Calc qw(Add_Delta_DHMS);
+($new_year, $new_month, $new_day, $new_hour, $new_minute, $new_second) = 
+Add_Delta_DHMS($year, $month, $day, $hour, $minute, $second,
+    $days_offset, $hour_offset, $minute_offset, $second_offset );
+===============================================================
+use Date::Calc qw(Delta_Days);
+===============================================================
+use Date::Calc qw(Delta_DHMS);
+($days, $hours, $minutes, $seconds) =
+Delta_DHMS($early_year, $early_month, $early_day, $early_hour, $minute1, 
+    $early_seconds, $later_year, $later_month, $later_day, $later_hour,  
+    $later_minute, $seconds); 
+===============================================================
+use Date::Calc qw(Add_Delta_DHMS);
+
+($year, $month, $day, $hour, $minute, $second) =
+Add_Delta_DHMS(2000, 12, 31, 23, 59, 59, 0, 0, 0, 1);
+
+print "It's $year! Happy New Year!";
+===============================================================
+use diagnostics;
+
+print NOT_A_FILEHANDLE "Hello!\n";
+print $never_declared/0;
+===============================================================
+$text = 'This is the time.';
+$text =~ /time/;
+print "Matched: \"$&\".\n";
+===============================================================
+use English;
+
+$text = 'This is the time.';
+$text =~ /time/;
+print "Matched: \"$MATCH\".\n";
+===============================================================
+use Env; 
+
+$path2 = $PATH;
+$path2 =~ tr/:/\n/;
+
+print $path2;
+===============================================================
+use Env qw(PATH HOME);
+
+$path2 = $PATH;
+$path2 =~ tr/:/\n/;
+
+print $path2;
+===============================================================
+use File::Compare;
+
+if (compare("file1.txt","file2.txt")) {
+
+    print "Those files are not equal.\n";
+
+} else {
+
+    print "Those files are equal.\n";
+
+}
+===============================================================
+use File::Find;
+
+find sub {print "Here's a file: $File::Find::name\n"}, '.';
+===============================================================
+use File::Find;
+
+find sub {print "Here's a file: $File::Find::name\n" if !-d}, '.';
+===============================================================
+find sub {print "Here's a text file: $File::Find::name\n" if -T}, '.';
+===============================================================
+use File::Find;
+
+find sub {
+
+    $File::Find::prune = 1 if /dir1/;
+
+    print "Here's a text file: $File::Find::name\n" if -T
+
+    },
+    '.';
+===============================================================
+use FileCache;
+
+cacheout $name;
+
+print $name $output_data;
+===============================================================
+use Getopt::Std;
+
+getopt('pMN');
+
+print "-p switch: $opt_p, -M switch: $opt_M, -N switch: $opt_N";
+===============================================================
+use Getopt::Long;
+
+GetOptions("german"  => \$german,
+           "french"  => \$french);
+
+if ($german) {
+    print "Guten Tag!\n";
+}
+
+if ($french) {
+    print "Bonjour!\n";
+}
+
+if (!$german && !$french) {
+    print "Hello!\n";
+}
+===============================================================
+use Getopt::Long;
+
+GetOptions("file=s"  => \$file);
+
+if ($file) {
+    print "File name: $file\n";
+}
+===============================================================
+use Safe;
+
+$safecompartment = new Safe;
+
+$safecompartment->permit(qw(print));
+
+$result = $safecompartment->reval("print \"Hello!\";");
+===============================================================
+use Shell;
+
+$uptime = uptime();
+
+print $uptime;
+===============================================================
+use Shell;
+
+$dir = dir();
+
+print $dir;
+===============================================================
+use Shell;
+
+$text = cat("file.txt");
+
+print $text;
+===============================================================
+use strict 'refs';
+$variable = 5;
+$reference = "variable";
+print $$reference; 
+===============================================================
+use strict 'subs';
+
+sub handler
+{
+    print "I was interrupted.\n";
+}
+
+$SIG{INT} = \&handler;
+===============================================================
+$hash{'this'} = that;
+===============================================================
+no strict 'vars';
+===============================================================
+use Text::Abbrev;
+
+%hash = abbrev qw(Now is the time);
+
+foreach $key (keys %hash) {
+    print "$key => $hash{$key}\n";
+}
+===============================================================
+use Text::Tabs;
+
+$tabstop = 8;
+
+print expand("Hello\tthere!");
+===============================================================
+use Text::Wrap qw(wrap $columns);
+
+$columns = 12;
+
+print wrap("", "", "This text just seems to go on and on and on and on and",
+    "on and on and on and on and on!");
+===============================================================
+use Tie::RefHash;
+
+$s = 5;
+
+$hash{a} = \$s;
+
+print ${$hash{a}};
+===============================================================
+use Tie::IxHash;
+
+tie %hash, "Tie::IxHash";
+===============================================================
+use Tie::IxHash;
+
+tie %hash, "Tie::IxHash";
+
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+while(($key, $value) = each(%hash)) {
+    print "$key => $value\n";
+}
+===============================================================
+use Time::Local;
+print timelocal(0, 0, 0, 1, 1, 2000);
+===============================================================
+use vars qw($scalarname @arrayname %hashname);
+===============================================================

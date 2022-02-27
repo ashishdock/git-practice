@@ -1,0 +1,633 @@
+==================================================================
+open (FILEHANDLE, ">hello.txt") or die "Cannot open hello.txt";
+
+print FILEHANDLE "Hello!";
+close (FILEHANDLE);
+==================================================================
+open (FILEHANDLE, "<hello.txt") or die ("Cannot open hello.txt");
+
+print <FILEHANDLE>;
+close (FILEHANDLE);
+==================================================================
+use IO::File;
+$filehandle = new IO::File;
+
+$filehandle->open(">hello.txt") or die "Cannot open hello.txt";
+
+$filehandle->print("Hello!");
+$filehandle->close;
+==================================================================
+use IO::File;
+$filehandle = new IO::File;
+
+$filehandle->open("<hello2.txt") or die "Cannot open hello.txt";
+
+print <$filehandle>;
+$filehandle->close;
+==================================================================
+open (FILEHANDLE, ">hello.txt") or die "Cannot open hello.txt";
+print FILEHANDLE "Hello!";
+
+close (FILEHANDLE);
+==================================================================
+use IO::File;
+$filehandle = new IO::File;
+
+$filehandle->open(">hello.txt") or die "Cannot open hello.txt";
+
+$filehandle->print("Hello!");
+
+$filehandle->close;
+==================================================================
+use IO::File;
+$filehandle = new IO::File;
+
+if ($filehandle->open("<hello.txt")) {
+
+    print <$filehandle>;
+
+    undef $filehandle;
+}
+==================================================================
+open (FILEHANDLE, ">hello.txt") or die ("Cannot open hello.txt");
+
+print FILEHANDLE "Hello!";
+
+close (FILEHANDLE);
+==================================================================
+use IO::File;
+$filehandle = new IO::File;
+
+$filehandle->open(">hello.txt") or die "Cannot open hello.txt";
+
+$filehandle->print("Hello!");
+$filehandle->close;
+==================================================================
+open (FILEHANDLE, ">array.dat") 
+    or die ("Cannot open array.dat");
+$, = "\n";                 #Set output separator to a comma
+@array = (1, 2, 3);
+
+print FILEHANDLE @array;
+
+close FILEHANDLE;
+==================================================================
+open (FILEHANDLE, "<array.dat") 
+    or die ("Cannot open array.dat");
+
+chomp(@array = <FILEHANDLE>);
+
+close FILEHANDLE;
+print join (', ', @array);
+==================================================================
+open (FILEHANDLE, ">format.txt") or die ("Cannot open format.txt");
+
+format FILEHANDLE =
+@<<<<<<<<<<<@>>>>>>>>>>>>>>>
+$text1      $text2
+.
+
+$text1 = "Hello";
+$text2 = "there!";
+
+write FILEHANDLE;
+close (FILEHANDLE);
+==================================================================
+$filehandle->write(BUFFER, LENGTH [, OFFSET]) 
+==================================================================
+use IO::File;
+$filehandle = new IO::File;
+
+$filehandle->open(">hello.txt") or die "Cannot open hello.txt";
+$text = "Hello!";
+
+$filehandle->write($text, length($text));
+$filehandle->close;
+==================================================================
+use IO::File;
+
+format TEXTFORMAT =
+@<<<<<<<<<<<@>>>>>>>>>>>>>>>
+$text1      $text2
+.
+
+$text1 = "Hello";
+$text2 = "there!";
+==================================================================
+$filehandle = new IO::File;
+
+$filehandle->open(">format.txt") or die "Cannot open format.txt";
+==================================================================
+$filehandle->format_write (::TEXTFORMAT);
+$filehandle->close;
+==================================================================
+open (FILEHANDLE, ">data.txt") 
+    or die ("Cannot open data.txt");
+
+print FILEHANDLE "Hello\nthere!";
+
+close (FILEHANDLE);
+==================================================================
+open (FILEHANDLE, ">data.txt") 
+    or die ("Cannot open data.txt");
+
+binmode FILEHANDLE;
+
+print FILEHANDLE "Hello\nthere!";
+
+close (FILEHANDLE);
+==================================================================
+open INFILEHANDLE, "<data.uue";
+open OUTFILEHANDLE, ">data.dat";
+
+binmode OUTFILEHANDLE;    #Necessary in MS DOS!
+
+while (defined($line = <INFILEHANDLE>)) {
+    print OUTFILEHANDLE unpack('u*', $line);
+}
+
+close INFILEHANDLE;
+close OUTFILEHANDLE;
+==================================================================
+open (FILEHANDLE, "<file.txt") 
+    or die ("Cannot open file.txt");
+while (<FILEHANDLE>){
+    print;
+}
+==================================================================
+use IO::File;
+$filehandle = new IO::File;
+
+$filehandle->open("<hello2.txt") or die "Cannot open hello.txt";
+
+print <$filehandle>;
+$filehandle->close;
+==================================================================
+open (FILEHANDLE, "<file.txt") or die "Cannot open file.txt";
+
+$text = "";
+
+while (read (FILEHANDLE, $newtext, 1)){
+    $text .= $newtext;
+}
+
+print $text;
+==================================================================
+use IO::File;
+
+$filehandle = new IO::File;
+$filehandle->open("<file.txt") or die "Could not open file.txt";
+
+$text = "";
+
+while ($filehandle->read($newtext, 1)) {
+    $text .= $newtext;
+}
+
+print $text;
+
+$filehandle->close;
+==================================================================
+open (FILEHANDLE, "<file.txt") or die ("Cannot open file.txt");
+
+while (defined($char = getc FILEHANDLE)){
+
+       print $char;
+
+}
+
+close FILEHANDLE;
+==================================================================
+use IO::File;
+
+$filehandle = new IO::File;
+$filehandle->open("<file.txt") or die "Could not open file.txt";
+
+while (defined($char = $filehandle->getc)) {
+
+    print $char;
+
+}
+
+$filehandle->close;
+==================================================================
+open (FILEHANDLE, "<file.txt") or die "Cannot open file.txt";
+
+seek FILEHANDLE, 12, 0;
+
+while (<FILEHANDLE>){
+    print;
+}
+
+close (FILEHANDLE);
+==================================================================
+use IO::File;
+use IO::Seekable;
+
+$filehandle = new IO::File;
+$filehandle->open("<file.txt") or die "Cannot open file.txt";
+
+$filehandle->seek(12, 0);
+
+while (<$filehandle>){
+    print;
+}
+
+$filehandle->close;
+==================================================================
+open (FILEHANDLE, "<file.txt") or die "Cannot open file.txt";
+
+seek FILEHANDLE, 12, 0;
+
+print tell FILEHANDLE;
+
+close (FILEHANDLE);
+==================================================================
+use IO::File;
+use IO::Seekable;
+
+$filehandle = new IO::File;
+$filehandle->open("<file.txt") or die "Cannot open file.txt";
+
+$filehandle->seek(12, 0);
+
+print $filehandle->tell;
+
+$filehandle->close;
+==================================================================
+$filename = 'file.txt';
+
+($dev, $ino, $mode, $nlink, $uid, $gid, $rdev, $size, $atime,
+    $mtime, $ctime, $blksize, $blocks) = stat($filename);
+
+print "$filename is $size bytes long.";
+==================================================================
+$filename = 'file.txt';
+
+open FILEHANDLE, "<$filename";
+
+($dev, $ino, $mode, $nlink, $uid, $gid, $rdev, $size, $atime,
+    $mtime, $ctime, $blksize, $blocks) = stat(FILEHANDLE);
+
+print "$filename is $size bytes long.";
+==================================================================
+use IO::File;
+$filename = 'file.txt';
+
+$filehandle = new IO::File;
+$filehandle->open("<$filename") or die "Cannot open $filename";
+
+($dev, $ino, $mode, $nlink, $uid, $gid, $rdev, $size, $atime,
+    $mtime, $ctime, $blksize, $blocks) = $filehandle->stat;
+
+print "$filename is $size bytes long.";
+==================================================================
+use POSIX;
+
+$filename = 'file.txt';
+
+$descrip = POSIX::open($filename, POSIX::O_RDONLY);
+($dev, $ino, $mode, $nlink, $uid, $gid, $rdev, $size, $atime,
+$mtime, $ctime, $blksize, $blocks) = POSIX::fstat($descrip);
+
+print "$filename is $size bytes long.";
+==================================================================
+open (FILEHANDLE, ">hello.txt") 
+    or die ("Cannot open hello.txt");
+
+select FILEHANDLE;
+
+print "Hello!";
+close (FILEHANDLE);
+==================================================================
+open (FILEHANDLE, "<file.txt") or die "Cannot open file.txt";
+
+$text = "";
+
+until (eof FILEHANDLE) {
+    read (FILEHANDLE, $newtext, 1) 
+    $text .= $newtext;
+}
+
+print $text;
+==================================================================
+use IO::File;
+
+$filehandle = new IO::File;
+$filehandle->open("<file.txt") or die "Could not open file.txt";
+
+$text = "";
+
+until ($filehandle->eof) {
+    $filehandle->read($newtext, 1);
+    $text .= $newtext;
+}
+
+print $text;
+
+$filehandle->close;
+==================================================================
+while (<>) {
+    print;
+    if (eof()) {            
+
+        print "And that's it!";
+
+    }
+}
+==================================================================
+$infile = $ARGV[0];
+$outfile = $ARGV[1];
+
+open (INFILEHANDLE, "<$infile") or die ("Cannot open file.");
+open (OUTFILEHANDLE, ">$outfile") or die ("Cannot open file.");
+
+binmode OUTFILEHANDLE;
+
+while (defined($line = <INFILEHANDLE>)) {
+    $line =~ s/\r//g;
+    print OUTFILEHANDLE $line;
+}
+
+close INFILEHANDLE;
+close OUTFILEHANDLE;
+==================================================================
+$infile = $ARGV[0];
+$outfile = $ARGV[1];
+
+open (INFILEHANDLE, "<$infile") or die ("Cannot open file.");
+open (OUTFILEHANDLE, ">$outfile") or die ("Cannot open file.");
+
+binmode OUTFILEHANDLE; 
+
+while (defined($line = <INFILEHANDLE>)) {
+    $line =~ s/\n/\r\n/g;
+    print OUTFILEHANDLE $line;
+}
+
+close INFILEHANDLE;
+close OUTFILEHANDLE;
+==================================================================
+while (<DATA>) {
+    print;
+}
+__DATA__
+Here
+is
+the
+text!
+==================================================================
+while (<DATA>) {
+    print;
+}
+__END__
+Here
+is
+the
+text!
+==================================================================
+$number_lines = 0;
+
+open(FILEHANDLE, "file.txt") or die "Can not open file.txt";
+
+while (<FILEHANDLE>) {
+    ++$number_lines;
+}
+
+close FILEHANDLE;
+
+print "The number of lines in file.txt = $number_lines.";
+==================================================================
+$number_lines = 0;
+
+open(FILEHANDLE, "file.txt") or die "Can not open file.txt";
+
+$number_lines += tr/\n/\n/ while (read FILEHANDLE, $_, 1000);
+
+close FILEHANDLE;
+
+print "The number of lines in file.txt = $number_lines.";
+==================================================================
+sub printem
+{
+    my $file = shift;
+
+    while (<$file>) {
+         print;
+    }
+}
+
+open FILEHANDLE, "<file.txt" or die "Can not open file";
+
+printem FILEHANDLE;
+==================================================================
+sub printem
+{
+    my $file = shift;
+
+    while (<$file>) {
+         print;
+    }
+}
+
+open FILEHANDLE, "<file.txt" or die "Can not open file";
+
+printem *FILEHANDLE;
+==================================================================
+sub printem
+{
+    my $file = shift;
+
+    while (<$file>) {
+         print;
+    }
+}
+
+open FILEHANDLE, "<file.txt" or die "Can not open file";
+
+printem \*FILEHANDLE;
+==================================================================
+sub printem
+{
+    my $file = shift;
+
+    while (<$file>) {
+         print;
+    }
+}
+
+open FILEHANDLE, "<file.txt" or die "Can not open file";
+
+printem *FILEHANDLE{IO};
+==================================================================
+use IO::File;
+
+sub printem
+{
+    my $file = shift;
+
+    while (<$file>) {
+         print;
+    }
+}
+
+$filehandle = new IO::File;
+$filehandle->open("<file.txt") or die "Could not open file.txt";
+
+printem $filehandle;
+==================================================================
+open FILEHANDLE, "<file.txt" or die "Can not open file";
+
+*FILEHANDLE2 = *FILEHANDLE;
+
+while (<FILEHANDLE2>) {
+    print;
+}
+==================================================================
+open FILEHANDLE, "<file.txt" or die "Can not open file";
+
+open (FILEHANDLE2, "<&FILEHANDLE");
+
+while (<FILEHANDLE2>) {
+    print;
+}
+==================================================================
+open FILEHANDLE, "<file.txt" or die "Can not open file";
+
+open (FILEHANDLE2, "<&=FILEHANDLE");
+
+while (<FILEHANDLE2>) {
+    print;
+}
+==================================================================
+open FILEHANDLE, "<file.txt" or die "Can not open file";
+open FILEHANDLE2, "<otherfile.txt" or die "Can not open file";
+
+open (FILEHANDLE, "<&FILEHANDLE2");
+
+while (<FILEHANDLE>) {
+    print;
+}
+==================================================================
+use IO::File;
+use IO::Seekable;
+
+$filehandle = IO::File->new_tmpfile()
+or die "Can not make temporary file";
+==================================================================
+$filehandle->print("Hello!");
+==================================================================
+$filehandle->seek(0, 0);
+==================================================================
+print <$filehandle>;
+
+$filehandle->close;
+==================================================================
+@a1 = (1, 2, 3);
+==================================================================
+open FILEHANDLE, ">array.dat" or die "Can not open array.dat";
+
+print FILEHANDLE "@a1";
+
+close FILEHANDLE;
+==================================================================
+open FILEHANDLE2, "<array.dat" or die "Can not open array.dat";
+
+@a2 = split(" ", <FILEHANDLE2>);
+
+print "@a2";
+
+close FILEHANDLE2;
+==================================================================
+use Storable;
+
+@a = (1, 2, 3);
+
+store(\@a, "array.dat");
+
+@a2 = @{retrieve("array.dat")};
+
+print $a2[1];
+==================================================================
+%hash = (
+    meat => turkey,
+    drink => tea,
+    cheese => colby,
+);
+==================================================================
+open FILEHANDLE, ">hash.dat" or die "Can not open hash.dat";
+
+$, = " ";
+
+print FILEHANDLE %hash;
+
+close FILEHANDLE;
+==================================================================
+open FILEHANDLE2, "<hash.dat" or die "Can not open hash.dat";
+
+%hash2 = split(" ", <FILEHANDLE2>);
+
+close FILEHANDLE2;
+==================================================================
+foreach $key (keys %hash2) {
+
+    print "$key => $hash2{$key}\n";
+
+}
+==================================================================
+use Storable;
+
+%hash = (
+    meat => turkey,
+    drink => tea,
+    cheese => colby,
+);
+
+store(\%hash, "hash.dat");
+
+%hash2 = %{retrieve("hash.dat")};
+
+print $hash2{drink};
+==================================================================
+$time = time;
+
+$s = pack ("a8a8L", Mike, Flash, $time);
+==================================================================
+open FILEHANDLE, ">file.dat" or die "Can not open file.dat";
+print FILEHANDLE $s;
+close FILEHANDLE;
+
+open FILEHANDLE2, "<file.dat" or die "Can not open file.dat";
+$s2 = <FILEHANDLE2>;
+close FILEHANDLE2;
+==================================================================
+($first, $last, $time) = unpack ("a8a8L", $s2);
+
+print "First name: $first\n";
+print "Last name: $last\n";
+print "Time: ", scalar localtime($time);
+==================================================================
+print join ("\n", glob ('*'));
+==================================================================
+print join ("\n", glob ('/home/steve/*'));
+==================================================================
+print join ("\n", glob ('C:/*'));
+==================================================================
+print join ("\n", glob ('C:\\*'));
+==================================================================
+opendir(DIRECTORY, '.') 
+or die "Can't open current directory.";
+
+print join (', ', readdir(DIRECTORY));
+
+closedir DIRECTORY;
+==================================================================
+chdir '..';
+
+opendir(DIRECTORY, '.') 
+    or die "Can't open directory.";
+
+print join (', ', readdir(DIRECTORY));
+
+closedir DIRECTORY;
+==================================================================
