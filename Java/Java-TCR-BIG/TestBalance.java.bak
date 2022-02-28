@@ -1,0 +1,3 @@
+import mypack.*;
+
+class TestBalance

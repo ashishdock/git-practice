@@ -1,0 +1,12 @@
+package p1;
+
+class SamePackage
+{
+	SamePackage()
+	{
+		
+		Protection p = new Protection();
+		System.out.println("same package constructor");
+		System.out.println("n = " + p.n);
+	}
+}
