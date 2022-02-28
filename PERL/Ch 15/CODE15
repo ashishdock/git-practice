@@ -1,0 +1,645 @@
+=======================================================================
+use Tk;  
+
+my $main = MainWindow->new;
+
+MainLoop;
+=======================================================================
+use Tk;
+
+my $main = MainWindow->new;
+
+$main->Button(-text => 'End',
+    -command => [$main => 'destroy']
+)->pack;
+
+MainLoop;
+=======================================================================
+use Tk;
+
+my $main = MainWindow->new;
+
+$main->Button(-text => 'Hello',
+    -command => [\&printem, "Hello\n"]
+)->pack;
+
+$main->Button(-text => 'End',
+    -command => [$main => 'destroy']
+)->pack;
+
+MainLoop;
+
+sub printem
+{
+    print shift;
+}
+=======================================================================
+$main->Button(-text => 'Hello',
+    -command => [\&printem, "Hello\n"]
+)->pack;
+=======================================================================
+use Tk;
+
+my $main = MainWindow->new;
+
+MainLoop;
+=======================================================================
+use Tk;
+
+my $main = MainWindow->new;
+
+$main->Label(-text => 'Hello!',
+    -relief => 'sunken'
+)->pack;
+
+$main->Label(-text => 'Hello!'
+)->pack;
+
+$main->Label(-text => 'Hello!',
+    -relief => 'raised'
+)->pack;
+
+MainLoop;
+=======================================================================
+use Tk;
+
+my $main = MainWindow->new;
+
+$main->Button(-text => 'Hello',
+    -command => [\&printem, "Hello\n"]
+)->pack;
+
+$main->Button(-text => 'End',
+    -command => [$main => 'destroy']
+)->pack;
+
+MainLoop;
+
+sub printem
+{
+    print shift;
+}
+=======================================================================
+$main->Button(-text => 'Hello',
+    -command => [\&printem, "Hello\n"]
+)->pack; 
+=======================================================================
+use Tk;
+
+$main = MainWindow->new();
+
+$main->Button( -text => "Click Me!",
+    -command => \&display
+)->pack;
+
+$text1 = $main->Text ('-width'=> 40, '-height' => 2
+)->pack;
+
+sub display
+{
+    $text1->insert('end', "Hello!");
+}
+
+MainLoop;
+=======================================================================
+use Tk;
+
+$main = MainWindow->new();
+
+$main->Button( -text => "Click Me!",
+    -command => \&display
+)->pack(-side => "left");
+
+$text1 = $main->Text ('-width'=> 40, '-height' => 2
+)->pack;
+
+sub display
+{
+    $text1->insert('end', "Hello!");
+}
+
+MainLoop;
+=======================================================================
+$main->Button( -text => "Click Me!",
+    -command => \&display
+)->pack;
+
+sub display
+{
+    $text1->insert('end', "Hello!");
+}
+=======================================================================
+use Tk;
+
+$main = MainWindow->new();
+
+$main->Button( -text => "Click Me!",
+    -command => \&display
+)->pack(-side => "left");
+
+$text1 = $main->Text ('-width'=> 40, '-height' => 2
+)->pack;
+
+$text1->bind('<Double-1>', \&display);
+
+sub display
+{
+    $text1->insert('end', "Hello!");
+}
+
+MainLoop;
+=======================================================================
+use Tk;
+
+$main = MainWindow->new();
+
+$main->Radiobutton( -text => "Radio 1",
+    -command => sub{
+    $text1->delete('1.0', 'end');
+    $text1->insert('end', "You clicked radio 1");}
+)->pack;
+
+$main->Radiobutton( -text => "Radio 2",
+    -value => "0",
+    -command => sub{
+    $text1->delete('1.0', 'end');
+    $text1->insert('end', "You clicked radio 2");
+    }
+)->pack;
+
+$main->Checkbutton( -text => "Check 1",
+    -command => sub{
+    $text1->delete('1.0', 'end');
+    $text1->insert('end', "You clicked check 1");
+    }
+)->pack;
+
+$main->Checkbutton( -text => "Check 2",
+    -command => sub{
+    $text1->delete('1.0', 'end');
+    $text1->insert('end', "You clicked check 2");
+    }
+)->pack;
+
+$text1 = $main->Text ('-width'=> 40, '-height' => 2)->pack;
+
+MainLoop;
+=======================================================================
+$main->Checkbutton( -text => "Check 1",
+    -variable => \$check1,
+    -command => sub{
+    $text1->delete('1.0', 'end');
+    }
+)->pack;
+=======================================================================
+$main->Checkbutton( -text => "Check 1",
+    -variable => \$check1,
+    -command => sub{
+    $text1->delete('1.0', 'end');
+    $text1->insert('end', "\$check1 is set to: $check1");
+    }
+)->pack;
+=======================================================================
+use Tk;
+
+$main = MainWindow->new();
+
+$listbox1 = $main->Listbox("-width" => 25, 
+    "-height" => 5
+)->pack;
+=======================================================================
+use Tk;
+
+$main = MainWindow->new();
+
+$listbox1 = $main->Listbox("-width" => 25, 
+    "-height" => 5
+)->pack;
+
+$listbox1->insert('end', "Apples", "Bananas",
+    "Oranges", "Pears", "Pineapples");
+
+$listbox1->bind('<Double-1>', \&getfruit);
+
+$text1 = $main->Text ('-width'=> 40, '-height' 
+    => 2
+)->pack;
+
+sub getfruit {
+    $fruit = $listbox1->get('active');
+    $text1->insert('end', "$fruit ");
+}
+
+MainLoop;
+=======================================================================
+use Tk;
+
+$main = MainWindow->new();
+
+$main->Scale('-orient'=> 'horizontal', 
+    '-from' => 0,
+    '-to' => 200, 
+    '-tickinterval' => 40,
+    '-label' => 'Select a value:', 
+    '-length' => 200,
+    '-variable' => \$value, 
+    '-command' => \&display
+)->pack;
+
+$text1 = $main->Text ('-width'=> 40, 
+    '-height' => 2
+)->pack;
+
+sub display
+{
+    $text1->delete('1.0','end');
+    $text1->insert('end', "$value");
+}
+
+MainLoop;
+=======================================================================
+use Tk;
+
+my $main = MainWindow->new;
+
+my $listbox1 = $main->Listbox(-width => 25,
+    -height => 5);
+
+$listbox1->insert('end', "Apples", "Blueberries",
+    "Bananas", "Kiwis", "Mangoes", "Oranges",
+    "Pears", "Pineapples");
+
+my $scroll1 = $main->Scrollbar(-command => ['yview', $listbox1]);
+
+$listbox1->configure(-yscrollcommand => ['set', $scroll1]);
+
+$listbox1->pack(-side => 'left', -fill => 'both');
+
+$scroll1->pack(-side => 'right', -fill => 'y');
+
+MainLoop;
+=======================================================================
+use Tk;
+$main = MainWindow->new;
+
+$canvas1 = $main->Canvas('-width' => 400,
+    -height => 200
+)->pack;
+
+$canvas1->create ('oval', '50', '50', '160',
+    '160', -fill => 'red');
+
+$canvas1->create ('rectangle', '250', '50', '360',
+    '160', -fill => 'blue');
+
+$canvas1->create ('oval', '50', '50', '160',
+    '160', -fill => 'red');
+
+$canvas1->create ('rectangle', '250', '50', '360',
+    '160', -fill => 'blue');
+
+$canvas1->create ('line', '105', '105', '305',
+    '105');
+
+$canvas1->create ('polygon', '85', '105', '105',
+    '85', '125', '105', '105', '125', '85', '105',
+    -fill => 'black');
+
+$canvas1->create ('polygon', '285', '105', '305',
+    '85', '325', '105', '305', '125', '285', '105',
+    -fill => 'black');
+
+MainLoop;
+=======================================================================
+use Tk;
+
+my $main = MainWindow->new;
+
+$canvas = $main->Canvas('-width' => 330,
+    -height => 90);
+
+$main->Photo('image1',
+    -file => 'image.gif');
+
+$canvas->createImage(0, 0,
+    -anchor => 'nw',
+    -image => image1);
+
+$canvas->pack;
+
+MainLoop;
+=======================================================================
+use Tk;
+
+my $main = MainWindow->new;
+
+$main->Label(-bitmap => 'error')->pack;
+
+$main->Label(-bitmap => 'gray12')->pack;
+
+$main->Label(-bitmap => 'gray25')->pack;
+
+$main->Label(-bitmap => 'gray50')->pack;
+
+$main->Label(-bitmap => 'gray75')->pack;
+
+$main->Label(-bitmap => 'hourglass')->pack;
+
+$main->Label(-bitmap => 'info')->pack;
+
+$main->Label(-bitmap => 'question')->pack;
+
+$main->Label(-bitmap => 'questhead')->pack;
+
+$main->Label(-bitmap => 'warning')->pack;
+
+MainLoop;
+=======================================================================
+use Tk;
+
+my $main = MainWindow->new;
+
+my $frame1 = $main->Frame;
+
+$frame1->pack;
+
+my $frame2 = $frame1->Frame;
+
+$frame2->Button(-text => 'Click Me!')->pack(-side => 'left');
+$frame2->Button(-text => 'Click Me!')->pack(-side => 'right');
+
+$frame2->pack(-side => 'left');
+
+my $frame3 = $frame1->Frame;
+
+$frame3->Button(-text => 'Click Me!')->pack(-side => 'left');
+$frame3->Button(-text => 'Click Me!')->pack(-side => 'right');
+
+$frame3->pack(-side => 'right');
+
+my $frame4 = $main->Frame;
+
+$frame4->Button(-text => 'Click Me!')->pack(-side => 'left');
+$frame4->Button(-text => 'Click Me!')->pack(-side => 'right');
+
+$frame4->pack(-fill => 'both');
+
+my $frame5 = $main->Frame;
+
+$frame5->Button(-text => 'Click Me!')->pack(-side => 'left');
+$frame5->Button(-text => 'Click Me!')->pack(-side => 'right');
+
+$frame5->pack(-fill => 'both');
+
+my $frame6 = $main->Frame;
+
+$frame6->Button(-text => 'Click Me!')->pack(-side => 'left');
+$frame6->Button(-text => 'Click Me!')->pack(-side => 'right');
+
+$frame6->pack(-fill => 'both');
+
+my $frame7 = $main->Frame;
+
+$frame7->pack;
+
+my $frame8 = $frame7->Frame;
+
+$frame8->Button(-text => 'Click Me!')->pack(-side => 'left');
+$frame8->Button(-text => 'Click Me!')->pack(-side => 'right');
+
+$frame8->pack(-side => 'left');
+
+my $frame9 = $frame7->Frame;
+
+$frame9->Button(-text => 'Click Me!')->pack(-side => 'left');
+$frame9->Button(-text => 'Click Me!')->pack(-side => 'right');
+
+$frame9->pack(-side => 'right');
+
+MainLoop;
+=======================================================================
+use Tk;
+
+my $main = MainWindow->new;
+
+$button1 = $main->Button(-text => 'Click Me!')->place(-x => 0, -y => 0);
+
+$button1 = $main->Button(-text => 'Click Me!')->place(-x => 30, -y => 30);
+
+$button1 = $main->Button(-text => 'Click Me!')->place(-x => 60, -y => 60);
+
+$button1 = $main->Button(-text => 'Click Me!')->place(-x => 90, -y => 90);
+
+$button1 = $main->Button(-text => 'Click Me!')->place(-x => 120, 
+    -y => 120);
+
+$button1 = $main->Button(-text => 'Click Me!')->place(-x => 150, 
+    -y => 150);
+
+MainLoop;
+=======================================================================
+use Tk;
+
+my $main = MainWindow->new;
+
+my $entry1 = $main->Entry->pack;
+=======================================================================
+use Tk;
+
+my $main = MainWindow->new;
+
+my $entry1 = $main->Entry->pack;
+
+$entry1->insert(
+    0,
+    'Here is some long text that you have to scroll to see.'
+);
+
+MainLoop;
+=======================================================================
+use Tk;
+my $main = MainWindow->new;
+
+my $entry1 = $main->Entry->pack;
+
+my $entry2 = $main->Scrolled(
+    Entry,
+    -relief => 'sunken',
+    -scrollbars => 's'
+)->pack;
+
+$entry1->insert(
+    0,
+    'Here is some long text that you have to scroll to see.'
+);
+
+$entry2->insert(
+    0,
+    'Here is some long text that you have to scroll to see.'
+);
+
+MainLoop;
+=======================================================================
+use Tk;
+
+my $main = MainWindow->new();
+
+$menubar = $main->Frame()->pack('-side' => 'top', '-fill' => 'x');
+
+$filemenu = $menubar->Menubutton('-text' => 'File')->pack('-side' => 'left');
+
+$filemenu->command('-label' => 'Open', '-command' => sub
+    {$text->delete('1.0', 'end');
+    $text->insert('end', "You clicked open.");});
+
+$filemenu->separator();
+
+$filemenu->command('-label' => 'Exit', '-command' => sub {exit});
+
+$editmenu = $menubar->Menubutton('-text' => 'Edit')->pack('-side' => 'left');
+
+$editmenu->command('-label' => 'Search', '-command' => sub
+    {$text->delete('1.0', 'end');
+    $text->insert('end', "You clicked search.");});
+
+$editmenu->command('-label' => 'Replace', '-command' => sub
+    {$text->delete('1.0', 'end');
+    $text->insert('end', "You clicked replace.");});
+
+$text = $main->Text ('-width' => 40, '-height' => 3)->pack();
+
+MainLoop;
+=======================================================================
+use Tk; 
+               
+my $main = MainWindow->new;        
+
+my $menubar = $main->Frame;
+
+$menubar->pack(-fill => 'x');
+
+my $filemenu = $menubar->Menubutton(-text => 'File');
+
+$filemenu->command(
+    -label       => 'Open', 
+    -command     => sub {$text1->insert('1.0', "You chose open.\n")},
+    -accelerator => 'Ctrl+O',
+);
+
+$main->bind('<Control-o>' => sub {$text1->insert('1.0', "You chose open.\n")});
+
+$filemenu->cascade(-label => 'Check buttons');
+$filemenu->cascade(-label => 'Radio buttons');
+
+my $checkcascade = $filemenu->cget(-menu); 
+my $checkmenu = $checkcascade->Menu;
+$filemenu->entryconfigure('Check buttons', -menu => $checkmenu);
+
+$checkmenu->checkbutton(-label => 'Check 1', -variable => \$check1,
+    -command => sub {$text1->insert('1.0', "You chose check 1.\n")});
+$checkmenu->checkbutton(-label => 'Check 2', -variable => \$check2,
+    -command => sub {$text1->insert('1.0', "You chose check 2.\n")});
+$checkmenu->checkbutton(-label => 'Check 3', -variable => \$check3,
+    -command => sub {$text1->insert('1.0', "You chose check 3.\n")});
+$checkmenu->checkbutton(-label => 'Check 4', -variable => \$check4,
+    -command => sub {$text1->insert('1.0', "You chose check 4.\n")});
+$checkmenu->checkbutton(-label => 'Check 5', -variable => \$check5,
+    -command => sub {$text1->insert('1.0', "You chose check 5.\n")});
+$checkmenu->checkbutton(-label => 'Check 6', -variable => \$check6,
+    -command => sub {$text1->insert('1.0', "You chose check 6.\n")});
+$checkmenu->checkbutton(-label => 'Check 7', -variable => \$check7,
+    -command => sub {$text1->insert('1.0', "You chose check 7.\n")});
+$checkmenu->checkbutton(-label => 'Check 8', -variable => \$check8,
+    -command => sub {$text1->insert('1.0', "You chose check 8.\n")});
+
+my $radiocascade = $filemenu->cget(-menu); 
+my $radiomenu = $radiocascade->Menu;
+$filemenu->entryconfigure('Radio buttons', -menu => $radiomenu);
+
+$radiomenu->radiobutton(-label => 'Radio 1', -variable => \$radio1,
+    -command => sub {$text1->insert('1.0', "You chose radio 1.\n")});
+$radiomenu->radiobutton(-label => 'Radio 2', -variable => \$radio1,
+    -command => sub {$text1->insert('1.0', "You chose radio 2.\n")});
+$radiomenu->radiobutton(-label => 'Radio 3', -variable => \$radio1,
+    -command => sub {$text1->insert('1.0', "You chose radio 3.\n")});
+$radiomenu->radiobutton(-label => 'Radio 4', -variable => \$radio1,
+    -command => sub {$text1->insert('1.0', "You chose radio 4.\n")});
+$radiomenu->separator;
+$radiomenu->radiobutton(-label => 'Radio 5', -variable => \$radio2,
+    -command => sub {$text1->insert('1.0', "You chose radio 5.\n")});
+$radiomenu->radiobutton(-label => 'Radio 6', -variable => \$radio2,
+    -command => sub {$text1->insert('1.0', "You chose radio 6.\n")});
+$radiomenu->radiobutton(-label => 'Radio 7', -variable => \$radio2,
+    -command => sub {$text1->insert('1.0', "You chose radio 7.\n")});
+$radiomenu->radiobutton(-label => 'Radio 8', -variable => \$radio2,
+    -command => sub {$text1->insert('1.0', "You chose radio 8.\n")});
+$radiomenu->separator;
+
+$filemenu->command('-label' => 'Exit', '-command' => sub {exit});
+
+$filemenu->pack(-side => 'left');
+
+$editmenu = $menubar->Menubutton('-text' => 'Edit')->pack('-side' => 
+'left');
+
+$editmenu->command(-label => 'Search', 
+    -background => "red",
+    -command => sub
+    {$text1->delete('1.0', 'end');
+    $text1->insert('end', "You chose search.");});
+
+$editmenu->command(-label => 'Replace', 
+    -background => "orange",
+    -command => sub
+    {$text1->delete('1.0', 'end');
+    $text1->insert('end', "You chose replace.");});
+
+$editmenu->command(-label => 'Find', 
+    -background => "yellow",
+    -command => sub
+    {$text1->delete('1.0', 'end');
+    $text1->insert('end', "You chose find.");});
+
+
+$editmenu->pack(-side => 'left');
+
+$text1 = $main->Text;
+
+$text1->pack(-fill => 'both');
+
+MainLoop;
+=======================================================================
+use Tk;
+
+$main = MainWindow->new();
+
+$dialog = $main->DialogBox(
+    -title => "Dialog box",
+    -buttons => ["OK", "Cancel"]
+);
+
+$entry = $dialog->add(
+    "Entry", -width => 40
+)->pack;
+
+$main->Button( 
+    -text => "Show dialog box",
+    -command => \&show
+)->pack;
+
+$text1 = $main->Text (
+    -width => 40, 
+    -height => 2
+)->pack();
+
+MainLoop;
+
+sub show 
+{
+    $result = $dialog->Show;
+    if ($result eq "OK") {
+        $text1->delete('1.0','end');
+        $text1->insert('end', $entry->get);
+    }
+}
+=======================================================================

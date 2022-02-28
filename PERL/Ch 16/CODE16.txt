@@ -1,0 +1,1021 @@
+=====================================================================
+for $outerloop (0..4) {
+
+    for $innerloop (0..4) {
+
+        $array{"$outerloop,$innerloop"} = 1;
+
+    }
+
+}
+=====================================================================
+print $array{'0,0'};
+=====================================================================
+for $outerloop (0..4) {
+
+    for $innerloop (0..4) {
+
+        $array[$outerloop][$innerloop] = 1;
+
+    }
+
+}
+
+print $array[0][0];
+=====================================================================
+$array[0] = ["apples", "oranges"];
+$array[1] = ["asparagus", "corn", "peas"];
+$array[2] = ["ham", "chicken"];
+
+print $array[1][1];
+=====================================================================
+@array = (
+
+    ["apple", "orange"],
+    ["asparagus", "corn", "peas"],
+    ["ham", "chicken"],
+
+);
+
+print @array[1][1];
+=====================================================================
+$array = [
+
+    ["apple", "orange"],
+    ["asparagus", "corn", "peas"],
+    ["ham", "chicken"],
+
+];
+
+print $array->[1][1];
+=====================================================================
+@{$array[0]} = ("apples", "oranges");
+@{$array[1]} = ("asparagus", "corn", "peas");
+@{$array[2]} = ("ham", "chicken");
+
+print $array[1][1];
+=====================================================================
+@array = (
+
+    ["apples", "oranges"],
+    ["asparagus", "corn", "peas"],
+    ["ham", "chicken"],
+
+);
+
+for $outer (0..$#array) {
+
+    for $inner (0..$#{$array[$outer]}) {
+
+        print $array[$outer][$inner], " ";
+
+    }
+
+    print "\n";
+
+}
+=====================================================================
+@array = (
+
+    ["apples", "oranges"],
+    ["asparagus", "corn", "peas"],
+    ["ham", "chicken"],
+
+);
+
+for $loopindex (0..$#array) {
+
+    print join (", ", @{$array[$loopindex]}), "\n";
+
+}
+=====================================================================
+@array = (
+
+    ["apple", "orange"],
+    ["asparagus", "corn", "peas"],
+    ["ham", "chicken"],
+
+);
+
+for $arrayreference (@array) {
+
+    print join (", ", @{$arrayreference}), "\n";
+
+}
+=====================================================================
+use strict vars;
+
+$array = [
+    
+    ["apple", "orange"],
+    ["asparagus", "corn", "peas"],
+    ["ham", "chicken"],
+
+];
+
+print $array[0][0];
+=====================================================================
+$array[1][2]                          #An array of arrays
+$hash{bigkey}{littlekey}              #A hash of hashes
+$array[3]{key}                        #An array of hashes
+$hash{key}[4]                         #A hash of arrays
+=====================================================================
+use Fcntl;
+use NDBM_File;
+
+tie %hash, "NDBM_File", 'data', O_RDWR|O_CREAT|O_EXCL, 0644;
+
+$hash{drink} = 'root beer';
+untie %hash;
+=====================================================================
+string = "Here's a string.";
+
+@array = (1, 2, 3);
+
+%hash = ('fruit' => 'apples', 'vegetable' => 'corn');
+
+sub printem
+{
+    print shift;
+}
+
+$complex = {
+    string         =>   $string,
+    number         =>   3.1415926,
+    array          =>   [@array],
+    hash           =>   {%hash},
+    arrayreference =>   \@array,
+    hashreference  =>   \%hash,
+    sub            =>   \&printem,
+    anonymoussub   =>   sub {print shift;},
+    handle         =>   \*STDOUT,
+};
+
+print $complex->{string}, "\n";
+
+print $complex->{number}, "\n";
+
+print $complex->{array}[0], "\n";
+
+print $complex->{hash}{fruit}, "\n";
+
+print ${$complex->{arrayreference}}[0], "\n";
+
+print ${$complex->{hashreference}}{"fruit"}, "\n";
+
+$complex->{sub}->("Subroutine call.\n");
+
+$complex->{anonymoussub}->("Anonymous subroutine call.\n");
+
+print {$complex->{handle}} "Text printed to a handle.", "\n";
+=====================================================================
+@array = (
+
+    ["apple", "orange"],
+    ["asparagus", "corn", "peas"],
+    ["ham", "chicken"],
+
+);
+=====================================================================
+$array1ref = $array[1];
+
+print ${$array1ref}[1];
+=====================================================================
+print ${array[1]}->[1];
+=====================================================================
+print $array[1]->[1];
+=====================================================================
+print $array[1][1];
+=====================================================================
+$array[0] = ["apples", "oranges"];
+$array[1] = ["asparagus", "corn", "peas"];
+$array[2] = ["ham", "chicken"];
+
+print $array[1][1];
+=====================================================================
+@array =
+(
+    [
+        ["apple", "orange"],
+        ["ham", "chicken"],
+    ],
+
+    [
+        ["tomatoes", "sprouts", "potatoes"],
+        ["asparagus", "corn", "peas"],
+    ],
+);
+
+print $array[1][1][1];
+=====================================================================
+@array = (
+
+    ["apple", "orange"],
+    ["asparagus", "corn", "peas"],
+    ["ham", "chicken"],
+
+);
+
+print @array[1][1];
+=====================================================================
+$array[0] = ["apples", "oranges"];
+$array[1] = ["asparagus", "corn", "peas"];
+$array[2] = ["ham", "chicken"];
+
+print $array[1][1];
+=====================================================================
+@array1 = qw(apples oranges);
+@array2 = qw(asparagus corn peas);
+@array3 = qw(ham chicken);
+
+$array[0] = \@array1;
+$array[1] = \@array2;
+$array[2] = \@array3;
+
+print $array[1][1];
+=====================================================================
+@{$array[0]} = ("apples", "oranges");
+@{$array[1]} = ("asparagus", "corn", "peas");
+@{$array[2]} = ("ham", "chicken");
+
+print $array[1][1];
+=====================================================================
+for $outerloop (0..4) {
+
+    for $inerloop (0..4) {
+
+        $array[$outerloop][$innerloop] = 1;
+
+    }
+
+}
+
+print $array[0][0];
+=====================================================================
+for $loopindex (0..4) {
+
+    push @array, [1, 1, 1, 1];
+
+}
+
+print $array[0][0];
+=====================================================================
+for $loopindex (0..4) {
+
+    $array[$loopindex] = [&zerolist];
+
+}
+
+sub zerolist
+{
+    return (0, 0, 0, 0);
+}
+
+print $array[1][1];
+=====================================================================
+@array = (
+
+    ["apple", "orange"],
+    ["asparagus", "corn", "peas"],
+    ["ham", "chicken"],
+
+);
+
+$array[3] = ["chicken noodle", "chili"];
+
+print $array[3][0];
+=====================================================================
+@array = (
+
+    ["apple", "orange"],
+    ["asparagus", "corn", "peas"],
+    ["ham", "chicken"],
+
+);
+
+push @{$array[0]}, "banana";
+
+print $array[0][2];
+=====================================================================
+@array = (
+
+    ["apple", "orange"],
+    ["asparagus", "corn", "peas"],
+    ["ham", "chicken"],
+
+);
+=====================================================================
+$array1ref = $array[1];
+print ${$array1ref}[1];
+=====================================================================
+print ${array[1]}->[1];
+=====================================================================
+print $array[1]->[1];
+=====================================================================
+print $array[1][1];
+=====================================================================
+for $outerloop (0..4) {
+    for $innerloop (0..4) {
+        $array[$outerloop][$innerloop] = 1;
+    }
+}
+
+print $array[0][0];
+=====================================================================
+@array = (
+    ["apple", "orange"],
+    ["asparagus", "corn", "peas"],
+    ["ham", "chicken"],
+);
+
+for $arrayref (@array) {
+
+    print join (", ", @{$arrayref}), "\n";
+
+}
+=====================================================================
+%hash = (
+
+       fruits => {
+
+               favorite => "apples",
+               'second favorite' => "oranges",
+
+       },
+
+       vegetables => {
+
+               favorite => "corn",
+               'second favorite' => "peas",
+               'least favorite' => "turnip",
+
+       },
+
+       meats => {
+
+               favorite      => "chicken",
+               'second favorite' => "beef",
+
+       },
+
+);
+=====================================================================
+print $hash{fruits}{favorite};
+=====================================================================
+%hash = (
+
+       fruits => {
+
+               favorite => "apples",
+               'second favorite' => "oranges",
+
+       },
+
+       vegetables => {
+
+               favorite => "corn",
+               'second favorite' => "peas",
+               'least favorite' => "turnip",
+
+       },
+
+       meats => {
+
+               favorite      => "chicken",
+               'second favorite' => "beef",
+
+       },
+
+);
+
+print $hash{fruits}{favorite};
+=====================================================================
+$hash{fruits} = {
+    favorite => "apples",
+    'second favorite' => "oranges",
+};
+
+$hash{vegetables} = {
+    favorite => "corn",
+    'second favorite' => "peas",
+    'least favorite' => "turnip",
+};
+
+$hash{meats} =  {
+    favorite      => "chicken",
+    'second favorite' => "beef",
+};
+
+print $hash{fruits}{favorite};
+=====================================================================
+%hash1 =
+(
+    favorite => "apples",
+    'second favorite' => "oranges",
+);
+
+%hash2 =
+(
+    favorite => "corn",
+    'second favorite' => "peas",
+    'least favorite' => "turnip",
+);
+
+%hash3 =
+(
+    favorite      => "chicken",
+    'second favorite' => "beef",
+);
+
+$hash{fruits} = \%hash1;
+
+$hash{vegetables} = \%hash2;
+
+$hash{meats} =  \%hash3;
+
+print $hash{fruits}{favorite};
+=====================================================================
+for $key ("hash1", "hash2", "hash3" ) {
+
+    $hash{$key} = {&returnlist};
+
+}
+
+sub returnlist
+
+{
+    return (key1 => value1, key2 => value2);
+}
+
+print $hash{hash1}{key2};
+=====================================================================
+%hash = (
+
+       fruits => {
+
+               favorite => "apples",
+               'second favorite' => "oranges",
+
+       },
+
+       vegetables => {
+
+               favorite => "corn",
+               'second favorite' => "peas",
+               'least favorite' => "turnip",
+       },
+
+);
+
+print $hash{fruits}{'second favorite'};
+=====================================================================
+%hash = (
+
+       fruits => {
+
+               favorite => "apples",
+               'second favorite' => "oranges",
+
+       },
+
+       vegs => {
+
+               favorite => "corn",
+               'second favorite' => "peas",
+
+       },
+
+);
+
+for $food (keys %hash) {
+
+    print "$food\t {";
+    for $key (keys %{$hash{$food}}) {
+        print "'$key' => '$hash{$food}{$key}'";
+
+    }
+
+    print "}\n";
+
+}
+=====================================================================
+@array = (
+
+    {
+        favorite => "apples",
+        'second favorite' => "oranges",
+    },
+
+    {
+        favorite => "corn",
+        'second favorite' => "peas",
+        'least favorite' => "turnip",
+    },
+
+    {
+        favorite      => "chicken",
+        'second favorite' => "beef",
+    },
+
+);
+
+print $array[0]{favorite};
+=====================================================================
+@array =
+(
+    {
+        favorite => "apples",
+        'second favorite' => "oranges",
+    },
+
+    {
+        favorite => "corn",
+        'second favorite' => "peas",
+        'least favorite' => "turnip",
+    },
+
+    {
+        favorite      => "chicken",
+        'second favorite' => "beef",
+    }
+);
+
+print $array[0]{favorite};
+=====================================================================
+$array[0] =
+{
+    favorite => "apples",
+    'second favorite' => "oranges",
+};
+
+$array[1] =
+{
+    favorite => "corn",
+    'second favorite' => "peas",
+    'least favorite' => "turnip",
+};
+
+$array[2] =
+{
+    favorite      => "chicken",
+    'second favorite' => "beef",
+};
+
+print $array[0]{favorite};
+=====================================================================
+%hash1 =
+(
+    favorite => "apples",
+    'second favorite' => "oranges",
+);
+
+%hash2 =
+(
+    favorite => "corn",
+    'second favorite' => "peas",
+    'least favorite' => "turnip",
+);
+
+%hash3 =
+(
+    favorite      => "chicken",
+    'second favorite' => "beef",
+);
+
+@array = (\%hash1, \%hash2, \%hash3);
+
+print $array[0]{favorite};
+=====================================================================
+push @array, {
+
+    favorite => "apples", 
+    'second favorite' => "oranges"
+
+};
+
+push @array, {
+
+    favorite => "corn", 
+    'second favorite' => "peas", 
+    'least favorite' => "turnip"
+
+};
+
+push @array, {
+
+    favorite => "chicken", 
+    'second favorite' => "beef"
+
+};
+
+print $array[0]{favorite};
+=====================================================================
+$data[0] = "favorite:apples,second favorite:oranges";
+
+$data[1] = "favorite:apples,second favorite:oranges,
+    least favorite=turnips";
+
+$data[2] = "favorite:chicken,second favorite:beef";
+
+for $loopindex (0..$#data) {
+
+    for $element (split ',', $data[$loopindex]) {
+
+        ($key, $value) = split ':', $element;
+        $array[$loopindex]{$key} = $value;
+
+    }
+
+}
+
+print $array[0]{'second favorite'};
+=====================================================================
+$array[0] = {
+    favorite => "apples", 
+    'second favorite' => "oranges"
+};
+
+$array[1] = {
+    favorite => "corn", 
+    'second favorite' => "peas", 
+    'least favorite' => "turnip"
+};
+
+$array[2] = {
+    favorite => "chicken", 
+    'second favorite' => "beef"
+};
+
+print $array[0]{favorite};
+=====================================================================
+$array[0] = {
+    favorite => "apples", 
+    'second favorite' => "oranges"
+};
+
+$array[1] = {
+    favorite => "corn", 
+    'second favorite' => "peas"
+};
+
+$array[2] = {
+    favorite => "chicken", 
+    'second favorite' => "beef"
+};
+
+for $loopindex (0..$#array) {
+
+    print "array[$loopindex]: {";
+    for $key (keys %{$array[$loopindex]}) {
+        print "'$key' => '$array[$loopindex]{$key}' ";
+
+    }
+
+    print "}\n";
+
+}
+=====================================================================
+$array[0] = {
+
+    favorite => "apples", 
+    'second favorite' => "oranges"
+
+};
+
+$array[1] = {
+
+    favorite => "corn", 
+    'second favorite' => "peas"
+
+};
+
+$array[2] = {
+
+    favorite => "chicken", 
+    'second favorite' => "beef"
+
+};
+
+for $hashreference (@array) {
+
+    print "{";
+
+    for $key (sort keys %$hashreference) {
+
+        print "'$key' => '$hashreference->{$key}'";
+
+    }
+
+    print "}\n";
+
+}
+=====================================================================
+%hash = (
+
+    fruits => ["apples", "oranges"],
+    vegetables => ["corn", "peas", "turnips"],
+    meats => ["chicken", "ham"],
+
+);
+
+print $hash{fruits}[0];
+=====================================================================
+%hash = (
+
+    fruits => ["apples", "oranges"],
+    vegetables => ["corn", "peas", "turnips"],
+    meats => ["chicken", "ham"],
+
+);
+
+print $hash{fruits}[0];
+=====================================================================
+$hash{fruits} = ["apples", "oranges"];
+
+$hash{vegetables} = ["corn", "peas", "turnips"];
+
+$hash{meats} = ["chicken", "ham"];
+
+print $hash{fruits}[0];
+=====================================================================
+@array1 = ("apples", "oranges");
+@array2 = ("corn", "peas", "turnips");
+@array3 = ("chicken", "ham");
+
+$hash{fruits} = \@array1;
+$hash{vegetables} = \@array2;
+$hash{meats} = \@array3;
+
+print $hash{fruits}[0];
+=====================================================================
+push @{$hash{fruits}}, "apples", "oranges";
+
+push @{$hash{vegetables}}, "corn", "peas", "turnips";
+
+push @{$hash{meats}}, "chicken", "ham";
+
+print $hash{fruits}[0];
+=====================================================================
+%hash = (
+
+    fruits => ["apples", "oranges"],
+    vegetables => ["corn", "peas", "turnips"],
+    meats => ["chicken", "ham"],
+
+);
+
+print $hash{fruits}[0];
+=====================================================================
+%hash = (
+
+    fruits => ["apples", "oranges"],
+    vegs => ["corn", "peas", "turnips"],
+    meats => ["chicken", "ham"],
+
+);
+
+for $key (sort keys %hash) {
+
+    print "$key:\t[", join(", ", @{$hash{$key}}), "]\n"
+
+}
+=====================================================================
+$buffer[0]{next} = 1;
+$buffer[0]{data} = 0;
+$buffer[1]{next} = 2;
+$buffer[1]{data} = 0;
+$buffer[2]{next} = 3;
+$buffer[2]{data} = 0;
+$buffer[3]{next} = 0;
+$buffer[3]{data} = 0;
+
+$head = 0; 
+
+$tail = 0;
+
+sub store
+{
+
+    if ($buffer[$tail]{next} != $head) { #Check: buffer full?
+
+        $buffer[$tail]{data} = shift;
+        $tail = $buffer[$tail]{next};
+
+        return 1;
+
+    } else {
+
+        return 0;
+
+    }
+
+}
+
+sub retrieve
+{
+
+    if ($head != $tail) {   # $tail == $head => empty buffer
+
+        $data = $buffer[$head]{data};
+        $head = $buffer[$head]{next};
+
+        return $data;
+
+    } else {
+
+        return undef;
+
+    }
+
+}
+
+store 0;
+store 1;
+store 2;
+store 3;        #buffer full, value not stored
+
+print retrieve, "\n";
+print retrieve, "\n";
+print retrieve, "\n";
+=====================================================================
+use Storable;
+
+@a1 = (
+
+    ["apple", "orange"],
+    ["asparagus", "corn", "peas"],
+    ["ham", "chicken"],
+
+);
+
+store (\@a1, "array.dat");
+
+@a2 = @{retrieve("array.dat")};
+
+print $a2[1][1];
+=====================================================================
+@a1 = (
+
+    ["apple", "orange"],
+    ["asparagus", "corn", "peas"],
+    ["ham", "chicken"],
+
+);
+
+@a2 = @a1;
+
+$a2[1][1] = "squash";
+
+print $a1[1][1];
+=====================================================================
+use Storable qw(dclone);
+
+@a1 = (
+
+    ["apple", "orange"],
+    ["asparagus", "corn", "peas"],
+    ["ham", "chicken"],
+
+);
+
+@a2 = dclone(\@a1);
+
+$a2[1][1] = "squash";
+
+print $a1[1][1];
+=====================================================================
+use Data::Dumper;
+
+@array = (
+
+    ["apples", "oranges"],
+    ["asparagus", "corn", "peas"],
+    ["ham", "chicken"],
+
+);
+
+print Data::Dumper->Dump([\@array], [*array]);
+=====================================================================
+use Data::Dumper;
+
+%hash = (
+
+       fruits => {
+
+               favorite => "apples",
+               'second favorite' => "oranges",
+
+       },
+
+       vegetables => {
+
+               favorite => "corn",
+               'second favorite' => "peas",
+               'least favorite' => "turnip",
+
+       },
+
+       meats => {
+
+               favorite      => "chicken",
+               'second favorite' => "beef",
+
+       },
+
+);
+
+print Data::Dumper->Dump([\%hash], [*hash]);
+=====================================================================
+sub record
+{
+    ($value, $max, $min) = @_;
+
+    if ($value >= $min && $value <= $max){
+        return {
+            value => $value,
+            max => $max,
+            min => $min,
+        };
+    } else {
+        return;
+    }
+}
+=====================================================================
+$myrecord = record(100, 1000, 10);
+=====================================================================
+$myrecord = record(100, 1000, 10);
+
+print $myrecord->{value};
+=====================================================================
+use Class::Struct;
+
+struct( produce => {
+        vegetable => item,
+        fruit => item,
+});
+=====================================================================
+struct( item => [
+        name  => '$',
+        number => '$',
+]);
+=====================================================================
+my $grocery = new produce;
+=====================================================================
+$grocery->fruit->name('bananas');
+$grocery->fruit->number(1000);
+=====================================================================
+print "Yes, we have ", $grocery->fruit->number, " ",
+    $grocery->fruit->name, ".";
+=====================================================================
+use Fcntl;
+use NDBM_File;
+
+tie %hash, "NDBM_File", 'data', O_RDWR|O_CREAT|O_EXCL, 0644;
+
+$hash{drink} = 'root beer';
+$hash{meat} = turkey;
+$hash{dessert} = 'blueberry pie';
+
+untie %hash;
+=====================================================================
+use Fcntl;
+use NDBM_File;
+
+tie %hash, "NDBM_File", 'data', O_RDWR, 0644;
+
+while(($key, $value) = each(%hash)) {
+    print "$key => $value\n";
+}
+
+untie %hash;
+=====================================================================
+use DB_File;
+use Fcntl;
+
+$DB_BTREE->{'compare'} = sub {
+    shift cmp shift ;
+};
+
+tie(%hash, "DB_File", 'sorted', O_RDWR|O_CREAT|O_TRUNC, 0644, $DB_BTREE)
+    or die "Can not tie file.";
+
+$hash{drink} = 'root beer';
+$hash{meat} = turkey;
+$hash{dessert} = 'blueberry pie';
+
+while(($key, $value) = each(%hash)) {
+    print "$key => $value\n";
+}
+
+untie %hash;
+=====================================================================
+use DB_File;
+use Fcntl;
+
+tie(@array, "DB_File", "file.txt", O_RDWR|O_CREAT, 0644, $DB_RECNO)    
+    or die "Can not open file.";
+
+$array[3] = "Some new text!";
+
+untie @array;
+=====================================================================
