@@ -1,0 +1,699 @@
+=====================================================================
+package package1;
+
+BEGIN { }
+
+sub subroutine1 {print "Hello!\n";}
+return 1;
+
+END { }
+=====================================================================
+require 'package1.pl';
+=====================================================================
+require 'package1.pl';
+
+package1::subroutine1();
+=====================================================================
+package package1;
+
+BEGIN { }
+
+$variable1 = 1;
+
+sub subroutine1 {print "Hello!\n";}
+
+return 1;
+
+END { }
+=====================================================================
+require 'package1.pl';
+
+package1::subroutine1();
+
+print $package1::variable1;
+=====================================================================
+package Module1;
+
+BEGIN {
+    use Exporter();
+    @ISA = qw(Exporter);
+    @EXPORT = qw(&subroutine1);
+}
+
+sub subroutine1 {print "Hello!\n";}
+
+return 1;
+
+END { }
+=====================================================================
+use Module1;
+
+subroutine1();
+=====================================================================
+%perl Makefile.PL
+%make
+%make test
+%make install
+=====================================================================
+package package1;
+
+sub subroutine1 {print "Hello!\n";}
+
+return 1;
+=====================================================================
+require 'package1.pl';
+
+package1::subroutine1();
+=====================================================================
+package1::subroutine1();             #subroutine1 called in package main
+
+package package1;                    #subroutine1 defined in package package1
+
+sub subroutine1 {print "Hello!\n";}
+=====================================================================
+package package1;
+
+sub BEGIN
+{
+    $text = "Hello!\n";
+}
+
+sub subroutine1 {print $text}
+
+return 1;
+=====================================================================
+require 'package1.pl';
+
+package1::subroutine1();
+=====================================================================
+package package1;
+
+sub BEGIN
+{
+    $text = "Hello!\n";
+}
+
+sub subroutine1 {print $text}
+
+return 1;
+
+sub END
+{
+    print "Thank you for using package1!\n";
+}
+=====================================================================
+package package1;
+
+BEGIN { }
+
+sub subroutine1 {print __PACKAGE__;}
+
+return 1;
+
+END { }
+=====================================================================
+package package1;
+
+BEGIN {}
+
+sub hello{print "Hello!\n";}
+
+return 1;
+
+END {}
+=====================================================================
+package package1;
+
+BEGIN {}
+
+sub hello2{print "Hello again!\n";}
+
+return 1;
+
+END {}
+=====================================================================
+require 'file1.pl';
+require 'file2.pl';
+
+package1::hello();
+package1::hello2();
+=====================================================================
+package Module1;
+
+BEGIN { }
+
+sub subroutine1 {print "Hello!\n";}
+
+return 1;
+
+END { }
+=====================================================================
+package Module1;
+
+BEGIN 
+{
+    use Exporter();
+    @ISA = qw(Exporter);
+    @EXPORT = qw(&subroutine1);
+}
+
+sub subroutine1 {print "Hello!\n";}
+
+return 1;
+
+END { }
+=====================================================================
+use Module1;
+
+subroutine1();
+=====================================================================
+package Module1;
+
+BEGIN 
+{
+    use Exporter();
+
+    @ISA = qw(Exporter);
+
+    @EXPORT_OK = qw(&subroutine1);
+}
+
+sub subroutine1 {print "Hello!\n";}
+
+return 1;
+
+END { }
+=====================================================================
+use Module1 qw(&subroutine1);
+
+subroutine1();
+=====================================================================
+use Module1(); 
+subroutine1();
+=====================================================================
+package Uptime;
+
+BEGIN
+{
+    use Exporter();
+
+    @ISA = qw(Exporter);
+
+    if ($^O ne 'MSWin32') {
+
+        @EXPORT = qw(&uptime);
+
+    } else {
+
+        print "Sorry, no uptime available in Win32.\n";
+        @EXPORT_FAIL = qw(&uptime);
+
+    }
+}
+
+sub uptime {print `uptime`;}
+
+return 1;
+
+END { }
+=====================================================================
+use Uptime;
+
+uptime();
+=====================================================================
+package Module1;
+
+BEGIN { }
+
+use Exporter();
+
+@ISA = qw(Exporter);
+
+@EXPORT = qw ($variable1);
+
+$variable1 = 100;
+
+sub import 
+{
+    print "In import\n"; 
+    Module1->export_to_level(1, @EXPORT); 
+}
+
+return 1;
+
+END { }
+=====================================================================
+use Module1;
+
+print "\$variable1 = ", $variable1;
+=====================================================================
+package Module1;
+
+BEGIN
+{
+    use Exporter();
+    @ISA = qw(Exporter);
+    @EXPORT = qw(&subroutine1 $variable1);
+}
+
+sub subroutine1 {print "Hello!\n";}
+$variable1 = 100;
+
+return 1;
+
+END { }
+=====================================================================
+package Module2;
+
+BEGIN
+{
+    use Exporter();
+    @ISA = qw(Exporter);
+    @EXPORT = qw(&subroutine1 $variable1);
+}
+
+sub subroutine1 {print "Hi!\n";}
+$variable1 = 500;
+
+return 1;
+END { }
+=====================================================================
+require Module1;
+require Module2;
+
+$module = Module1;
+$subname = subroutine1;
+
+$callme = $module . '::' . $subname;
+&{$callme};
+
+$module = Module1;
+$variablename = variable1;
+
+$printme = $module . '::' . $variablename;
+print "The variable = $printme";
+=====================================================================
+package Module1;
+
+BEGIN
+{
+    use Exporter();
+    @ISA = qw(Exporter);
+    @EXPORT = qw(&exit);
+}
+
+sub exit {print "Why do you want to quit?\n";}
+
+return 1;
+
+END { }
+=====================================================================
+use Module1;
+
+exit;
+
+print "I'm still here!";
+=====================================================================
+package Module1::Code1;
+
+BEGIN
+{
+    use Exporter();
+    @ISA = qw(Exporter);
+    @EXPORT = qw(&subroutine1);
+}
+
+sub subroutine1 {print "Hello!\n";}
+
+return 1;
+
+END { }
+=====================================================================
+use Module1::Code1;
+
+subroutine1();
+=====================================================================
+package Module1;
+
+BEGIN { }
+
+use Exporter();
+
+@ISA = qw(Exporter);
+@EXPORT = qw ($variable1);
+
+$VERSION = 1.00;
+
+return 1;
+
+END { }
+=====================================================================
+use Module1();
+
+Module1->require_version(2.00);
+=====================================================================
+use Autoload;
+
+subroutine1();
+=====================================================================
+package Autoload;
+
+BEGIN
+{
+    use Exporter   ();
+    @ISA         = qw(Exporter);
+    @EXPORT      = qw(&AUTOLOAD);
+}
+=====================================================================
+package Autoload;
+
+BEGIN
+{
+    use Exporter   ();
+    @ISA         = qw(Exporter);
+    @EXPORT      = qw(&AUTOLOAD);
+}
+
+sub AUTOLOAD ()
+{
+    my $subroutine = $AUTOLOAD;
+    $subroutine =~ s/.*:://;
+
+    if ($subroutine eq 'subroutine1') {
+        .
+        .
+        .
+    }
+}
+=====================================================================
+package Autoload;
+
+BEGIN
+{
+    use Exporter   ();
+    @ISA         = qw(Exporter);
+    @EXPORT      = qw(&AUTOLOAD);
+}
+
+sub AUTOLOAD ()
+{
+    my $subroutine = $AUTOLOAD;
+    $subroutine =~ s/.*:://;
+
+    if ($subroutine eq 'subroutine1') {
+
+        require Module1;
+        &Module1::subroutine1;
+
+    }
+}
+
+return 1;
+
+END { }
+=====================================================================
+package Module1;
+
+BEGIN
+{
+    use Exporter();
+    @ISA = qw(Exporter);
+    @EXPORT = qw(&subroutine1 $variable1);
+}
+
+sub subroutine1 {print "Hello!\n";}
+$variable1 = 100;
+
+return 1;
+
+END { }
+=====================================================================
+package Autoload;
+
+BEGIN 
+{
+    use Exporter   ();
+    @ISA         = qw(Exporter);
+    @EXPORT      = qw(&AUTOLOAD);
+}
+
+sub AUTOLOAD () 
+{
+    my $subroutine = $AUTOLOAD;
+    $subroutine =~ s/.*:://;
+    print "You called $subroutine with these arguments: ", join(", ", @_);
+}
+
+return 1;
+
+END { }
+=====================================================================
+use Autoload;
+
+printem (1, 2, 3);
+=====================================================================
+use AutoLoader 'AUTOLOAD';   
+=====================================================================
+package Module1;
+
+BEGIN
+{
+    use Exporter();
+    use SelfLoader();
+    @ISA = qw(Exporter SelfLoader);
+    @EXPORT = qw(&subroutine1);
+}
+
+return 1;
+
+END { }
+
+__DATA__
+sub subroutine1 {print "Hello!\n";}
+=====================================================================
+use Module1;
+subroutine1();
+=====================================================================
+package Integer::Doubler;
+
+use strict;
+use vars qw($VERSION @ISA @EXPORT);
+
+require Exporter;
+require AutoLoader;
+
+@ISA = qw(Exporter AutoLoader);
+# Items to export into callers namespace by default. Note: do not export
+# names by default without a very good reason. Use EXPORT_OK instead.
+# Do not simply export all your public functions/methods/constants.
+@EXPORT = qw(
+        
+);
+$VERSION = '0.01';
+
+
+# Preloaded methods go here.
+
+# Autoload methods go after =cut, and are processed by the autosplit program.
+
+1;
+__END__
+# Below is the stub of documentation for your module. You better edit it!
+
+=head1 NAME
+
+Integer::Doubler - Perl extension for blah blah blah
+
+=head1 SYNOPSIS
+
+  use Integer::Doubler;
+  blah blah blah
+
+=head1 DESCRIPTION
+
+Stub documentation for Integer::Doubler was created by h2xs. It looks like the
+author of the extension was negligent enough to leave the stub
+unedited.
+
+Blah blah blah.
+
+=head1 AUTHOR
+
+A. U. Thor, a.u.thor@a.galaxy.far.far.away
+
+=head1 SEE ALSO
+
+perl(1).
+
+=cut
+=====================================================================
+@ISA = qw(Exporter AutoLoader);
+# Items to export into callers namespace by default. Note: do not export
+# names by default without a very good reason. Use EXPORT_OK instead.
+# Do not simply export all your public functions/methods/constants.
+@EXPORT = qw(
+doubler
+);
+$VERSION = '0.01';
+
+
+# Preloaded methods go here.   
+
+sub doubler 
+{
+    return 2 * shift;
+}
+=====================================================================
+#ifdef __cplusplus
+extern "C" {
+#endif
+#include "EXTERN.h"
+#include "perl.h"
+#include "XSUB.h"
+#ifdef __cplusplus
+}
+#endif
+
+
+MODULE = Random::Number         PACKAGE = Random::Number
+=====================================================================
+#ifdef __cplusplus
+extern "C" {
+#endif
+#include "EXTERN.h"
+#include "perl.h"
+#include "XSUB.h"
+#ifdef __cplusplus
+}
+#endif
+
+
+MODULE = Random::Number         PACKAGE = Random::Number
+
+double
+random()
+    CODE:
+        RETVAL = rand() % 100;
+=====================================================================
+#ifdef __cplusplus
+extern "C" {
+#endif
+#include "EXTERN.h"
+#include "perl.h"
+#include "XSUB.h"
+#ifdef __cplusplus
+}
+#endif
+
+
+MODULE = Random::Number         PACKAGE = Random::Number
+
+double
+random()
+    CODE:
+        RETVAL = rand() % 100;
+    OUTPUT:
+        RETVAL
+=====================================================================
+use Random::Number;
+$loaded = 1;
+print "ok 1\n";
+
+######################### End of black magic.
+
+# Insert your test code below (better if it prints "ok 13"
+# (correspondingly "not ok 13") depending on the success of chunk 13
+# of the test code):
+
+$s = random();
+print "Random number: $s\n";
+=====================================================================
+=====================================================================
+package Math::Boomerang;
+
+use strict;
+use vars qw($VERSION @ISA @EXPORT);
+
+require Exporter;
+require DynaLoader;
+
+@ISA = qw(Exporter DynaLoader);
+# Items to export into callers namespace by default. Note: do not export
+# names by default without a very good reason. Use EXPORT_OK instead.
+# Do not simply export all your public functions/methods/constants.
+@EXPORT = qw(
+boomerang       
+);
+$VERSION = '0.01';
+=====================================================================
+#ifdef __cplusplus
+extern "C" {
+#endif
+#include "EXTERN.h"
+#include "perl.h"
+#include "XSUB.h"
+#ifdef __cplusplus
+}
+#endif
+
+
+MODULE = Math::Boomerang         PACKAGE = Math::Boomerang
+
+int
+boomerang(value)
+    int value
+    CODE:
+        RETVAL = value; 
+    OUTPUT:
+        RETVAL
+=====================================================================
+#ifdef __cplusplus
+extern "C" {
+#endif
+#include "EXTERN.h"
+#include "perl.h"
+#include "XSUB.h"
+#ifdef __cplusplus
+}
+#endif
+
+
+MODULE = Math::Boomerang                PACKAGE = Math::Boomerang
+
+PROTOTYPES: DISABLE
+void
+boomerang(...)
+=====================================================================
+PROTOTYPES: DISABLE
+void
+boomerang(...)
+PPCODE:
+{
+    int loop_index;
+    SV **arguments;
+    arguments = New(0, arguments, items, SV *);
+
+    for (loop_index = 0; loop_index < items; loop_index++) {
+        arguments[loop_index] = ST(loop_index);
+    }
+=====================================================================
+PROTOTYPES: DISABLE
+void
+boomerang(...)
+PPCODE:
+{
+    int loop_index;
+    SV **arguments;
+    arguments = New(0, arguments, items, SV *);
+
+    for (loop_index = 0; loop_index < items; loop_index++) {
+        arguments[loop_index] = ST(loop_index);
+    }
+
+    for (loop_index = 0; loop_index < items; loop_index++) {
+        PUSHs(arguments[loop_index]);
+    }
+    
+    Safefree(arguments);
+}
+=====================================================================

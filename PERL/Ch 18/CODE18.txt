@@ -1,0 +1,807 @@
+=====================================================================
+package Class1;
+
+sub new
+{
+    my $self  = {};
+    bless($self);
+    return $self;
+}
+
+return 1;
+=====================================================================
+use Class1;
+
+my $object1 = Class1->new();
+=====================================================================
+my $object1 = Class1->new();
+=====================================================================
+my $data = $object1->{DATA};
+=====================================================================
+my $data = $object1->getdata();
+=====================================================================
+package Class1;
+
+return 1;
+=====================================================================
+package Class1;
+
+return 1;
+=====================================================================
+package Class1;
+
+sub new
+{
+    my $self  = {};
+
+    bless($self);
+
+    return $self;
+}
+
+return 1;
+=====================================================================
+package Class1;
+
+sub new
+{
+    my $self  = {};
+
+    shift;
+    $self->{DATA_ITEM_1} = shift;
+    $self->{DATA_ITEM_2} = shift;
+
+    bless($self);
+
+    return $self;
+}
+
+return 1;
+=====================================================================
+package Class1;
+
+sub new
+{
+    my $self  = {};
+
+    shift;
+    $self->{DATA_ITEM_1} = shift;
+    $self->{DATA_ITEM_2} = shift;
+    $self->{DATA_ITEM_3} = 3;
+
+    bless($self);
+
+    return $self;
+}
+
+return 1;
+=====================================================================
+package Class1;
+
+my $data_item_3;
+
+BEGIN
+{
+    $data_item_3 = 3;
+}
+
+sub new
+{
+    my $self  = {};
+
+    shift;
+    $self->{DATA_ITEM_1} = shift;
+    $self->{DATA_ITEM_2} = shift;
+    $self->{DATA_ITEM_3} = $data_item_3;
+
+    bless($self);
+
+    return $self;
+}
+
+return 1;
+=====================================================================
+my $object = Class1->new();
+
+package Class1;
+
+sub new
+{
+    my $self  = {};
+
+    bless($self);
+
+    return $self;
+}
+=====================================================================
+package Class1;
+
+sub new
+{
+    my $self  = {};
+
+    bless($self);
+
+    return $self;
+}
+
+return 1;
+=====================================================================
+use Class1;
+
+my $object = Class1->new();
+=====================================================================
+sub new
+{
+    my $self  = {};
+
+    shift;
+    $self->{DATA_ITEM_1} = shift;
+    $self->{DATA_ITEM_2} = shift;
+    $self->{DATA_ITEM_3} = 3;
+
+    bless($self);
+
+    return $self;
+}
+=====================================================================
+my $object = Class1->new(1, 2);
+=====================================================================
+my $object = Class1->new(1, 2);
+
+print "Data item 1 = ", $object->{DATA_ITEM_1}, "\n";
+print "Data item 2 = ", $object->{DATA_ITEM_2}, "\n";
+
+
+package Class1;
+
+sub new
+{
+    my $self  = {};
+
+    shift;
+    $self->{DATA_ITEM_1} = shift;
+    $self->{DATA_ITEM_2} = shift;
+    $self->{DATA_ITEM_3} = 3;
+
+    bless($self);
+
+    return $self;
+}
+=====================================================================
+my $object1 = Class1->new();
+
+package Class1;
+
+sub new
+{
+    $class = shift;
+
+    print "You're creating a new object of class $class.";
+
+    my $self  = {};
+
+    bless($self);
+
+    return $self;
+}
+=====================================================================
+print "Class1 supports these methods: ",
+    join(", ", Class1->get_interfaces());
+
+package Class1;
+
+sub new
+{
+    $class = shift;
+
+    my $self  = {};
+
+    bless($self);
+
+    return $self;
+}
+
+sub get_interfaces {
+
+    return 'new', 'get_interfaces';
+}
+=====================================================================
+sub addem
+{
+    ($object, $operand1, $operand2) = @_;
+
+    return $operand1 + $operand2;
+}
+=====================================================================
+sub addem
+{
+    shift;
+
+    ($operand1, $operand2) = @_;
+
+    return $operand1 + $operand2;
+}
+=====================================================================
+sub addem
+{
+    my ($object, $operand1, $operand2) = @_;
+
+    return $operand1 + $operand2;
+}
+=====================================================================
+$math_object = Class1->new();
+
+print "2 + 2 = ", $math_object->addem(2, 2);
+
+
+package Class1;
+
+sub new
+{
+    my $class = shift;
+
+    my $self  = {};
+
+    bless($self);
+
+    return $self;
+}
+
+sub addem
+{
+    my ($object, $operand1, $operand2) = @_;
+
+    return $operand1 + $operand2;
+}
+=====================================================================
+package Class1;
+
+sub new
+{
+    my $type  = {};
+
+    bless($type);
+
+    return $type;
+}
+
+sub data
+{
+    my $self = shift;
+
+    if (@_) {$self->{DATA} = shift;}
+
+    return $self->{DATA};
+}
+
+return 1;
+=====================================================================
+use Class1;
+
+my $object1 = Class1->new();
+
+$object1->data("Hello!");
+
+print "Here's the text in the object: ", $object1->data;
+=====================================================================
+$math_object = Class1->new();
+
+print "2 + 2 = ", $math_object->addem(2, 2);
+
+
+package Class1;
+
+sub new
+{
+    my $class = shift;
+
+    my $self  = {};
+
+    bless($self);
+
+    return $self;
+}
+
+sub addem
+{
+    my ($object, $operand1, $operand2) = @_;
+
+    return $operand1 + $operand2;
+}
+=====================================================================
+package Class1;
+
+sub new
+{
+    my $self  = {};
+
+    bless($self);
+
+    $self->data(0);
+
+    return $self;
+}
+
+sub data
+{
+    my $self = shift;
+
+    if (@_) {$self->{DATA} = shift;}
+
+    return $self->{DATA};
+}
+
+return 1;
+=====================================================================
+package Class1;
+
+sub new
+{
+    my $self = {};
+
+    bless($self);
+
+    data ($self, 0);
+
+    return $self;
+
+}
+
+sub data
+{
+    my $self = shift;
+
+    if (@_) {$self->{DATA} = shift;}
+
+    return $self->{DATA};
+}
+
+return 1;
+=====================================================================
+$math_object = Class1->new();
+
+$coderef = \&Class1::addem;
+
+print "2 + 2 = ", &$coderef(0, 2, 2);
+
+
+package Class1;
+
+sub new
+{
+    shift;
+
+    my $self  = {};
+
+    bless($self);
+
+    return $self;
+}
+
+sub addem
+{
+    my ($object, $operand1, $operand2) = @_;
+
+    return $operand1 + $operand2;
+}
+=====================================================================
+package Class1;
+
+sub new
+{
+    my $self  = {};
+
+    $self->{NAME} = "Christine";
+
+    bless($self);
+
+    return $self;
+}
+
+return 1;
+=====================================================================
+use Class1;
+
+my $object1 = Class1->new();
+
+print "The person's name is ", $object1->{NAME}, "\n";
+=====================================================================
+package Class1;
+
+sub new
+{
+    my $self  = {};
+
+    $self->{NAME} = "Christine";
+
+    bless($self);
+
+    return $self;
+}
+
+return 1;
+=====================================================================
+use Class1;
+
+my $object1 = Class1->new();
+
+print "The person's name is ", $object1->{NAME}, "\n";
+=====================================================================
+sub get_name
+{
+
+    $self = shift;
+    return $self->{NAME};
+
+}
+=====================================================================
+sub set_name
+{
+
+    $self = shift;
+    $self->{NAME} = shift;
+
+}
+=====================================================================
+use Class1;
+
+my $object = Class1->new();
+
+$object->set_name('Nancy');
+
+print "The person's name is ", $object->get_name(), "\n";
+=====================================================================
+package Class1;
+
+my $name = "Christine";
+
+sub new
+{
+    my $self  = {};
+
+    bless($self);
+
+    return $self;
+}
+
+sub get_name
+{
+
+    return $name;
+
+}
+
+sub set_name
+{
+
+    shift;
+    $name = shift;
+
+}
+
+return 1;
+=====================================================================
+use Class1;
+
+my $object = Class1->new();
+
+$object->set_name('Nancy');
+
+print "The person's name is ", $object->get_name(), "\n";
+=====================================================================
+use Class1;
+
+my $object1 = Class1->new();
+
+my $object2 = Class1->new();
+
+$object1->set_name('Nancy');
+
+print "The person's name is ", $object2->get_name(), "\n";
+=====================================================================
+package Class1;
+
+sub new
+{
+    my $type  = {};
+
+    $type->{OPERAND1} = 2;
+
+    $type->{OPERAND2} = 2;
+
+    bless($type);
+
+    return $type;
+}
+
+sub sum
+{
+    my $self = shift;
+
+    my $temp = _add ($self->{OPERAND1}, $self->{OPERAND2});
+
+    return $temp;
+}
+
+sub _add {return shift() + shift();}
+
+return 1;
+=====================================================================
+use Class1;
+
+my $object1 = Class1->new();
+
+print "Here's the sum: ", $object1->sum;
+=====================================================================
+package Cdata;
+
+my $total;
+
+sub new {
+
+    $self = {};
+
+    $total++;
+
+    return bless $self;
+
+}
+
+sub gettotal
+{
+
+    return $total;
+
+}
+
+return 1;
+=====================================================================
+use Cdata;
+
+$object1 = Cdata->new;
+
+print "Current number of objects: ", $object1->gettotal, "\n";
+
+$object2 = Cdata->new;
+
+print "Current number of objects: ", $object2->gettotal, "\n";
+
+$object3 = Cdata->new;
+
+print "Current number of objects: ", $object3->gettotal, "\n";
+=====================================================================
+package Class1;
+
+sub new
+{
+    my $self  = {};
+
+    bless($self);
+
+    return $self;
+}
+
+sub DESTROY
+{
+
+    print "Object is being destroyed!\n"
+
+}
+
+return 1;
+=====================================================================
+use Class1;
+
+my $object1 = Class1->new();
+
+exit;
+=====================================================================
+use Class1;
+
+my $object1 = Class1->new();
+
+$object1 = undef;
+
+print "Exiting now...";
+
+exit;
+=====================================================================
+package Class1;
+
+sub new
+{
+    my $self  = {};
+
+    bless($self);
+
+    return $self;
+}
+
+sub gettext {return "Hello!\n";}
+
+return 1;
+=====================================================================
+package Class2;
+
+use Class1;
+
+@ISA = qw(Class1);
+
+sub new
+{
+    my $self  = Class1->new;
+
+    bless($self);
+
+    return $self;
+}
+
+return 1;
+=====================================================================
+use Class2;
+
+my $object1 = Class2->new();
+
+print "The object says: ", $object1->gettext;
+=====================================================================
+package Class1;
+
+sub new
+{
+    my $class  = shift;
+
+    my $self  = {};
+
+    bless($self, $class);
+
+    return $self;
+}
+
+return 1;
+=====================================================================
+package Class2;
+
+use Class1;
+
+@ISA = qw(Class1);
+
+sub new
+{
+    my $self  = Class1->new;
+
+    bless($self);
+
+    return $self;
+}
+
+return 1;
+=====================================================================
+use Class2;
+
+my $object1 = Class2->new();
+
+print "The object's class is: ", ref $object1, "\n";
+
+print "The object says: ", $object1->gettext;
+=====================================================================
+package Class1;
+
+sub new
+{
+    my $class  = shift;
+
+    my $self  = {};
+
+    $self->{NAME} = "Christine";
+    
+    bless $self, $class;
+
+    return $self;
+}
+
+return 1;
+=====================================================================
+package Class2;
+
+use Class1;
+
+@ISA = qw(Class1);
+
+sub new
+{
+    my $self = Class1->new();
+
+    $self->{DATA} = 200;
+
+    return $self;
+}
+
+return 1;
+=====================================================================
+use Class2;
+
+my $object1 = Class2->new();
+
+print $object1->{NAME}, " has \$", $object1->{DATA}, "\n";
+=====================================================================
+package Class1;
+
+sub new
+{
+    my $class  = shift;
+
+    my $self  = [];
+
+    $self->[0] = 100;
+
+    bless $self, $class;
+
+    return $self;
+}
+
+return 1;
+=====================================================================
+package Class2;
+
+use Class1;
+
+@ISA = qw(Class1);
+
+sub new
+{
+    my $self = Class1->new();
+
+    $self->[1] = 200;
+
+    return $self;
+}
+
+return 1;
+=====================================================================
+use Class2;
+
+my $object1 = Class2->new();
+
+print '$object1->[0] = ', $object1->[0], "\n";
+print '$object1->[1] = ', $object1->[1], "\n";
+=====================================================================
+package Class0;
+
+sub printhi {print "Hi\n";}
+
+return 1;
+=====================================================================
+package Class1;
+
+sub printhello {print "Hello\n";}
+
+return 1;
+=====================================================================
+package Class2;
+
+use Class0;
+
+use Class1;
+
+@ISA = qw(Class0 Class1);
+
+sub new
+{
+    my $self  = {};
+
+    bless($self);
+
+    return $self;
+}
+
+return 1;
+=====================================================================
+use Class2;
+
+my $object1 = Class2->new();
+
+$object1->printhi;
+
+$object1->printhello;
+=====================================================================
