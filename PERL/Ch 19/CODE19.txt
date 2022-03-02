@@ -1,0 +1,747 @@
+=====================================================================
+use Doubler;
+
+tie $data, 'Doubler', $$;
+=====================================================================
+use Doubler;
+
+tie $data, 'Doubler', $$;
+
+$data = 5;
+
+print "\$data evaluates to $data";
+=====================================================================
+package Class1;
+
+sub new
+{
+    my $type  = {};
+
+    $type->{OPERAND1} = 2;
+
+    $type->{OPERAND2} = 2;
+
+    bless($type);
+
+    return $type;
+}
+
+sub sum
+{
+    my $self = shift;
+
+    my $temp = _add ($self->{OPERAND1}, $self->{OPERAND2});
+
+    return $temp;
+}
+
+sub _add {return shift() + shift();}
+
+return 1;
+=====================================================================
+$object1 = Datum->new(1);
+
+$object2 = Datum->new(2);
+
+$object3 = $object1 + $object2;
+
+$object4 = $object1 + 3;
+
+$object5 = $object1 - $object2;
+
+$object6 = 7 - $object2;
+=====================================================================
+print "1 + 2 + 3 = ", addem(1, 2, 3), "\n";
+
+print "1 + 2 + 3 + 4 = ", addem(1, 2, 3, 4), "\n";
+
+sub addem
+{
+    my $sum = 0;
+
+    foreach $value (@_) {
+
+        $sum += $value;
+
+    }
+
+    return $sum;
+}
+=====================================================================
+package Class1;
+
+sub printem
+{
+    print "Hello";
+}
+
+return 1;
+=====================================================================
+package Class2;
+
+use Class1;
+
+@ISA = qw(Class1);
+
+sub new
+{
+    my $self  = {};
+
+    bless($self);
+
+    return $self;
+}
+
+sub printem
+{
+    print "Hi";
+}
+
+return 1;
+=====================================================================
+use Class2;
+
+my $object1 = Class2->new();
+
+$object1->printem;
+=====================================================================
+package Class1;
+
+sub printem
+{
+    print "Hello";
+}
+
+return 1;
+=====================================================================
+package Class2;
+
+use Class1;
+
+@ISA = qw(Class1);
+
+sub new
+{
+    my $self  = {};
+
+    bless($self);
+
+    return $self;
+}
+
+sub printem
+{
+    $self = shift;
+
+    $self->SUPER::printem;
+
+    print " there!";
+}
+
+return 1;
+=====================================================================
+use Class2;
+
+my $object1 = Class2->new();
+
+$object1->printem;
+=====================================================================
+package Doubler;
+
+sub TIESCALAR 
+{
+
+    my $class = shift;
+
+    $data = shift;
+
+    return bless \$data, $class;
+
+}
+=====================================================================
+sub FETCH
+{
+    my $self = shift;
+
+    return 2 * $data;
+}
+=====================================================================
+sub STORE
+{
+    my $self = shift;
+
+    $data = shift;
+
+    return 2 * $data;
+}
+=====================================================================
+sub DESTROY { }
+
+return 1;
+=====================================================================
+use Doubler;
+
+tie $data, 'Doubler', $$;
+
+$data = 5;
+
+print "\$data evaluates to $data";
+=====================================================================
+package Darray;
+
+sub TIEARRAY {
+
+    my $class = shift;
+
+    @array = @_;
+
+    return bless \@array, $class;
+
+}
+=====================================================================
+sub FETCH
+{
+    my $self = shift;
+
+    my $index = shift;
+
+    return 2 * $array[$index];
+}
+=====================================================================
+sub FETCHSIZE 
+{
+    return ($#array + 1);
+}
+=====================================================================
+sub STORESIZE 
+{
+    $#array = shift;
+}
+=====================================================================
+sub STORE
+{
+    my $self = shift;
+
+    my $index = shift;
+
+    return 2 * $array[$index];
+}
+=====================================================================
+sub DESTROY { }
+
+return 1;
+=====================================================================
+use Darray;
+
+tie @array, 'Darray', (1, 2, 3);
+
+print join (", ", @array);
+=====================================================================
+use Fcntl;
+use NDBM_File;
+
+tie %hash, "NDBM_File", 'data', O_RDWR|O_CREAT|O_EXCL, 0644;
+
+$hash{drink} = 'root beer';
+
+$hash{meat} = turkey;
+
+$hash{dessert} = 'blueberry pie';
+
+untie %hash;
+=====================================================================
+use Fcntl;
+use NDBM_File;
+
+tie %hash, "NDBM_File", 'data', O_RDWR, 0644;
+=====================================================================
+use Fcntl;
+use NDBM_File;
+
+tie %hash, "NDBM_File", 'data', O_RDWR, 0644;
+
+while(($key, $value) = each(%hash)) {
+
+    print "$key => $value\n";
+
+}
+
+untie %hash;
+=====================================================================
+use Math::Complex;
+
+$operand1 = Math::Complex->new(1, 2);
+
+if ($operand1->isa("Math::Complex")) {print "\$operand1 is 
+    an object of class Math::Complex.";}
+=====================================================================
+$object = Class1->new;
+
+$printemcall = $object->can('printem');
+
+&{$printemcall} if $printemcall;
+
+package Class1;
+
+sub new
+{
+    my $self  = {};
+    bless $self;
+    return $self;
+}
+
+sub printem
+{
+    print "Hello\n";
+}
+=====================================================================
+package Class1;
+
+$VERSION = 1.01;
+
+sub new
+{
+    my $self  = {};
+    bless $self;
+    return $self;
+}
+
+return 1;
+=====================================================================
+use Class1;
+
+$object1 = Class1->new;
+
+print $object1->VERSION;
+=====================================================================
+package Class1;
+
+sub new 
+{
+    my $data = {};
+
+    $data->{NAME} = 'Christine';
+
+    my $closure = sub {
+        shift;
+
+        if (@_) {
+            $data->{NAME} = shift;
+        }
+
+        return  $data->{NAME};
+    };
+
+    bless $closure;
+
+    return $closure;
+}
+=====================================================================
+sub name
+{
+    &{$_[0]};
+}
+
+return 1;
+=====================================================================
+use Class1;
+
+$object = Class1->new;
+
+$object->name('Nancy');
+
+print "The name is: ", $object->name;
+=====================================================================
+package Class1;
+
+local $coderef;
+
+sub new
+{
+
+    my $data = {};
+
+    $data->{NAME} = Nancy;
+
+    $coderef = sub {print "Hello!\n";};
+
+    bless $data;
+    return $data;
+}
+=====================================================================
+sub printem
+{
+    &{$coderef};
+}
+
+return 1;
+=====================================================================
+use Class1;
+
+$object = Class1->new;
+
+$object->printem;
+=====================================================================
+sub new 
+{
+    my $coderef = sub {print "Hello!\n";};
+
+    my $closure = sub {
+
+         &{$coderef};
+    };
+
+    bless $closure;
+
+    return $closure;
+}
+=====================================================================
+sub printem
+{
+    &{$_[0]};
+}
+
+return 1;
+=====================================================================
+use Class1;
+
+$object = Class1->new;
+
+$object->printem;
+=====================================================================
+$object = Class1->new;
+
+$object->printem;
+
+
+package Class1;
+
+use Alias;
+
+sub new
+{
+
+    my $data = {
+        NAME  => Nancy,
+        CODEREF => sub {print "Hello!\n";},
+    };
+
+    bless $data;
+    return $data;
+}
+
+sub printem
+{
+    $self = shift;
+    &{$self->{CODEREF}};
+}
+=====================================================================
+package Class1;
+
+sub new
+{
+    my $data = {};
+
+    bless $data;
+
+    return $data;
+}
+
+sub printem
+
+{
+    shift;
+    print shift;
+}
+
+return 1;
+=====================================================================
+use Class1;
+
+$object = Class1->new;
+=====================================================================
+use Class1;
+
+$object = Class1->new;
+
+$coderef = sub
+{
+    $object->printem(@_);
+};
+
+$coderef->('Hello!');
+=====================================================================
+package Class1;
+
+sub new
+{
+
+    my $data = {};
+
+    $data->{NAME} = Nancy;
+
+    bless $data;
+
+    return $data;
+}
+
+return 1;
+=====================================================================
+use Class1;
+
+$object = Class1->new;
+
+print "Her name is ", $object->{NAME};
+=====================================================================
+use Class1;
+
+use Alias;
+
+$object = Class1->new;
+
+attr $object;
+
+print "Her name is ", $NAME;
+=====================================================================
+package Day;
+
+sub new 
+{
+    my $type = shift;
+
+    my $value = shift;
+
+    my $self = {};
+
+    $self->{DATE} = $value; 
+
+    bless $self;
+
+    return $self;
+}
+=====================================================================
+package Calendar;
+
+sub new 
+{
+    my $type = shift;
+
+    my $self = [];
+
+    for ($loop_index = 1; $loop_index <= 31; $loop_index++) {
+
+        $self->[$loop_index] = Day->new($loop_index);
+
+    }
+
+    bless $self;
+
+    return $self;
+}
+
+return 1;
+=====================================================================
+use Calendar;
+
+$object = Calendar->new;
+
+print "That date is the ", $object->[10]->{DATE}, "th.";
+=====================================================================
+package PersonalDBM_File;
+
+use NDBM_File;
+
+sub TIEHASH 
+{
+    print "Tying a hash to $_[1].pag...\n";
+
+    shift;
+
+    my $self = {};
+
+    my $ref = NDBM_File->new(@_);
+
+    $self->{NDBMref} = $ref;
+
+    bless $self;
+
+    return $self;
+}
+=====================================================================
+sub FETCH
+{
+    my $self = shift;
+
+    print "Now fetching @_\n";
+
+    $self->{NDBMref}->FETCH(@_);
+}
+=====================================================================
+sub DESTROY {}
+=====================================================================
+sub STORE
+{
+    my $self = shift;
+
+    print "Now storing @_\n";
+
+    $self->{NDBMref}->STORE(@_); 
+}
+
+return 1;
+=====================================================================
+use PersonalDBM_File;
+use Fcntl; 
+
+tie %hash, "PersonalDBM_File", "file", O_RDWR|O_CREAT, 0644;
+
+$hash{'data'} = 5;
+
+untie %hash;
+
+tie %hash2, "PersonalDBM_File", "file", O_RDWR, 0644;
+
+print "The data value is $hash2{'data'}\n";
+
+untie %hash2;
+=====================================================================
+$object3 = $object1 + $object2;
+=====================================================================
+package Datum;
+
+use overload
+    "+" => \&add,
+    "-" => \&subtract;
+=====================================================================
+sub new
+{
+    shift;
+
+    my $self = {};
+
+    $self->{DATA} = shift;
+
+    bless $self;
+
+    return $self;
+}
+=====================================================================
+sub get_data
+{
+    $self = shift;
+
+    return $self->{DATA};
+}
+=====================================================================
+sub add
+{
+    my ($obj1, $obj2) = @_;
+
+    $operand1 = ref $obj1 eq 'Datum' ? $obj1->{DATA} : $obj1;
+    $operand2 = ref $obj2 eq 'Datum' ? $obj2->{DATA} : $obj2;
+
+    $new_object = Datum->new($operand1 + $operand2);
+
+    return $new_object;
+}
+=====================================================================
+sub subtract
+{
+    my ($obj1, $obj2, $reversed) = @_;
+
+    $operand1 = ref $obj1 eq 'Datum' ? $obj1->{DATA} : $obj1;
+    $operand2 = ref $obj2 eq 'Datum' ? $obj2->{DATA} : $obj2;
+    
+    if($reversed){
+
+        $new_object = Datum->new($operand2 - $operand1);
+
+    } else {
+
+        $new_object = Datum->new($operand1 - $operand2);
+
+    }
+
+    return $new_object;
+}
+
+return 1;
+=====================================================================
+use Datum;
+
+$object1 = Datum->new(1);
+print '$object1 = ', $object1->get_data, "\n";
+
+$object2 = Datum->new(2);
+print '$object2 = ', $object2->get_data, "\n";
+
+$object3 = $object1 + $object2;
+print '$object1 + $object2 = ', $object3->get_data, "\n";
+
+$object4 = $object1 + 3;
+print '$object1 + 3 = ', $object4->get_data, "\n";
+
+$object5 = $object1 - $object2;
+print '$object1 - $object2 = ', $object5->get_data, "\n";
+
+$object6 = 7 - $object2;
+print '7 - $object2 = ', $object6->get_data, "\n";
+=====================================================================
+sub new
+{
+    shift;
+
+    my $self = {};
+
+    $self->{DATA} = shift;
+
+    bless $self;
+
+    return $self;
+}
+=====================================================================
+sub get_data
+{
+    $self = shift;
+
+    return $self->{DATA};
+}
+=====================================================================
+sub increment
+{
+    my $obj1 = $_[0];
+
+    $operand1 = $obj1->{DATA};
+
+    $new_object = Datum->new($operand1 + 1);
+
+    $_[0] = $new_object;
+}
+=====================================================================
+sub copy
+{
+    my $obj1 = $_[0];
+
+    $operand1 = $obj1->{DATA};
+
+    $new_object = Datum->new($operand1);
+
+    return $new_object;
+}
+
+return 1;
+=====================================================================
+use Datum;
+
+$object1 = Datum->new(1);
+print '$object1 = ', $object1->get_data, "\n";
+
+$object2 = Datum->new(2);
+print '$object2 = ', $object2->get_data, "\n";
+
+++$object1;
+print '++$object1 = ', $object1->get_data, "\n";
+
+$object2++;
+print '$object2++ = ', $object2->get_data, "\n";
+=====================================================================

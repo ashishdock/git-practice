@@ -1,0 +1,567 @@
+=================================================================
+use Socket;
+
+$site_name = 'www.cpan.org';
+
+$address = inet_ntoa(inet_aton($site_name));
+
+print "The DNS address of www.cpan.org is $address";
+=================================================================
+use Net::FTP;
+
+$ftp = Net::FTP->new
+(
+    "ftp.cpan.org", 
+    Timeout => 30
+) or die "Could not connect.\n";
+
+$username = "anonymous";
+$password = "steve";
+
+$ftp->login($username, $password)
+        or die "Could not log in.\n";
+
+$ftp->cwd('/pub/CPAN');
+
+$remotefile = "CPAN.html";
+$localfile = "file.txt";
+
+$ftp->get($remotefile, $localfile)
+        or die "Can not get file.\n";
+=================================================================
+use Net::FTP;
+
+$ftp = Net::FTP->new("ftp.cpan.org", Timeout => 30)
+        or die "Could not connect.\n";
+
+$username = "anonymous";
+$password = "steve";
+
+$ftp->login($username, $password)
+        or die "Could not log in.\n";
+
+$ftp->cwd('/pub/CPAN');
+
+$remotefile = "CPAN.html";
+$localfile = "file.txt";
+
+$ftp->get($remotefile, $localfile)
+        or die "Can not get file.\n";
+=================================================================
+use LWP::Simple;
+
+$content = get("http://www.cpan.org/doc/FAQs/index.html");
+
+open FILEHANDLE, ">file.txt";
+
+print FILEHANDLE $content;
+
+close FILEHANDLE;
+=================================================================
+use LWP::UserAgent;
+
+$user_agent = new LWP::UserAgent;
+
+$request = new HTTP::Request('GET', 
+    'http://www.cpan.org/doc/FAQs/index.html');
+
+$response = $user_agent->request($request);
+
+open FILEHANDLE, ">file.txt";
+
+print FILEHANDLE $response->{_content};
+
+close FILEHANDLE;
+=================================================================
+use Net::Ping;
+
+$pingobject = Net::Ping->new(icmp);
+
+if ($pingobject->ping('cpan.org')) {print "Could reach CPAN."};
+
+$pingobject->close();
+=================================================================
+use News::NNTPClient;
+
+$nntp = new News::NNTPClient('news.yourserver.com');
+
+($first, $last) = $nntp->group("comp.lang.perl.moderated");
+
+open FILEHANDLE, ">file.txt";
+
+for ($loop_index = $first; $loop_index <= $last; $loop_index++) {
+
+    print FILEHANDLE $nntp->article($loop_index);
+
+}
+
+close FILEHANDLE;
+=================================================================
+use Mail::POP3Client;
+
+$mail = new Mail::POP3Client("username", "password", "pop3.yourserver.com");
+
+if ($mail->Count) {
+
+    print "You have ", $mail->Count, " new message(s).\n";
+
+    print "Storing message(s) to disk.\n";
+
+    open FILEHANDLE, ">file.txt";
+
+    for($loop_index = 1; $loop_index <= $mail->Count; $loop_index++) {
+
+        print FILEHANDLE $mail->HeadAndBody($loop_index);
+
+    }
+
+    close FILEHANDLE;
+}
+=================================================================
+use Mail::POP3Client;
+
+$mail = new Mail::POP3Client("username", "password", "pop3.yourserver.com");
+
+if ($mail->Count) {
+
+    print "You have ", $mail->Count, " new message(s).\n";
+
+    print "Storing message(s) to disk.\n";
+
+    open FILEHANDLE, ">file.txt";
+
+    for($loop_index = 1; $loop_index <= $mail->Count; $loop_index++) {
+
+        print FILEHANDLE $mail->HeadAndBody(1);
+
+    }
+
+    close FILEHANDLE;
+}
+=================================================================
+open(MAIL, '| /usr/lib/sendmail -t -oi');
+
+print MAIL <<EOF;
+To: steve\@server.com
+From: steve\@host.com
+Subject: Greetings
+Hi Steve!
+EOF
+
+close MAIL;
+=================================================================
+use Net::Telnet;
+
+$telnet = Net::Telnet->new
+( 
+    Timeout => 90,
+    Prompt  => '%', 
+    Host => 'server.com' 
+);
+
+$telnet->login('username', 'password');
+
+$telnet->cmd("cd code22");
+
+@listing = $telnet->cmd("ls");
+
+print "Here are the files:\n";
+print "@listing";
+
+$telnet->close;
+=================================================================
+use Socket;
+use IO::Handle;
+
+socketpair(CHILDHANDLE, PARENTHANDLE, AF_UNIX, SOCK_STREAM, PF_UNSPEC)
+    or  die "Could not create socketpair.";
+
+CHILDHANDLE->autoflush(1);
+PARENTHANDLE->autoflush(1);
+
+if ($pid = fork) {
+
+    close PARENTHANDLE;
+
+    print CHILDHANDLE "Hello from the parent!\n";
+
+    $line = <CHILDHANDLE>;
+
+    print "Parent read: $line";
+
+    close CHILDHANDLE;
+
+    waitpid($pid,0);
+
+} else {
+
+    close CHILDHANDLE;
+
+    $line = <PARENTHANDLE>;
+
+    print "Child read: $line";
+
+    print PARENTHANDLE "Hello from the child!\n";
+
+    close PARENTHANDLE;
+
+    exit;
+}
+=================================================================
+use Socket;
+use IO::Handle;
+
+socketpair(CHILDHANDLE, PARENTHANDLE, AF_UNIX, SOCK_STREAM, PF_UNSPEC)
+    or  die "Could not create socketpair.";
+
+CHILDHANDLE->autoflush(1);
+PARENTHANDLE->autoflush(1);
+
+if ($pid = fork) {
+
+    close PARENTHANDLE;
+
+    print CHILDHANDLE "Hello from the parent!\n";
+
+    $line = <CHILDHANDLE>;
+
+    print "Parent read: $line";
+
+    close CHILDHANDLE;
+
+    waitpid($pid,0);
+
+} else {
+
+    close CHILDHANDLE;
+
+    $line = <PARENTHANDLE>;
+
+    print "Child read: $line";
+
+    print PARENTHANDLE "Hello from the child!\n";
+
+    close PARENTHANDLE;
+
+    exit;
+}
+=================================================================
+use IO::Socket;
+
+$socket = IO::Socket::INET->new
+(
+    PeerAddr => 'yourserver.com',
+    PeerPort => 1116,
+    Proto    => "tcp",
+    Type     => SOCK_STREAM
+) or die "Could not open port.\n";
+
+print $socket "Hello from the client!\n";
+
+close($socket);
+=================================================================
+use IO::Socket;
+
+$socket = IO::Socket::INET->new
+(
+    PeerAddr => 'yourserver.com',
+    PeerPort => 1116,
+    Proto    => "tcp",
+    Type     => SOCK_STREAM
+) or die "Could not open port.\n";
+
+$answer = <$socket>;
+
+print $answer;
+
+close($socket);
+=================================================================
+use IO::Socket;
+
+$server = IO::Socket::INET->new
+(
+    LocalPort => 1116,
+    Type      => SOCK_STREAM,
+    Reuse     => 1,
+    Listen    => 5 
+) or die "Could not open port.\n";
+
+while ($client = $server->accept()) {
+
+    $line = <$client>;
+
+    print $line;
+
+}
+
+close($server);
+=================================================================
+use IO::Socket;
+
+$server = IO::Socket::INET->new
+(
+    LocalPort => 1116,
+    Type      => SOCK_STREAM,
+    Reuse     => 1,
+    Listen    => 5 
+) or die "Could not open port.\n";
+
+while ($client = $server->accept()) {
+
+    print $client "Hello from the server!\n";
+
+}
+
+close($server);
+=================================================================
+if ($child_pid) {
+
+    while ($line = <>) {
+
+        print $socket $line;
+
+    }
+
+} else {
+
+    while($line = <$socket>) {
+
+        print "Read this from server: $line";
+
+    }
+}
+=================================================================
+    if ($child_pid) {
+
+        while ($line = <$client>) {
+
+            print "Read this from client: $line";
+
+        }
+
+    } else {
+
+        while ($line = <>) {
+
+            print $client $line; 
+
+        }
+    }    
+}
+=================================================================
+use IO::Socket;
+
+$socket = IO::Socket::INET->new
+(
+    PeerAddr => 'server.com',
+    PeerPort => 1247,
+    Proto    => "tcp",
+    Type     => SOCK_STREAM
+) or die "Could not create client.\n";
+
+unless (defined($child_pid = fork())) {die "Can not fork.\n"};
+
+if ($child_pid) {
+
+    while ($line = <>) {
+
+        print $socket $line;
+
+    }
+
+} else {
+
+    while($line = <$socket>) {
+
+        print "Read this from server: $line";
+
+    }
+}
+=================================================================
+use IO::Socket;
+
+$server = IO::Socket::INET->new
+(
+    LocalPort => 1247,
+    Type      => SOCK_STREAM,
+    Reuse     => 1,
+    Listen    => 5 
+) or die "Could not create server.\n";
+
+while ($client = $server->accept()) {
+
+    unless (defined($child_pid = fork())) {die "Can not fork.\n"};
+
+    if ($child_pid) {
+
+        while ($line = <$client>) {
+
+            print "Read this from client: $line";
+
+        }
+
+    } else {
+
+        while ($line = <>) {
+
+            print $client $line; 
+
+        }
+    }    
+}
+=================================================================
+use Socket;
+
+socket(SERVER, PF_INET, SOCK_STREAM, getprotobyname('tcp'));
+
+$addr = sockaddr_in(2336, inet_aton('server.com'));
+
+connect(SERVER, $addr)
+    or die "Could not connect.\n";
+
+print SERVER "Hello from the client!\n";
+
+close(SERVER);
+=================================================================
+use Socket;
+
+socket(SERVER, PF_INET, SOCK_STREAM, getprotobyname('tcp'));
+
+$addr = sockaddr_in(2336, inet_aton('server.com'));
+
+connect(SERVER, $addr)
+    or die "Could not connect.\n";
+
+$line = <SERVER>;
+
+print $line;
+
+close(SERVER);
+=================================================================
+use Socket;
+
+socket(SERVER, PF_INET, SOCK_STREAM, getprotobyname('tcp'));
+
+setsockopt(SERVER, SOL_SOCKET, SO_REUSEADDR, 1);
+
+$addr = sockaddr_in(2336, inet_aton('server.com'));
+
+bind(SERVER, $addr)
+    or die "Could not bind to port.\n";
+
+listen(SERVER, SOMAXCONN)
+    or die "Could not listen to port.\n";
+
+while (accept(CLIENT, SERVER)) {
+
+    $line = <CLIENT>;
+
+    print $line;
+
+}
+
+close(SERVER);
+=================================================================
+use Socket;
+
+socket(SERVER, PF_INET, SOCK_STREAM, getprotobyname('tcp'));
+
+setsockopt(SERVER, SOL_SOCKET, SO_REUSEADDR, 1);
+
+$addr = sockaddr_in(2336, inet_aton('server.com'));
+
+bind(SERVER, $addr)
+    or die "Could not bind to port.\n";
+
+listen(SERVER, SOMAXCONN)
+    or die "Could not listen to port.\n";
+
+while (accept(CLIENT, SERVER)) {
+
+    print CLIENT "Hello from the server!\n";
+
+}
+
+close(SERVER);
+=================================================================
+use Socket;
+
+$file = 'transfer';
+
+socket(SOCKET, PF_UNIX, SOCK_STREAM, 0)       
+    or die "Could not create socket.\n";
+
+connect(SOCKET, sockaddr_un($file)) 
+    or die "Could not connect.\n";
+    
+print SOCKET "Hello from the client!\n";
+
+close SOCKET;
+
+exit;
+=================================================================
+use Socket;
+
+$file = 'transfer';
+
+$addr = sockaddr_un($file);
+
+socket(SERVER, PF_UNIX, SOCK_STREAM, 0)
+    or die "Could not create socket.\n";
+
+unlink($file);
+
+bind (SERVER, $addr) 
+    or die "Could not bind.\n";
+
+listen(SERVER, SOMAXCONN)
+    or die "Could not listen.\n";
+
+while (accept(CLIENT,SERVER)) { 
+
+    $line = <CLIENT>;
+
+    print $line;
+
+}
+=================================================================
+use IO::Select;
+
+$select = IO::Select->new();
+
+$select->add($socket1);
+$select->add($socket2);
+$select->add($socket3);
+$select->add($socket4);
+
+@ok_to_read = $select->can_read($timeout);
+
+foreach $socket (@ok_to_read) {
+
+    $socket->recv($data_buffer, $flags)
+
+    print $data_buffer;
+
+}
+=================================================================
+use IO::Socket;
+
+$socket = IO::Socket::INET->new
+(
+    Proto => 'udp',
+    PeerPort  => 4321,
+    PeerAddr  => 'servername.com'
+);
+
+$socket->send('Hello from the client!');
+=================================================================
+use IO::Socket;
+
+$socket = IO::Socket::INET->new
+(
+    LocalPort => 4321,
+    Proto => 'udp'
+);
+
+$socket->recv($text, 128);
+=================================================================
