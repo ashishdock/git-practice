@@ -1,0 +1,17 @@
+// A version of CopyFile that uses try-with-resources. It demonstrates two resources (in this case files) being managed by a single try statement
+
+import java.io.*;
+
+class CopyFile1
+{
+	public static void main(String args[]) throws IOException
+	{
+		int i;
+		// First, confirm that both files have been specified
+		if(args.length != 2)
+		{
+			System.out.println("Usage: CopyFile1");
+			return;
+		}
+	}
+}
