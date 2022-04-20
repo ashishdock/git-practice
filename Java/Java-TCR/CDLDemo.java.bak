@@ -1,0 +1,45 @@
+// An example of CountDownLatch
+
+import java.util.concurrent.CountDownLatch;
+
+class CDLDemo
+{
+	public static void main(String args[])
+	{
+		CountDownLatch cdl = new CountDownLatch(5);
+		
+		System.out.println("Starting");
+		
+		new Thread(new MyThread(cdl)).start();
+		
+		try
+		{
+			cdl.wait();
+		}
+		catch(InterruptedException ie)
+		{
+			System.out.println(ie);
+		}
+		
+		System.out.println("Done");
+	}
+}
+
+class Mythread implements Runnable
+{
+	CountDownLatch latch;
+	
+	MyThread(CountDownLatch c)
+	{
+		latch = c;
+	}
+	
+	public void run()
+	{
+		for(int i=0; i<5; i++)
+		{
+			System.out.println(i);
+			latch.countDown();	// decrement count
+		}
+	}
+}
