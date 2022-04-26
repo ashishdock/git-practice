@@ -1,0 +1,5 @@
+package com.sprincore.constructorinjection;
+
+public class Person {
+
+}

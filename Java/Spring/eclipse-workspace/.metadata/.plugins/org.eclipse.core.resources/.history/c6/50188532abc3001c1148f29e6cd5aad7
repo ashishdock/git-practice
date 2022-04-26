@@ -1,0 +1,17 @@
+package com.springcore.lifecycle;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class Whatever {
+
+	public static void main(String[] args) {
+		
+		ApplicationContext context = new ClassPathXmlApplicationContext("com/springcore/lifecycle/configlc.xml");
+		
+		TestingLC test1 = (TestingLC).getBean("test1");
+		System.out.println(test1);
+
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.springcore.auto.wire;
+
+public class Address {
+
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.9.21.202203211437-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
+	<configs>
+		<config>src/main/java/config.xml</config>
+		<config>src/main/java/com/springcore/collections/collectionconfig.xml</config>
+		<config>src/main/java/com/springcore/ref/refconfig.xml</config>
+		<config>src/main/java/com/springcore/constructorinjection/ciconfig.xml</config>
+		<config>src/main/java/com/springcore/lifecycle/configlc.xml</config>
+		<config>src/main/java/com/springcore/auto/wire/configaw.xml</config>
+		<config>src/main/java/com/springcore/standalone/collections/configsc.xml</config>
+	</configs>
+	<autoconfigs>
+	</autoconfigs>
+	<configSets>
+	</configSets>
+</beansProjectDescription>
